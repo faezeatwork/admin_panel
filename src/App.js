@@ -1,12 +1,10 @@
 import React from "react";
-import { MainPage } from "./components/MainPage";
-import { Header } from "./components/Header";
+import { Admin } from "./components/pages/Admin";
 
 const App = () => {
   return (
     <div className="vh-100">
-      <Header />
-      <MainPage />
+      <Admin />
     </div>
   );
 };
