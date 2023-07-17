@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ItemsOfList } from "./ItemsOfList";
 import { Title_itemsOfList } from "./Title_itemsOfList";
 
@@ -6,7 +6,7 @@ export const Sidebar = () => {
   return (
     <section id="sidebar_section">
       <div className="mini_sidebar bg-dark vh-100">
-        <ul className="p-0">
+        <ul className="p-0 pt-3">
           <ItemsOfList item="داشبورد" icon="fa-tachometer-alt" />
           {/* ======================= فروشگاه ======================== */}
           <Title_itemsOfList item="فروشگاه" />
