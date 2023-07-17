@@ -4,7 +4,7 @@ import { Boxes } from "./Boxes";
 
 export const MainPage = () => {
   return (
-    <div className="main_page vh-100">
+    <div className="main_page">
       <Boxes />
       <TableOfProducts />
     </div>
