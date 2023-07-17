@@ -163,8 +163,8 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   margin-right: 200px;
 }
 
-#sidebar_section .mini_sidebar .sidebar_menu_item {
-  width: 100%;
+#sidebar_section .mini_sidebar .sidebar_menu_item:hover {
+  background-color:rgba(128, 128, 128, 0.5)
 }
 
 #sidebar_section .mini_sidebar .icon {
