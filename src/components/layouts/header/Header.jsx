@@ -1,6 +1,9 @@
 import React from "react";
 
+
 export const Header = () => {
+
+
   return (
     <div className="headerDiv w-100 shadow">
       <div className="header w-100 d-flex justify-content-between">
@@ -8,8 +11,8 @@ export const Header = () => {
           <input
             type="checkbox"
             className="form-check-input pointer"
-            id="flexSwitchChecked"
-          
+            id="handle_toggle_sideMenu"
+        
           />
         </div>
         <div className="d-flex justify-content-end align-items-center">
