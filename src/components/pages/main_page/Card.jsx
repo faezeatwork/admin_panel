@@ -23,8 +23,8 @@ export const Card = (props) => {
         <div
           className={`pointer p-3 mt-2 rounded-bottom box1_of_mainPage box2_of_mainPage ${backGround}`}
         >
-          <div>{num_last_week}</div>
-          <div>{num_last_month}</div>
+          <div>{num_last_week} در هفته گذشته</div>
+          <div>{num_last_month}  در ماه گذشته</div>
         </div>
       </div>
     </div>
