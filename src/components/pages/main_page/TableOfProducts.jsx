@@ -2,8 +2,9 @@ import React from "react";
 
 export const TableOfProducts = () => {
   return (
-    <div className="col-lg-5 col-md-12 px-3">
-      <table className="productTable table table-bordered border-primary ">
+    <div className="pe-4 col-lg-6 col-md-12 col-sm-12">
+      <div className="text-center pb-3 fs-5">محصولات رو به اتمام</div>
+      <table className=" productTable table table-bordered border-primary ">
         <thead>
           <tr className="bg-info">
             <td>#</td>

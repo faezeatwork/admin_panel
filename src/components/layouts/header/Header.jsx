@@ -11,8 +11,7 @@ export const Header = () => {
           <input
             type="checkbox"
             className="form-check-input pointer"
-            id="handle_toggle_sideMenu"
-        
+            id="handle_toggle_sideMenu"     
           />
         </div>
         <div className="d-flex justify-content-end align-items-center">

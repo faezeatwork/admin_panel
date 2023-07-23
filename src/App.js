@@ -1,11 +1,12 @@
 import React from "react";
 import { Admin } from "./components/pages/Admin";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="vh-100">
+    <BrowserRouter>
       <Admin />
-    </div>
+    </BrowserRouter>
   );
 };
 
