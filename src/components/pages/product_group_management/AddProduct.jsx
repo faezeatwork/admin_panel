@@ -1,16 +1,19 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export const AddProduct = () => {
   return (
-    <div className="addProduct w-100 vh-100 position-relative">
+    <div className="addProduct w-100 position-relative">
       <div className="header_addProduct p-3 d-flex justify-content-between">
         <h5>افزودن دسته محصولات</h5>
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <NavLink to="/product-group-management">
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </NavLink>
       </div>
 
       <div className="container">
@@ -88,8 +91,6 @@ export const AddProduct = () => {
           </button>
         </div>
       </div>
-
-      <button className="btn btn-secondary exit_btn_addProduct">انصراف</button>
     </div>
   );
 };
