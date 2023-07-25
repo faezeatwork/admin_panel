@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-let numOfPages = 2;
+let numOfPages = 2; //too har page chand ta row bashe
 export const ControlTables = () => {
   const titles = ["#", "دسته", "عنوان", "وضعیت", "عملیات"];
   const rows = [
@@ -14,19 +14,19 @@ export const ControlTables = () => {
     { id: "9", name: "2", last_name: "3", post_code: "4", address: "5" },
     { id: "10", name: "2", last_name: "3", post_code: "4", address: "5" },
   ];
-  const [tableData, setTableData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pages, setPages] = useState([]);
-  const [pageCount, setPageCount] = useState(1);
+  const [tableData, setTableData] = useState([]); //adad haye ke pagination dare neshoon mide
+  const [currentPage, setCurrentPage] = useState(1); //page ke dar oon hastim
+  const [pages, setPages] = useState([]); //yek araye az pageha masalan age 5 ta page darim :[1,2,3,4,5]
+  const [pageCount, setPageCount] = useState(1); //tedad safahat masalan: 5
+
   useEffect(() => {
     const page_count = rows.length / numOfPages;
     setPageCount(page_count);
     let pageArr = [];
-    for (let i = 1; i < page_count; i++) {
-      pageArr = [...pageArr, i];
-    }
+    for (let i = 1; i <= page_count; i++) pageArr = [...pageArr, i];
     setPages(pageArr);
   }, []);
+
   useEffect(() => {
     let start = currentPage * numOfPages - numOfPages;
     let end = currentPage * numOfPages;
@@ -34,7 +34,17 @@ export const ControlTables = () => {
   }, [currentPage]);
 
   return (
-    <div className="p-2">
+    <div className="p-4">
+      <div className="input-group mb-3 w-50 searchBox">
+        <span className="input-group-text pointer searchButton " id="basic-addon2">
+          جستجو
+        </span>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="قسمتی از عنوان را وارد کنید"
+        />
+      </div>
       <table className=" productTable table table-bordered border-primary ">
         <thead>
           <tr className="bg-info">
@@ -44,7 +54,6 @@ export const ControlTables = () => {
           </tr>
         </thead>
         <tbody>
-          {/* <tr className="productTableRow"> */}
           {tableData.map((d) => (
             <tr className="productTableRow" key={Math.random()}>
               <td>{d.id}</td>
@@ -54,7 +63,6 @@ export const ControlTables = () => {
               <td>{d.address}</td>
             </tr>
           ))}
-          {/* </tr> */}
         </tbody>
       </table>
       <div className=" d-flex justify-content-center ">
@@ -62,30 +70,31 @@ export const ControlTables = () => {
           <ul className="pagination">
             <li className="page-item">
               <span
-                className="page-link"
-                href="#"
+                className={`page-link pointer ${
+                  currentPage == 1 ? "disabled_pagination" : ""
+                }`}
                 aria-label="Previous"
                 onClick={() => setCurrentPage(currentPage - 1)}
               >
                 <span aria-hidden="true">&laquo;</span>
               </span>
             </li>
-            {pages.map((page) => (
-              <li className="page-item">
+            {pages.map((i) => (
+              <li className="page-item" key={Math.random()}>
                 <span
-                  className="page-link "
-                  href="#"
-                  onClick={() => setCurrentPage(page)}
+                  className="page-link pointer"
+                  onClick={() => setCurrentPage(i)}
                 >
-                  {page}
+                  {i}
                 </span>
               </li>
             ))}
 
             <li className="page-item">
               <span
-                className="page-link"
-                href="#"
+                className={`page-link pointer ${
+                  currentPage == pageCount ? "disabled_pagination" : ""
+                }`}
                 aria-label="Next"
                 onClick={() => setCurrentPage(currentPage + 1)}
               >

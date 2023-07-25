@@ -7,13 +7,13 @@ import { ProductGroupManagement } from "./product_group_management/ProductGroupM
 import { Route, Routes } from "react-router-dom";
 import { AddProduct } from "./product_group_management/AddProduct";
 import { ControlPages } from "./ControlPages";
-import { ControlTables } from "./ControlTables";
+
 
 export const Admin = () => {
   return (
     <div>
-      <ControlTables/>
-      {/* <Routes>
+
+      <Routes>
         <Route path="/" element={<ControlPages namePage={<MainPage />} />} />
         <Route
           path="/product-group-management"
@@ -21,7 +21,7 @@ export const Admin = () => {
         />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="*" element={<ControlPages namePage={<MainPage />} />} />
-      </Routes> */}
+      </Routes>
     </div>
   );
 };
