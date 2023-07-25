@@ -30,6 +30,7 @@ body {
 /* ================ header ======================= */
 .headerDiv {
   height: 60px;
+
 }
 .headerDiv .header {
   /* background-color: rgba(104, 104, 104, 0.76); */
@@ -197,34 +198,36 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
 /* =============== end sidebar section ============= */
 
 /* =============== product_group_management section ============= */
-
-.productGroupManagement .searchBox {
+.productGroupManagement{
+ overflow-y: hidden !important;
+}
+.searchBox {
   width: 300px;
+  z-index: -1;
 }
 
-.productGroupManagement .searchBox .searchButton {
+.searchBox .searchButton {
   border-end-start-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-.productGroupManagement .searchBox .searchButton:hover {
+.searchBox .searchButton:hover {
   background-color: rgb(0, 134, 0);
   color: aliceblue;
   border: none;
 }
 
-/* =================> product_table */
+/* ==========================> product_table */
 
 .product_table .icon_product_table:hover {
   font-size: 16px;
   text-shadow: 1px 1px 3px;
 }
 
-/* ===================> add_product */
+/* ==========================> add_product */
 
 .addProduct {
-overflow: hidden !important;
-
+  overflow: hidden !important;
 }
 .header_addProduct {
   border-bottom: 1px solid rgba(128, 128, 128, 0.486);
@@ -248,4 +251,11 @@ overflow: hidden !important;
   position: absolute;
   bottom: 0%;
   left: 0%;
+}
+
+/* ====================> control_table <=============== */
+
+.disabled_pagination {
+  pointer-events: none;
+  opacity: 0.5;
 }

@@ -1,13 +1,31 @@
 import React, { useEffect } from "react";
-import { ProductTable } from "./ProductTable";
+import {ReusableTable } from "./ReusableTable";
 import { NavLink } from "react-router-dom";
-import { Header } from "../../layouts/header/Header";
-import { Sidebar } from "../../layouts/sidebar/Sidebar";
-import { toggleSidebar } from "../../layouts/sidebar/toggleSidebar";
+
+
+const rows_data_productTable = [
+  ["1", "فلان1", "محصول1", "20تومان", "100", "123", "فعال"],
+  ["2", "فلان2", "محصول2", "20تومان", "100", "123", "فعال"],
+  ["3", "فلان3", "محصول3", "20تومان", "100", "123", "فعال"],
+  ["4", "فلان4", "محصول4", "20تومان", "100", "123", "فعال"],
+  ["5", "فلان5", "محصول5", "20تومان", "100", "123", "فعال"],
+  ["6", "فلان6", "محصول6", "20تومان", "100", "123", "فعال"],
+  ["7", "فلان7", "محصول7", "20تومان", "100", "123", "فعال"],
+];
+const headers_productTable = [
+  "#",
+  "دسته",
+  "عنوان",
+  "قیمت",
+  "موجودی",
+  "تعداد لایک",
+  "وضعیت",
+  "عملیات",
+];
+
 export const ProductGroupManagement = () => {
   return (
     <>
-     
       <div className="main_page px-2 productGroupManagement">
         <div className="d-flex justify-content-between align-items-center">
           <div></div>
@@ -22,30 +40,13 @@ export const ProductGroupManagement = () => {
           </NavLink>
         </div>
 
-        <div className="d-flex justify-content-between align-items-center p-2">
-          <div class="input-group mb-3 searchBox">
-            <span
-              class="input-group-text pointer searchButton "
-              id="basic-addon2"
-            >
-              جستجو
-            </span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="قسمتی از عنوان را وارد کنید"
-            />
-          </div>
-          <NavLink to="/add-product">
-            <div className="d-flex justify-content-end">
-              <button className="btn btn-success d-flex justify-content-center align-items-center">
-                <i className="fas fa-plus text-light"></i>
-              </button>
-            </div>
-          </NavLink>
-        </div>
-
-        <ProductTable />
+        <ReusableTable
+          nameOfColumn={headers_productTable}
+          dataOfRows={rows_data_productTable}
+          placeholder_searchBox="قسمتی از عنوان را وارد کنید"
+          link_addButton="/add-product"
+          operation="true"
+        />
       </div>
     </>
   );
