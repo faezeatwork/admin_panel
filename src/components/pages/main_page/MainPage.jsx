@@ -5,7 +5,7 @@ import { mainPage_chart } from "./mainPage_chart";
 
 export const MainPage = () => {
   return (
-    <div className="main_page ps-2" id="mainPage">
+    <div className="main_page ps-2 " id="mainPage">
       <Boxes />
       <TableOfProducts />
     </div>
