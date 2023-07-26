@@ -26,7 +26,7 @@ export const Sidebar = () => {
             item="مدیریت گارانتی ها"
             icon="fa-pagelines"
           />
-          <ItemsOfList targetPath="/" item="مدیریت رنگ ها" icon="fa-palette" />
+          <ItemsOfList targetPath="/colour-management" item="مدیریت رنگ ها" icon="fa-palette" />
           <ItemsOfList
             targetPath="/"
             item="مدیریت تخفیف ها"
