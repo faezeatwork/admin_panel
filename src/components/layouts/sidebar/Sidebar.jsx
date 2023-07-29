@@ -15,48 +15,72 @@ export const Sidebar = () => {
             item="مدیریت گروه محصولات"
             icon="fa-stream"
           />
-          <ItemsOfList targetPath="/" item="مدیریت محصول" icon="fa-cube" />
           <ItemsOfList
-            targetPath="/"
+            targetPath="/product-management"
+            item="مدیریت محصول"
+            icon="fa-cube"
+          />
+          <ItemsOfList
+            targetPath="/brand-management"
             item="مدیریت برندها"
             icon="fa-copyright"
           />
           <ItemsOfList
-            targetPath="/"
+            targetPath="/guarantee-management"
             item="مدیریت گارانتی ها"
             icon="fa-pagelines"
           />
-          <ItemsOfList targetPath="/colour-management" item="مدیریت رنگ ها" icon="fa-palette" />
           <ItemsOfList
-            targetPath="/"
+            targetPath="/colour-management"
+            item="مدیریت رنگ ها"
+            icon="fa-palette"
+          />
+          <ItemsOfList
+            targetPath="/discount-management"
             item="مدیریت تخفیف ها"
             icon="fa-percentage"
           />
           {/* ======================= سفارشات و سبد ======================== */}
           <Title_itemsOfList item="سفارشات و سبد " />
           <ItemsOfList
-            targetPath="/"
+            targetPath="/card-management"
             item="مدیریت سبدها"
             icon="fa-shopping-basket"
           />
           <ItemsOfList
-            targetPath="/"
+            targetPath="/order-management"
             item="مدیریرت سفارشات"
             icon="fa-luggage-cart"
           />
           <ItemsOfList
-            targetPath="/"
+            targetPath="/send-management"
             item="مدیریت نحوه ارسال"
             icon="fa-truck-loading"
           />
           {/* ======================= کاربران و همکاران ======================== */}
           <Title_itemsOfList item="کاربران و همکاران " />
-          <ItemsOfList targetPath="/" item="مشاهده کاربران" icon="fa-users" />
-          <ItemsOfList targetPath="/" item="نفش ها" icon="fa-user-tag" />
-          <ItemsOfList targetPath="/" item="مجوزها" icon="fa-shield-alt" />
+          <ItemsOfList
+            targetPath="/watch-user"
+            item="مشاهده کاربران"
+            icon="fa-users"
+          />
+          <ItemsOfList
+            targetPath="/duty-user"
+            item="نفش ها"
+            icon="fa-user-tag"
+          />
+          <ItemsOfList
+            targetPath="/license"
+            item="مجوزها"
+            icon="fa-shield-alt"
+          />
           {/* ======================= ارتباطات ======================== */}
           <Title_itemsOfList item="ارتباطات" />
-          <ItemsOfList targetPath="/" item="سوالات" icon="fa-question-circle" />
+          <ItemsOfList
+            targetPath="/question"
+            item="سوالات"
+            icon="fa-question-circle"
+          />
         </ul>
       </div>
     </section>
