@@ -5,7 +5,7 @@ export const Licenses = () => {
   return (
     <>
       <div className="main_page px-4 productGroupManagement">
-        <UpperPartPages title="مجوزها" />
+        <UpperPartPages  title="مجوزها" />
       </div>
     </>
   );
