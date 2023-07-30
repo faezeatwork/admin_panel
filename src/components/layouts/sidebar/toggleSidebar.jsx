@@ -1,8 +1,9 @@
 import React from "react";
 
+//بسط دهنده ی سایدبار
 export const toggleSidebar = () => {
   document
-    .getElementById("handle_toggle_sideMenu")
+    .getElementById("handle_toggle_sideMenu") //دکمه کشویی بالای منو ID 
     .addEventListener("change", function () {
       if (this.checked) {
         document
