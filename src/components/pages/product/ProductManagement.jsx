@@ -9,7 +9,7 @@ import {
 export const ProductManagement = () => {
   return (
     <>
-      <div className="main_page px-4 productGroupManagement">
+      <div className="px-4 productGroupManagement">
         <UpperPartPages title="مدیریت محصولات" />
         <ReusableTable
           nameOfColumn={headers_productTable}

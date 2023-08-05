@@ -124,11 +124,19 @@ body {
   box-shadow: 10px 10px 100px rgb(150, 150, 150);
   border-radius: 10%;
 }
+
+.table_mainPage{
+  padding-right: 32px;
+}
 /* ================ end main page ======================= */
 
 /* ====================> start ReusableTable <=============== */
 .reusable_table {
   overflow-y: hidden;
+}
+
+.reusable_table .table_of_reusable_table{
+  background-color:rgba(236, 236, 236, 0.7);
 }
 .disabled_pagination {
   pointer-events: none;
@@ -184,11 +192,11 @@ body {
 az ina ~ beyneshoon migzarim 👇👇👇👇 */
 #sidebar_section:hover ~ .main_page {
   height: 100%;
-  margin-right: 200px;
+  margin-right: 200px ;
 }
 
 .decrease_mainPage_width {
-  margin-right: 200px;
+  margin-right: 200px ;
 }
 
 #sidebar_section .mini_sidebar .sidebar_menu_item:hover {

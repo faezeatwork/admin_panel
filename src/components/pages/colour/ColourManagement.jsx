@@ -9,7 +9,7 @@ import { ReusableTable } from "../../general_compo/ReusableTable";
 
 export const ColourManagement = () => {
   return (
-    <div className="main_page px-4 position-relative">
+    <div className="px-4 position-relative">
       <UpperPartPages title="مدیریت رنگ ها" />
       <ReusableTable
         nameOfColumn={headers_colourTable}

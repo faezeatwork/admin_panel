@@ -13,6 +13,7 @@ export const ReusableTable = (props) => {
     operation,
     show_addButton,
     show_compo,
+    having_searchBox,
   } = props;
 
   const handleShowCompo = () => {
@@ -59,17 +60,20 @@ export const ReusableTable = (props) => {
     <div className="p-1 reusable_table">
       <div className="d-flex justify-content-between align-items-center p-2">
         {/* ================== start searchBox👇 ================== */}
-        <div className="input-group mb-3 searchBox">
-          <span className="input-group-text searchButton " id="basic-addon2">
-            جستجو
-          </span>
-          <input
-            type="text"
-            className="form-control searchInput"
-            placeholder={placeholder_searchBox}
-            onChange={(e) => setSearchChar(e.target.value)}
-          />
-        </div>
+        {having_searchBox ? (
+          <div className="input-group mb-3 searchBox">
+            <span className="input-group-text searchButton " id="basic-addon2">
+              جستجو
+            </span>
+            <input
+              type="text"
+              className="form-control searchInput"
+              placeholder={placeholder_searchBox}
+              onChange={(e) => setSearchChar(e.target.value)}
+            />
+          </div>
+        ) : null}
+
         {/* ================== end searchBox👆 ==================== */}
         {/* in icon ➕  */}
         {show_addButton ? ( //اضافه کردن آیتم
@@ -88,7 +92,7 @@ export const ReusableTable = (props) => {
         )}
       </div>
       {/* ================== start table👇 ====================== */}
-      <table className=" product_table table table-responsive text-center table-hover table-bordered">
+      <table className=" table_of_reusable_table table table-responsive text-center table-hover table-bordered">
         <thead className="table-secondary">
           <tr>
             {nameOfColumn.map((h) => (

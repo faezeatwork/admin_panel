@@ -3,12 +3,16 @@ import React from "react";
 //بسط دهنده ی سایدبار
 export const toggleSidebar = () => {
   document
-    .getElementById("handle_toggle_sideMenu") //دکمه کشویی بالای منو ID 
+    .getElementById("handle_toggle_sideMenu") //دکمه کشویی بالای منو ID
     .addEventListener("change", function () {
       if (this.checked) {
-        document
-          .getElementsByClassName("main_page")[0]
-          .classList.add("decrease_mainPage_width");
+        const pages = document.querySelectorAll(".main_page");
+        pages.forEach((page) => {
+          page.classList.add("decrease_mainPage_width");
+        });
+        // document
+        //   .getElementsByClassName("main_page")[0]
+        //   .classList.add("decrease_mainPage_width");
         document
           .getElementsByClassName("mini_sidebar")[0]
           .classList.add("expanded");
@@ -22,9 +26,14 @@ export const toggleSidebar = () => {
           icon.classList.add("move_corner_icons");
         });
       } else {
-        document
-          .getElementsByClassName("main_page")[0]
-          .classList.remove("decrease_mainPage_width");
+        // document
+        //   .getElementsByClassName("main_page")[0]
+        //   .classList.remove("decrease_mainPage_width");
+
+        const pages = document.querySelectorAll(".main_page");
+        pages.forEach((page) => {
+          page.classList.remove("decrease_mainPage_width");
+        });
         document
           .getElementsByClassName("mini_sidebar")[0]
           .classList.remove("expanded");

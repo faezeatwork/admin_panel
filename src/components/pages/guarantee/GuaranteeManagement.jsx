@@ -4,7 +4,7 @@ import { UpperPartPages } from '../../general_compo/UpperPartPages'
 export const GuaranteeManagement = () => {
   return (
     <>
-    <div className="main_page px-4 productGroupManagement">
+    <div className="px-4 productGroupManagement">
       <UpperPartPages title="مدیریت گارانتی ها" />
     </div>
   </>
