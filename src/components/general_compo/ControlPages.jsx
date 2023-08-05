@@ -14,7 +14,7 @@ export const ControlPages = ({ namePage }) => {
     <>
       <Header />
       <Sidebar />
-      {namePage}
+      <div className="main_page">{namePage}</div>
     </>
   );
 };

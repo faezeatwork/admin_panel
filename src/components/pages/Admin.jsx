@@ -17,10 +17,14 @@ import { WatchUsers } from "./watch_users/WatchUsers";
 import { DutyUsers } from "./duty_user/DutyUsers";
 import { ReusableAdding } from "../general_compo/ReusableAdding";
 import { Questions } from "./question/Questions";
+import {Login} from "./authorization/login/Login";
 export const Admin = () => {
   return (
     <div>
       <Routes>
+        {/* ======================  صفحه لاگین  ====================== */}
+        <Route path="/login" element={<Login />} />
+
         {/* ======================  داشبورد  ======================== */}
         <Route path="/" element={<ControlPages namePage={<MainPage />} />} />
 
