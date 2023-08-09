@@ -1,4 +1,4 @@
-import { FastField, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import React from "react";
 
 import {
@@ -7,11 +7,16 @@ import {
   validationSchema,
 } from "../formikAttribute_auth";
 import { FormControl } from "../FormControl_Auth";
+import { useNavigate } from "react-router-dom";
 
 export const LoginInputs = () => {
+  const navigate = useNavigate();
+
   return (
     <Formik
-      onSubmit={onSubmit}
+      onSubmit={(values, submitMethods) =>
+        onSubmit(values, submitMethods, navigate)
+      }
       initialValues={initialValues}
       validationSchema={validationSchema}
     >

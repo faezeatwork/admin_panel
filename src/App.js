@@ -1,12 +1,15 @@
 import React from "react";
-import { Admin } from "./components/pages/Admin";
-import { BrowserRouter } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
+import { Auth } from "./components/pages/authorization/Auth";
+import { Dashboard } from "./components/pages/main_page/Dashboard";
 const App = () => {
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
-      <Admin />
-    </BrowserRouter>
+    <>
+      {/* check component path */}
+      {location.pathname.includes("/auth") ? <Auth /> : <Dashboard />}
+    </>
   );
 };
 

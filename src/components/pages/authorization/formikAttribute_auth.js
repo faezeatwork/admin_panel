@@ -1,4 +1,5 @@
 import axios from "axios";
+import { json } from "react-router-dom";
 import swal from "sweetalert";
 import * as Yup from "yup";
 
@@ -23,21 +24,38 @@ export const validationSchema = Yup.object({
 });
 
 //=========================  📍onSubmit ======================
-export const onSubmit = (values) => {
+export const onSubmit = (values, submitMethods, navigate) => {
+  console.log("enter onSubmit login");
+  console.log(submitMethods.setSubmitting.dispatch);
+
   axios
-    .post("http://127.0.0.1:8000/api/auth/login", {
+    .post("http://ecomadminapi.azhadev.ir/api/auth/login", {
       ...values,
       remember: values.remember ? 1 : 0,
     })
     .then((res) => {
       if (res.status == 200) {
-        alert("ورود با موفقیت انجام شد");
-      } else if (res.status == 203) {
-        alert("مشخصات وارد شده صحیح نمی باشند");
+        //اگر لاگین با موفقیت انجام شد
+        // توکن اش رو در لوکال استوریج ذخیره کن
+        //و کاربر رو بفرست به صفحه اصلی
+        //useNavigate با کمک
+        localStorage.setItem("loginToken", JSON.stringify(res.data));
+        navigate("/");
+
+        // alert("ورود با موفقیت انجام شد");
+      } else if (res.status != 200) {
+        const msg = res.data.message;
+        swal("متاسفم!", msg, "error");
       }
       console.log(res);
     })
     .catch((error) => {
-      console.error(error.response.data);
+      const msg = error.message;
+      swal(
+        "مشکلی از سمت سرور رخ داده!",
+        "لطفا بعدا مجددا تلاش کنید...",
+        "error"
+      );
+      console.error("error :" + error.response.data);
     });
 };

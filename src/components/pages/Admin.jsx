@@ -1,6 +1,6 @@
 import React from "react";
 import { MainPage } from "./main_page/MainPage";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ColourManagement } from "./colour/ColourManagement";
 import { AddColour } from "./colour/AddColour";
 import { ProductGroupManagement } from "./product/ProductGroupManagement";
@@ -12,19 +12,17 @@ import { CardsManagement } from "./card/CardsManagement";
 import { OrdersManagement } from "./order/OrdersManagement";
 import { SendManagement } from "./how_yo_send/SendManagement";
 import { Licenses } from "./license/Licenses";
-import { ControlPages } from "../general_compo/ControlPages";
 import { WatchUsers } from "./watch_users/WatchUsers";
 import { DutyUsers } from "./duty_user/DutyUsers";
 import { ReusableAdding } from "../general_compo/ReusableAdding";
 import { Questions } from "./question/Questions";
-import {Login} from "./authorization/login/Login";
+import { ControlPages } from "../general_compo/ControlPages";
+
+
 export const Admin = () => {
   return (
     <div>
       <Routes>
-        {/* ======================  صفحه لاگین  ====================== */}
-        <Route path="/login" element={<Login />} />
-
         {/* ======================  داشبورد  ======================== */}
         <Route path="/" element={<ControlPages namePage={<MainPage />} />} />
 
