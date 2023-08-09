@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AddProduct } from "./AddCompo";
 import { NavLink } from "react-router-dom";
 
 const numOfRows_singlePage = 5; //در هر صفحه چند ردیف از حدول نمایش داده شود
@@ -94,18 +93,18 @@ export const ReusableTable = (props) => {
       {/* ================== start table👇 ====================== */}
       <table className=" table_of_reusable_table table table-responsive text-center table-hover table-bordered">
         <thead className="table-secondary">
-          <tr>
+          {/* <tr>
             {nameOfColumn.map((h) => (
               <th key={Math.random()}>{h}</th> //header haye table ro link mikone
             ))}
-          </tr>
+          </tr> */}
         </thead>
         <tbody>
           {dataAnyPage.map((i, index) => (
             <>
               <tr key={Math.random()}>
                 {dataAnyPage[index].map((i) => (
-                  <td>{i}</td>
+                  <td key={Math.random()}>{i}</td>
                 ))}
                 {operation ? (
                   <td>

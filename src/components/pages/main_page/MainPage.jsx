@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { TableOfProducts } from "./TableOfProducts";
+import React from "react";
 import { Boxes } from "./Boxes";
 import { BarChart } from "../../charts/BarChart";
 import { ReusableTable } from "../../general_compo/ReusableTable";

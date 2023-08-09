@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { toggleSidebar } from "../layouts/sidebar/toggleSidebar";
 import { Header } from "../layouts/header/Header";
 import { Sidebar } from "../layouts/sidebar/Sidebar";
