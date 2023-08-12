@@ -7,6 +7,7 @@ import * as Yup from "yup";
 export const initialValues = {
   phone: "",
   password: "",
+  c_password: "",
   remember: false,
 };
 
@@ -17,10 +18,10 @@ export const validationSchema = Yup.object({
     .required("فیلد اجباری"),
 
   password: Yup.string().required("فیلد اجباری"),
-  // .matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{4,})/,
-  //   "مانند نمونه: XPp1@c5"
-  // ),
+
+  // confirmPassword: Yup.string()
+  //   .oneOf([Yup.ref("password"), null], "Passwords must match")
+  //   .required("It is required"),
 });
 
 //=========================  📍onSubmit ======================

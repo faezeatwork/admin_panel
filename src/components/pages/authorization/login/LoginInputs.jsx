@@ -24,29 +24,29 @@ export const LoginInputs = () => {
         // console.log(formik);
         return (
           <Form>
-            <FormControl
-              value="phone"
-              formik={formik}
-              control="input"
-              type="text"
-              name="phone"
-              placeholder="&#xe167; تلفن"
-              inputStyle="registerInputStyle"
-            />
-            <FormControl
-              control="input"
-              type="password"
-              name="password"
-              placeholder="&#xe167;  پسورد"
-              inputStyle="loginInputStyle"
-            />
-
+            <div className="loginBox">
+              <FormControl
+                value="phone"
+                formik={formik}
+                control="input"
+                type="text"
+                name="phone"
+                placeholder="&#xe167; تلفن"
+                inputStyle="registerInputStyle"
+              />
+              <FormControl
+                control="input"
+                type="password"
+                name="password"
+                placeholder="&#xe167;  پسورد"
+                inputStyle="loginInputStyle"
+              />
+            </div>
             <FormControl
               control="switch"
               name="remember"
               label="مرا بخاطر بسپار"
             />
-
             <div className="p-3 d-flex justify-content-center">
               <button
                 type="submit"

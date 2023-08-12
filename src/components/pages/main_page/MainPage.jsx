@@ -22,6 +22,7 @@ export const MainPage = () => {
             having_searchBox={false}
           />
         </div>
+      
         <BarChart />
       </div>
     </div>

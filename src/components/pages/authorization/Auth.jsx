@@ -18,9 +18,7 @@ export const Auth = () => {
       ) : (
         <Navigate to={"/"} />
       )}
-      {/* <Routes>
-        <Route path="/auth" element={<Login />} />
-      </Routes> */}
+    
     </div>
   );
 };
