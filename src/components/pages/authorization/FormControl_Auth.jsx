@@ -7,6 +7,7 @@ export const FormControl = (props) => {
     case "input":
       return <Inputs {...props} />;
     case "switch":
-      return <Switch {...props} />;
+      return <Switch {...props} />; //مرا بخاطر بسپار 😁
+
   }
 };

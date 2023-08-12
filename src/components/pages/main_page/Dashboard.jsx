@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useIsLogin } from "../../hooks/useIsLogin";
 import { Admin } from "../Admin";
+import { Login } from "../authorization/login/Login";
 
 export const Dashboard = () => {
   const [isLogin, loading] = useIsLogin();
@@ -19,6 +20,7 @@ export const Dashboard = () => {
       ) : (
         <Navigate to={"/auth"} />
       )}
+      
     </div>
   );
 };

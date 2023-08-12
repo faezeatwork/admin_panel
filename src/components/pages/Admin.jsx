@@ -1,6 +1,6 @@
 import React from "react";
 import { MainPage } from "./main_page/MainPage";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { ColourManagement } from "./colour/ColourManagement";
 import { AddColour } from "./colour/AddColour";
 import { ProductGroupManagement } from "./product/ProductGroupManagement";
@@ -17,7 +17,7 @@ import { DutyUsers } from "./duty_user/DutyUsers";
 import { ReusableAdding } from "../general_compo/ReusableAdding";
 import { Questions } from "./question/Questions";
 import { ControlPages } from "../general_compo/ControlPages";
-
+import { Register } from "./authorization/register/Register";
 
 export const Admin = () => {
   return (
@@ -115,6 +115,9 @@ export const Admin = () => {
           element={<ControlPages namePage={<Questions />} />}
         />
         <Route path="/add-colour" element={<AddColour />} />
+
+        {/* ==================    register    ======================= */}
+        <Route path="/register" element={<Register />} />
 
         {/* ====================================================== */}
 
