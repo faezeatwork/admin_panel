@@ -18,11 +18,18 @@ import { ReusableAdding } from "../general_compo/ReusableAdding";
 import { Questions } from "./question/Questions";
 import { ControlPages } from "../general_compo/ControlPages";
 import { Register } from "./authorization/register/Register";
+import { Exit } from "../layouts/header/dropdown/Exit";
+import { Auth } from "./authorization/Auth";
+import { Login } from "./authorization/login/Login";
 
 export const Admin = () => {
   return (
     <div>
-      <Routes>
+        <Routes>
+        {/* <Route path="/auth">
+          <Route index element={<Auth />} />
+          <Route path="register" element={<Register />} />
+        </Route> */}
         {/* ======================  داشبورد  ======================== */}
         <Route path="/" element={<ControlPages namePage={<MainPage />} />} />
 
@@ -118,6 +125,10 @@ export const Admin = () => {
 
         {/* ==================    register    ======================= */}
         <Route path="/register" element={<Register />} />
+
+        {/* ====================================================== */}
+
+        <Route path="/exit" element={<Exit />} />
 
         {/* ====================================================== */}
 

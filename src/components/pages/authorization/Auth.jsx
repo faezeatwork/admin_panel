@@ -1,10 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { Login } from "./login/Login";
 import { useIsLogin } from "../../hooks/useIsLogin";
+import { Login_register } from "./Login_register";
+
 
 export const Auth = () => {
-  const [isLogin, loading] = useIsLogin();
+const [isLogin, loading] = useIsLogin();
+
   return (
     <div>
       {loading ? (
@@ -14,11 +16,10 @@ export const Auth = () => {
           <div className="lds-hourglass"></div>
         </div>
       ) : !isLogin ? (
-        <Login />
+        <Login_register />
       ) : (
         <Navigate to={"/"} />
       )}
-    
     </div>
   );
 };

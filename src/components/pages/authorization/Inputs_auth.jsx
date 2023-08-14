@@ -1,9 +1,10 @@
 import { ErrorMessage, FastField } from "formik";
 import React from "react";
 
-const Inputs = (props) => {
-  const {type, name, placeholder, iconStyle, inputStyle, errMsg } =
-    props;
+
+export const Inputs = (props) => {
+  const { type, name, placeholder, iconStyle, inputStyle, errMsg } = props;
+
   return (
     <div className=" col-12">
       <div>
@@ -25,5 +26,3 @@ const Inputs = (props) => {
     </div>
   );
 };
-
-export default Inputs;

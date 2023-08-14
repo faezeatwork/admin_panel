@@ -22,12 +22,12 @@ export const Register = () => {
         </div>
         <div className=" mt-1 customRegisterLink ">
           <div className=" pointer h-100 d-flex justify-content-center align-items-center fs-4">
-            <AiOutlineArrowLeft className="switch_page" />
             <NavLink
-              to={"/login"}
+              to={"/auth"}
               className="text-decoration-none text-dark ps-1"
             >
-              Login
+              ورود
+              <AiOutlineArrowLeft className="switch_loginReg_icon" />
             </NavLink>
           </div>
         </div>

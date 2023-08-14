@@ -5,7 +5,7 @@ import {
   initialValues,
   onSubmit,
   validationSchema,
-} from "../formikAttribute_auth";
+} from "./formikAttribute_login";
 import { FormControl } from "../FormControl_Auth";
 import { useNavigate } from "react-router-dom";
 
@@ -52,7 +52,7 @@ export const LoginInputs = () => {
                 type="submit"
                 className="btn btn-success w-75 rounded-pill me-3"
               >
-                login
+                ورود
               </button>
             </div>
           </Form>
