@@ -10,7 +10,7 @@ export const Login = () => {
         <div className="customForm d-flex flex-column justify-content-center align-items-center ">
           <div className="w-100 text-center">
             <img
-              src="../assets/images/login.png"
+             src="../assets/images/openLock.png"
               className="formIcon"
               alt="login"
             />
@@ -20,12 +20,12 @@ export const Login = () => {
         <div className=" mt-1 customRegisterLink ">
           <div className="pointer h-100 d-flex justify-content-center align-items-center fs-4">
             <NavLink
-              to={"/auth"}
+              to={"/auth/register"}
               className="text-decoration-none text-dark px-2"
             >
-              Register
+              ثبت نام
             </NavLink>
-            <AiOutlineArrowLeft />
+            <AiOutlineArrowLeft className="switch_loginReg_icon"/>
           </div>
         </div>
       </div>

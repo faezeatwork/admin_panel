@@ -92,16 +92,10 @@ export const ReusableTable = (props) => {
       </div>
       {/* ================== start table👇 ====================== */}
       <table className=" table_of_reusable_table table table-responsive text-center table-hover table-bordered">
-        <thead className="table-secondary">
-          {/* <tr>
-            {nameOfColumn.map((h) => (
-              <th key={Math.random()}>{h}</th> //header haye table ro link mikone
-            ))}
-          </tr> */}
-        </thead>
+        <thead className="table-secondary"></thead>
         <tbody>
           {dataAnyPage.map((i, index) => (
-            <>
+            // <>
               <tr key={Math.random()}>
                 {dataAnyPage[index].map((i) => (
                   <td key={Math.random()}>{i}</td>
@@ -132,7 +126,7 @@ export const ReusableTable = (props) => {
                   ""
                 )}
               </tr>
-            </>
+            // </>
           ))}
         </tbody>
       </table>
