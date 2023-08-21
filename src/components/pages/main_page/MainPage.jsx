@@ -5,7 +5,12 @@ import { ReusableTable } from "../../general_compo/ReusableTable";
 import {
   headers_productTable,
   rows_data_productTable,
+  testfilter,
 } from "../../layouts/local_DB/local_DataBase";
+import swal from "sweetalert";
+import { useEffect } from "react";
+import { useState } from "react";
+import { getcategoreisService } from "../../../services/category";
 
 export const MainPage = () => {
   return (
@@ -13,16 +18,16 @@ export const MainPage = () => {
       <Boxes />
       <div className="row">
         <div className="table_mainPage  col-12 col-lg-6">
-          <ReusableTable
+          {/* <ReusableTable
             nameOfColumn={headers_productTable}
             dataOfRows={rows_data_productTable}
             placeholder_searchBox="قسمتی از عنوان را وارد کنید"
             show_addButton={false}
             operation={false}
             having_searchBox={false}
-          />
+          /> */}
         </div>
-      
+
         <BarChart />
       </div>
     </div>

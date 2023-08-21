@@ -95,7 +95,7 @@ export const ReusableTable = (props) => {
         <thead className="table-secondary"></thead>
         <tbody>
           {dataAnyPage.map((i, index) => (
-            // <>
+       
               <tr key={Math.random()}>
                 {dataAnyPage[index].map((i) => (
                   <td key={Math.random()}>{i}</td>
@@ -126,7 +126,7 @@ export const ReusableTable = (props) => {
                   ""
                 )}
               </tr>
-            // </>
+       
           ))}
         </tbody>
       </table>
