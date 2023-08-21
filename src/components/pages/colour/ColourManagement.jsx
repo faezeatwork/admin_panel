@@ -5,7 +5,6 @@ import {
 } from "../../layouts/local_DB/local_DataBase";
 import { AddColour } from "./AddColour";
 import { UpperPartPages } from "../../general_compo/UpperPartPages";
-import { ReusableTable } from "../../general_compo/ReusableTable";
 
 export const ColourManagement = () => {
   return (

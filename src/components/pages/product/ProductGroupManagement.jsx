@@ -1,14 +1,24 @@
 import React, { useEffect } from "react";
-import { headers_productTable } from "../../layouts/local_DB/local_DataBase";
 import { UpperPartPages } from "../../general_compo/UpperPartPages";
 import { getcategoreisService } from "../../../services/category";
 import { useState } from "react";
 import swal from "sweetalert";
 import { Reusable_table } from "../../general_compo/Reusable_table";
 
+
+
+export const headers_productTable = [
+  { field: "id", title: "id" },
+  { field: "title", title: "عنوان محصول" },
+  { field: "parent_id", title: "والد" },
+  { field: "created_at", title: "تاریخ" },
+
+];
+
+
 export const ProductGroupManagement = () => {
-  const headers_productTable = ["id", "عنوان", "توضیحات", "تاریخ"];
   const [data, setData] = useState([]);
+
 
   const handleGetCategoreis = async () => {
     const res = await getcategoreisService();
@@ -24,11 +34,8 @@ export const ProductGroupManagement = () => {
     }
   };
 
- 
-
   useEffect(() => {
-   handleGetCategoreis(setData);
-  
+    handleGetCategoreis(setData);
   }, []);
 
   return (
@@ -43,6 +50,7 @@ export const ProductGroupManagement = () => {
           go_where="/adding-items"
           operation={true}
           having_searchBox={true}
+          show_menu={true}
         />
       </div>
     </>

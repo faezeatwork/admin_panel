@@ -143,7 +143,7 @@ body {
 }
 
 .reusable_table .table_of_reusable_table {
-  background-color: rgba(236, 236, 236, 0.7);
+  background-color: rgba(231, 219, 219, 0.918);
 }
 .disabled_pagination {
   pointer-events: none;
