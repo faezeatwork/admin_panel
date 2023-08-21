@@ -11,14 +11,14 @@ export const ProductManagement = () => {
     <>
       <div className="px-4 productGroupManagement">
         <UpperPartPages title="مدیریت محصولات" />
-        <ReusableTable
+        {/* <ReusableTable
           nameOfColumn={headers_productTable}
           dataOfRows={rows_data_productTable}
           placeholder_searchBox="قسمتی از عنوان را وارد کنید"
           show_addButton={true}
           go_where="/adding-items"
           operation={true}
-        />
+        /> */}
       </div>
     </>
   );

@@ -11,14 +11,14 @@ export const ColourManagement = () => {
   return (
     <div className="px-4 position-relative">
       <UpperPartPages title="مدیریت رنگ ها" />
-      <ReusableTable
+      {/* <ReusableTable
         nameOfColumn={headers_colourTable}
         dataOfRows={rows_data_colourTable}
         placeholder_searchBox="قسمتی از عنوان را وارد کنید"
         show_addButton={true}
         operation={true}
         show_compo={true}
-      />
+      /> */}
       <div className="add_colour">
         <AddColour />
       </div>
