@@ -1,6 +1,6 @@
 import React from "react";
 import { UpperPartPages } from "../../general_compo/UpperPartPages";
-import { ReusableTable } from "../../general_compo/ReusableTable";
+
 import {
   headers_productTable,
   rows_data_productTable,

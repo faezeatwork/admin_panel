@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Operations_product } from "../pages/product/table_additon/Operations_product";
+import { Show_in_menu } from "../pages/product/ProductGroupManagement";
 
 const numOfRows_singlePage = 4; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
@@ -13,6 +15,7 @@ export const Reusable_table = (props) => {
     show_addButton,
     show_compo,
     having_searchBox,
+    show_menu,
   } = props;
 
   const handleShowCompo = () => {
@@ -29,14 +32,10 @@ export const Reusable_table = (props) => {
   const [searchData, setSearchData] = useState(dataAnyPage);
   const [searchChar, setSearchChar] = useState("");
 
-  console.log(dataAnyPage);
-  console.log(dataOfRows);
-  console.log(searchData);
-
   //======== فیلتر کردن آیتم هایی که نمایش داده می شود برحسب سرچ ===========
   useEffect(() => {
     setSearchData(dataOfRows.filter((d) => d.title.includes(searchChar)));
-  }, [searchChar , dataOfRows]);
+  }, [searchChar, dataOfRows]);
 
   //==================   تقسیم کردن ردیف ها بین صفحات   ======================
   useEffect(() => {
@@ -101,49 +100,29 @@ export const Reusable_table = (props) => {
       {/* ================== end show_addButton👆 ==================== */}
 
       {/* ================== start table👇 ====================== */}
-      <table className=" table_of_reusable_table table table-responsive text-center table-hover table-bordered">
+      <table className=" table_of_reusable_table table table-striped table-responsive text-center table-hover table-bordered">
         <thead>
           <tr>
             {nameOfColumn.map((item) => (
-              <th key={Math.random()}>{item}</th>
+              <th key={Math.random()}>{item.title}</th>
             ))}
+            {console.log(dataOfRows)}
+            {nameOfColumn.field == "show_in_menu" ? (
+              <th>نمایش در منو</th>
+            ) : null}
+            {show_menu ? <th>نمایش در منو</th> : null}
             {operation ? <th>عملیات</th> : null}
           </tr>
         </thead>
+
         <tbody>
           {dataAnyPage.map((data) => (
             <tr key={Math.random()}>
-              <td>{data.id}</td>
-              <td>{data.title}</td>
-              <td>{data.descriptions}</td>
-              <td>{data.created_at}</td>
-              {operation ? (
-                <td>
-                  <i
-                    class="icon_product_table fa-solid fa-share-nodes text-success mx-1 pointer has_tooltip"
-                    title="زیرمجموعه"
-                  ></i>
-                  <i
-                    className="icon_product_table fas fa-edit text-warning mx-1 pointer has_tooltip"
-                    title="ویرایش محصول"
-                    data-bs-toggle="modal"
-                    data-bs-placement="top"
-                    data-bs-target="#add_product_modal"
-                  ></i>
-                  <i
-                    className="icon_product_table fas fa-receipt text-info mx-1 pointer has_tooltip"
-                    title="ثبت ویژگی"
-                    data-bs-toggle="modal"
-                    data-bs-target="#add_product_attr_modal"
-                  ></i>
-                  <i
-                    className="icon_product_table fas fa-times text-danger mx-1 pointer has_tooltip"
-                    title="حذف محصول"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                  ></i>
-                </td>
-              ) : null}
+              {nameOfColumn.map((i) => (
+                <td key={Math.random()}>{data[i.field]}</td>
+              ))}
+              {data.show_in_menu == 1 ? <td>هست</td> : <td>نیست</td>}
+              {operation ? <Operations_product /> : null}
             </tr>
           ))}
         </tbody>

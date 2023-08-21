@@ -1,7 +1,7 @@
 import React from "react";
 import { Boxes } from "./Boxes";
 import { BarChart } from "../../charts/BarChart";
-import { ReusableTable } from "../../general_compo/ReusableTable";
+
 import {
   headers_productTable,
   rows_data_productTable,
