@@ -19,13 +19,11 @@ import { Questions } from "./question/Questions";
 import { ControlPages } from "../general_compo/ControlPages";
 import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
-import { Auth } from "./authorization/Auth";
-import { Login } from "./authorization/login/Login";
 
 export const Admin = () => {
   return (
     <div>
-        <Routes>
+      <Routes>
         {/* <Route path="/auth">
           <Route index element={<Auth />} />
           <Route path="register" element={<Register />} />
@@ -37,7 +35,9 @@ export const Admin = () => {
         <Route
           path="/product-group-management"
           element={<ControlPages namePage={<ProductGroupManagement />} />}
-        />
+        >
+          <Route path=":productId" />
+        </Route>
         <Route path="/adding-items" element={<ReusableAdding />} />
 
         {/* ===================  مدیریت محصول ======================== */}

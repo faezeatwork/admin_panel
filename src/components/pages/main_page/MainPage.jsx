@@ -1,7 +1,5 @@
 import React from "react";
 import { Boxes } from "./Boxes";
-import { BarChart } from "../../charts/BarChart";
-
 import {
   headers_productTable,
   rows_data_productTable,
@@ -11,7 +9,7 @@ import swal from "sweetalert";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getcategoreisService } from "../../../services/category";
-
+import { BarChart } from "../../../charts/BarChart";
 export const MainPage = () => {
   return (
     <div className="ps-2 " id="mainPage">

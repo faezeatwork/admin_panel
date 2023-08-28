@@ -1,12 +1,26 @@
-import React from "react";
 
-export const Operations_product = () => {
+import { useNavigate } from "react-router-dom";
+
+export const Operations_product = ({  rowData  }) => {
+  const navigate = useNavigate();
+
   return (
-    <td>
-      <i
-        className="icon_product_table fa-solid fa-share-nodes text-success mx-1 pointer has_tooltip"
-        title="زیرمجموعه"
-      ></i>
+    <span className=" d-flex justify-content-center">
+      {rowData.parent_id ? null : (
+        <i
+          className="icon_product_table fa-solid fa-share-nodes text-success mx-1 pointer has_tooltip"
+          title="زیرمجموعه"
+          onClick={() =>
+            navigate(`/product-group-management/${rowData.id}`, {
+              state: {
+                parentData: rowData,
+                //👉is called with ==> const location=useLocation() ==> in Reusable_table
+              },
+            })
+          }
+        ></i>
+      )}
+
       <i
         className="icon_product_table fas fa-edit text-warning mx-1 pointer has_tooltip"
         title="ویرایش محصول"
@@ -26,6 +40,6 @@ export const Operations_product = () => {
         data-bs-toggle="tooltip"
         data-bs-placement="top"
       ></i>
-    </td>
+    </span>
   );
 };
