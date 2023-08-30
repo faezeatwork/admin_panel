@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
-import { Operations_product } from "../pages/product/table_additon/Operations_product";
+import { NavLink, useLocation } from "react-router-dom";
 import { PrevPageBtn } from "./PrevPageBtn";
-import { ConvertData } from "./ConvertData";
 import { Pagination } from "./Pagination";
 import { SearchBox } from "./SearchBox";
 import { AddItem_btn } from "./AddItem_btn";
-import moment from "jalali-moment";
 
 const numOfRows_singlePage = 4; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
@@ -23,6 +20,7 @@ export const Reusable_table = (props) => {
     show_compo,
     having_searchBox,
     additionField,
+    setForceRender,
   } = props;
 
   const [dataAnyPage, setDataAnyPage] = useState([]); //slice shodeye dataOfRows
@@ -83,7 +81,7 @@ export const Reusable_table = (props) => {
         {/* ================== start show_addButton👇 ================== */}
         {/* in icon ➕  */}
         {show_addButton ? ( //اضافه کردن آیتم
-          <NavLink to={go_where}>
+          <NavLink to={go_where} setForceRender={setForceRender}>
             <AddItem_btn show_compo={show_compo} />
           </NavLink>
         ) : (

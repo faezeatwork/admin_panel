@@ -10,14 +10,14 @@ export const initialValues = {
 };
 
 //===============  📍validationSchema register ===============
-export const onSubmit =async () => {
-  const res =await registerService();
+export const onSubmit = async () => {
+  const res = await registerService();
   try {
     console.log(res);
     if (res.status == 200) {
       swal(res.data.message);
     }
-  } catch (error) {}
+  } catch {}
 };
 
 //================  📍onSubmit register ======================
