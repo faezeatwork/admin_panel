@@ -1,42 +1,42 @@
 import { Formik, Form } from "formik";
 import React from "react";
-import * as Yup from "yup";
 import { FormikControl } from "./FormikControl_AddItems";
-import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+import {
+  handleGetParentsCategories,
+  initialValues,
+  onSubmit,
+  validationSchema,
+} from "./FormikAtt_AddItems";
+//====================================
+export const FormikAddItems = ({setForceRender}) => {
+  const [parents, setParents] = useState([]);
 
-export const FormikAddItems = () => {
-  const initialValues = {
-    title: "title1",
-    description: "description1",
-    parent_id: "parent_id1",
-    is_active: true,
-    show_in_menu: true,
-    image: null,
-  };
+  useEffect(() => {
+    handleGetParentsCategories(setParents);
+  }, []);
 
-  const onSubmit = (values) => {
-    axios
-      .post("https://ecomadminapi.azhadev.ir/api/admin/categories", values)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch();
-  };
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => onSubmit(values)}
+      onSubmit={(values) => onSubmit(values ,setForceRender)}
+      validationSchema={validationSchema}
     >
       {(formik) => {
-       console.log(formik);
+        //console.log(formik);
         return (
           <Form className="">
-            <FormikControl
-              control="select"
-              type="select"
-              name="parent_id"
-              label="دسته والد"
-            />
+            {parents.length > 0 ? (
+              <FormikControl
+                control="select"
+                type="select"
+                name="parent_id"
+                label="دسته والد"
+                option={parents}
+              />
+            ) : null}
+
             <FormikControl
               formik={formik}
               control="input"
@@ -57,8 +57,24 @@ export const FormikAddItems = () => {
               name="addFile"
               placeholder="برای انتخاب تصویر خود کلیک کنید."
             />
-            <FormikControl control="checkbox" />
-            <button className="btn btn-success">ذخیره</button>
+            <div className="d-flex justify-content-evenly">
+              <FormikControl
+                control="checkbox"
+                name="is_active"
+                label="وضعیت فعال"
+              />
+
+              <FormikControl
+                control="checkbox"
+                name="show_in_menu"
+                label="نمایش در منو"
+              />
+            </div>
+            <div className=" text-center pt-4">
+              <button type="submit" className="btn btn-success">
+                ذخیره
+              </button>
+            </div>
           </Form>
         );
       }}

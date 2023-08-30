@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { UpperPartPages } from "../../general_compo/UpperPartPages";
-import { getcategoreisService } from "../../../services/category";
+import {
+  getCategoriesService,
+  getcategoreisService,
+} from "../../../services/category";
 import { useState } from "react";
 import swal from "sweetalert";
 import { Reusable_table } from "../../general_compo/Reusable_table";
@@ -16,26 +19,20 @@ export const headers_productTable = [
 
 export const ProductGroupManagement = () => {
   const params = useParams();
-
   const [data, setData] = useState([]);
+  const [forceRender, setForceRender] = useState(0); //برای اینکه هرجا خواستیم جدول رو رندر مجدد کنیم
 
-  const handleGetCategoreis = async () => {
-    const res = await getcategoreisService(params.productId);
-
+  const handleGetCategories = async () => {
+    const res = await getCategoriesService(params.productId);
     try {
       if (res.status == 200) {
         setData(res.data.data);
-      } else {
-        swal("خطا!", "مشکلی رخ داده است");
       }
-    } catch {
-      swal("خطا!", "مشکلی رخ داده است");
-      console.log("error catch");
-    }
+    } catch {}
   };
 
   useEffect(() => {
-    handleGetCategoreis(setData);
+    handleGetCategories(setData);
   }, [params]);
 
   const additionField = [
@@ -71,6 +68,7 @@ export const ProductGroupManagement = () => {
             go_where="/adding-items"
             having_searchBox={true}
             additionField={additionField}
+   
           />
         ) : (
           <h3 className="text-center text-danger ">موردی یافت نشد</h3>

@@ -29,15 +29,6 @@ export const onSubmit = async (values, submitMethods, navigate) => {
       //useNavigate با کمک
       localStorage.setItem("loginToken", JSON.stringify(res.data));
       navigate("/");
-    } else if (res.status != 200) {
-      const msg = res.data.message;
-      swal("متاسفم!", msg, "error");
     }
-   
-    console.log(res);
-  } catch (error) {
-    // const msg = error.message;
-    swal("مشکلی از سمت سرور رخ داده!", "لطفا بعدا مجددا تلاش کنید...", "error");
-    console.error("error :" + error.response.data);
-  }
+  } catch {}
 };

@@ -1,8 +1,5 @@
-import axios from "axios";
-import { httpService } from "../../../services/httpService";
-import { useState } from "react";
-import { getcategoreisService } from "../../../services/category";
-import swal from "sweetalert";
+import { getCategoriesService } from "../../../services/category";
+
 
 export const headers = [
   "id",
@@ -15,71 +12,17 @@ export const headers = [
   // "عملیات",
 ];
 
-export const handleGetCategoreis = async (setData) => {
+export const handleGetCategories = async (setData) => {
   try {
-    const res = await getcategoreisService();
+    const res = await getCategoriesService();
 
     if (res.status == 200) {
       console.log(res.data.data);
       setData(res.data.data);
-    } else {
-      swal("خطا!", "مشکلی رخ داده است");
     }
-  } catch {
-    swal("خطا!", "مشکلی رخ داده است");
-    console.log("error catch");
-  }
+  } catch {}
 };
 
-// export const rows_data_productTable = [
-//   {
-//     id: 165,
-//     title: "لوازم موبایل",
-//     descriptions: "لوازم موبایل",
-//     image: null,
-//     logo: null,
-//   },
-
-//   {
-//     id: 172,
-//     title: "لوازم ورزشی",
-//     descriptions: "لوازم ورزشی",
-//     image: null,
-//     logo: null,
-//   },
-
-//   {
-//     id: 234,
-//     title: "لوازم پزشکی",
-//     descriptions: "لوازم پزشکی",
-//     image: null,
-//     logo: null,
-//   },
-
-//   {
-//     id: 235,
-//     title: "کیف و کوله",
-//     descriptions: "کیف و کوله",
-//     image: null,
-//     logo: null,
-//   },
-
-//   {
-//     id: 246,
-//     title: "ابزارالات پزشکی",
-//     descriptions: "ابزارالات پزشکی",
-//     image: null,
-//     logo: null,
-//   },
-
-//   {
-//     id: 249,
-//     title: "لوازم عکاسی",
-//     descriptions: null,
-//     image: null,
-//     logo: null,
-//   },
-// ];
 
 export const rows_data_productTable = [
   ["1", "فلان1", "محصول1", "20تومان", "100", "123", "فعال"],
