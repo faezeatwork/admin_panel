@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { PrevPageBtn } from "./PrevPageBtn";
 import { Pagination } from "./Pagination";
 import { SearchBox } from "./SearchBox";
@@ -20,7 +20,7 @@ export const Reusable_table = (props) => {
     show_compo,
     having_searchBox,
     additionField,
-    setForceRender,
+    //setForceRender,
   } = props;
 
   const [dataAnyPage, setDataAnyPage] = useState([]); //slice shodeye dataOfRows
@@ -56,7 +56,7 @@ export const Reusable_table = (props) => {
     setCurrentPage(1);
   }, [searchData]);
 
-  //==========================================================================
+  //===============================  return ==================================
 
   return (
     <div className="p-1 reusable_table">
@@ -81,7 +81,7 @@ export const Reusable_table = (props) => {
         {/* ================== start show_addButton👇 ================== */}
         {/* in icon ➕  */}
         {show_addButton ? ( //اضافه کردن آیتم
-          <NavLink to={go_where} setForceRender={setForceRender}>
+          <NavLink to={go_where} >
             <AddItem_btn show_compo={show_compo} />
           </NavLink>
         ) : (
@@ -91,35 +91,40 @@ export const Reusable_table = (props) => {
       {/* ================== end show_addButton👆 ==================== */}
 
       {/* ================== start table👇 ====================== */}
-      <table className=" table_of_reusable_table table table-striped table-responsive text-center table-hover table-bordered">
-        <thead>
-          <tr>
-            {nameOfColumn.map((item) => (
-              <th key={Math.random()}>{item.title}</th>
-            ))}
-            {additionField
-              ? additionField.map((a, index) => (
-                  <th key={Math.random()}>{a.title}</th>
-                ))
-              : null}
-          </tr>
-        </thead>
-
-        <tbody>
-          {dataAnyPage.map((data) => (
-            <tr key={Math.random()}>
-              {nameOfColumn.map((i) => (
-                <td key={Math.random()}>{data[i.field]}</td>
+      {dataOfRows.length ? (
+        <table className=" table_of_reusable_table table table-striped table-responsive text-center table-hover table-bordered">
+          <thead>
+            <tr>
+              {nameOfColumn.map((item) => (
+                <th key={Math.random()}>{item.title}</th>
               ))}
               {additionField
                 ? additionField.map((a, index) => (
-                    <td key={Math.random()}>{a.elements(data)}</td>
+                    <th key={Math.random()}>{a.title}</th>
                   ))
                 : null}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {dataAnyPage.map((data) => (
+              <tr key={Math.random()}>
+                {nameOfColumn.map((i) => (
+                  <td key={Math.random()}>{data[i.field]}</td>
+                ))}
+                {additionField
+                  ? additionField.map((a, index) => (
+                      <td key={Math.random()}>{a.elements(data)}</td>
+                    ))
+                  : null}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <h3 className="text-center text-danger ">موردی یافت نشد</h3>
+      )}
+
       {/* ================== end table👆 ======================== */}
 
       {/* ================== start pagination👇 ================= */}

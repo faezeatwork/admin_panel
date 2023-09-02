@@ -7,8 +7,10 @@ import swal from "sweetalert";
 axios.interceptors.response.use(
   (res) => {
     if (res.status != 200 && res.status != 201) {
-      swal("متاسفم!...", res.data.message, "warning");
+      swal("متاسفم!...",res.data.title[0], "warning");
+      console.log(res.data.title);
     }
+
     return res;
   },
   (error) => {

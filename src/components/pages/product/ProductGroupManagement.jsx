@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import { UpperPartPages } from "../../general_compo/UpperPartPages";
-import {
-  getCategoriesService,
-  getcategoreisService,
-} from "../../../services/category";
+import { getCategoriesService } from "../../../services/category";
 import { useState } from "react";
-import swal from "sweetalert";
 import { Reusable_table } from "../../general_compo/Reusable_table";
 import { useParams } from "react-router-dom";
 import { Operations_product } from "./table_additon/Operations_product";
@@ -20,7 +16,7 @@ export const headers_productTable = [
 export const ProductGroupManagement = () => {
   const params = useParams();
   const [data, setData] = useState([]);
-  const [forceRender, setForceRender] = useState(0); //برای اینکه هرجا خواستیم جدول رو رندر مجدد کنیم
+  // const [forceRender, setForceRender] = useState(0); //برای اینکه هرجا خواستیم جدول رو رندر مجدد کنیم
 
   const handleGetCategories = async () => {
     const res = await getCategoriesService(params.productId);
@@ -33,6 +29,7 @@ export const ProductGroupManagement = () => {
 
   useEffect(() => {
     handleGetCategories(setData);
+    console.log(params);
   }, [params]);
 
   const additionField = [
@@ -59,20 +56,16 @@ export const ProductGroupManagement = () => {
     <>
       <div className="px-4 productGroupManagement">
         <UpperPartPages title="مدیریت گروه محصولات" />
-        {data.length ? (
-          <Reusable_table
-            nameOfColumn={headers_productTable}
-            dataOfRows={data}
-            placeholder_searchBox="قسمتی از عنوان را وارد کنید"
-            show_addButton={true}
-            go_where="/adding-items"
-            having_searchBox={true}
-            additionField={additionField}
-   
-          />
-        ) : (
-          <h3 className="text-center text-danger ">موردی یافت نشد</h3>
-        )}
+        <Reusable_table
+          nameOfColumn={headers_productTable}
+          dataOfRows={data}
+          placeholder_searchBox="قسمتی از عنوان را وارد کنید"
+          show_addButton={true}
+          go_where="/adding-items"
+          having_searchBox={true}
+          additionField={additionField}
+          params={params}
+        />
       </div>
     </>
   );

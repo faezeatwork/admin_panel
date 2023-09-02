@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FormikAddItems } from "../formik/FormikAddItems";
 
 export const AddCompo = (props) => {
-  const { title, exit_icon, hidden_compo } = props;
-
+  const { title, exit_icon, hidden_compo ,params} = props;
+console.log(params);
   const handleHideCompo = () => {
     document
       .getElementById("compo_for_add_items")
