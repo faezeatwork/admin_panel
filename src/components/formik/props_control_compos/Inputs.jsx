@@ -8,7 +8,7 @@ export const Inputs = (props) => {
     <div className="p-2">
       <div className="input-group">
         <span className="input-group-text titleSpan" id="basic-addon2">
-          {name}
+          {placeholder}
         </span>
         <FastField
           type={type}

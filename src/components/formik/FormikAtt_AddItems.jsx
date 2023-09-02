@@ -22,13 +22,14 @@ export const initialValues = {
   parent_id: "",
   is_active: true,
   show_in_menu: true,
-  image: null,
+  image: "",
 };
 
 //====================== 📍onSubmit ===========================
 
-export const onSubmit = async (values) => {
-  console.log("submit");
+export const onSubmit = async (values, actions, formik) => {
+  console.log("enter submit");
+  console.log(actions);
   values = {
     ...values,
     is_active: values.is_active ? 1 : 0,
@@ -36,9 +37,10 @@ export const onSubmit = async (values) => {
   };
   const res = await createNewCategoryService(values);
   if (res.status == 201) {
-    console.log(res);
     swal("رکورد ثبت شد", res.data.message, "success");
-   
+    actions.resetForm();
+  } else {
+    console.log("error");
   }
 };
 
@@ -53,10 +55,12 @@ export const validationSchema = Yup.object({
       "فقط از حروف و اعداد استفاده شود"
     ),
 
-  description: Yup.string().matches(
-    /^[\u0600-\u06FF\sa-zA-Z0-9@!%$?&]+$/,
-    "فقط از حروف و اعداد استفاده شود"
-  ),
+  description: Yup.string()
+
+    .matches(
+      /^[\u0600-\u06FF\sa-zA-Z0-9@!%$?&]+$/,
+      "فقط از حروف و اعداد استفاده شود"
+    ),
 
   // image: Yup.mixed()
   //   .test("filesize", "حجم فایل نمیتواند بیشتر 500 کیلوبایت باشد", (value) =>

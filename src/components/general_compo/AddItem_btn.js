@@ -1,6 +1,10 @@
 import React from "react";
 
-export const AddItem_btn = ({show_compo}) => {
+
+export const AddItem_btn = ({ show_compo }) => {
+
+
+
   const handleShowCompo = () => {
     document
       .getElementById("compo_for_add_items")

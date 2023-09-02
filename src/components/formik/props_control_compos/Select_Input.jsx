@@ -1,8 +1,8 @@
 import { ErrorMessage, FastField } from "formik";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 
-export const Select_Input = ({ option, name, label, className }) => {
+
+export const Select_Input = ({label, option, name }) => {
   return (
     <div className="p-2">
       <div className="input-group mb-3 ">

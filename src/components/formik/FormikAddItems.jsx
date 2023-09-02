@@ -9,8 +9,10 @@ import {
   onSubmit,
   validationSchema,
 } from "./FormikAtt_AddItems";
+import { SubmitBtn } from "./SubmitBtn";
+
 //====================================
-export const FormikAddItems = ({setForceRender}) => {
+export const FormikAddItems = ({ setForceRender }) => {
   const [parents, setParents] = useState([]);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export const FormikAddItems = ({setForceRender}) => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => onSubmit(values ,setForceRender)}
+      onSubmit={(values, actions) => onSubmit(values, actions, setForceRender)}
       validationSchema={validationSchema}
     >
       {(formik) => {
@@ -47,7 +49,7 @@ export const FormikAddItems = ({setForceRender}) => {
             />
             <FormikControl
               control="textArea"
-              type="textarea"
+              type="text"
               name="description"
               placeholder="توضیحات"
             />
@@ -55,7 +57,9 @@ export const FormikAddItems = ({setForceRender}) => {
               control="addFile"
               type="text"
               name="addFile"
+              label="تصویر"
               placeholder="برای انتخاب تصویر خود کلیک کنید."
+              formik={formik}
             />
             <div className="d-flex justify-content-evenly">
               <FormikControl
@@ -71,9 +75,7 @@ export const FormikAddItems = ({setForceRender}) => {
               />
             </div>
             <div className=" text-center pt-4">
-              <button type="submit" className="btn btn-success">
-                ذخیره
-              </button>
+              <SubmitBtn />
             </div>
           </Form>
         );
