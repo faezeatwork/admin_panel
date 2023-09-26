@@ -1,18 +1,14 @@
 import React from "react";
 import { Boxes } from "./Boxes";
-import {
-  headers_productTable,
-  rows_data_productTable,
-  testfilter,
-} from "../../layouts/local_DB/local_DataBase";
-import swal from "sweetalert";
-import { useEffect } from "react";
-import { useState } from "react";
-import { getcategoreisService } from "../../../services/category";
 import { BarChart } from "../../../charts/BarChart";
+import { useLocation } from "react-router-dom";
 export const MainPage = () => {
+  const location = useLocation();
+  //const { myState } = location.state;
+  //console.log({ myState });
   return (
     <div className="ps-2 " id="mainPage">
+      {/* <div>{myState}</div> */}
       <Boxes />
       <div className="row">
         <div className="table_mainPage  col-12 col-lg-6">
@@ -25,7 +21,6 @@ export const MainPage = () => {
             having_searchBox={false}
           /> */}
         </div>
-
         <BarChart />
       </div>
     </div>

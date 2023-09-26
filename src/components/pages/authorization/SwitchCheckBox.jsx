@@ -1,6 +1,5 @@
 import { FastField } from "formik";
 import React from "react";
-import { useState } from "react";
 
 export const SwitchCheckBox = ({ label, name }) => {
   return (
@@ -16,3 +15,4 @@ export const SwitchCheckBox = ({ label, name }) => {
 };
 
 //(برای دکمه ی (مرا بخاطر بسپار
+// و نمایش در فیلتر در ثبت ویژگی

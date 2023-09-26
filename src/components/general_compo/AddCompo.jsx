@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { FormikAddItems } from "../formik/FormikAddItems";
 
 export const AddCompo = (props) => {
-  const { title, exit_icon, hidden_compo ,params} = props;
-console.log(params);
+  const location = useLocation();
+  const { title, exit_icon, hidden_compo } = props;
+
   const handleHideCompo = () => {
     document
       .getElementById("compo_for_add_items")
@@ -20,8 +21,12 @@ console.log(params);
       className={`addProduct position-relative ${hidden_compo ? "d-none" : ""}`}
       id="compo_for_add_items"
     >
-      <div className="header_addProduct p-3 d-flex justify-content-between">
-        <h5>{title}</h5>
+      <div className="header_addProduct p-3 d-flex justify-content-between container">
+        {location.state?.rowData.id ? (
+          <h5>ویرایش محصول {location.state?.rowData.title}</h5>
+        ) : (
+          <h5>{title}</h5>
+        )}
 
         {/* ================  in icon ❌  ================ */}
         <NavLink to={exit_icon}>
@@ -37,7 +42,7 @@ console.log(params);
       {/* ================  formik inputs  ================ */}
       <div className=" d-flex p-3 justify-content-center row">
         <div className=" col-lg-5">
-          <FormikAddItems />
+          <FormikAddItems categoryId={location.state?.rowData.id} />
         </div>
       </div>
     </div>

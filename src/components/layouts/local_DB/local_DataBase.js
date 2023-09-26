@@ -1,4 +1,4 @@
-import { getCategoriesService } from "../../../services/category";
+import { getCategoriesService } from "../../../services/CRUD_categoryService";
 
 
 export const headers = [

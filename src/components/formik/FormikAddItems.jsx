@@ -1,29 +1,92 @@
 import { Formik, Form } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import { FormikControl } from "./FormikControl_AddItems";
 import { useEffect } from "react";
 import { useState } from "react";
 import {
-  handleGetParentsCategories,
   initialValues,
   onSubmit,
   validationSchema,
 } from "./FormikAtt_AddItems";
 import { SubmitBtn } from "./SubmitBtn";
+import {
+  getCategoriesService,
+  getSingleCategoryService,
+} from "../../services/CRUD_categoryService";
 
-//====================================
-export const FormikAddItems = ({ setForceRender }) => {
+//===================================================
+export const FormikAddItems = ({ categoryId }) => {
+  // const params = useParams();
   const [parents, setParents] = useState([]);
+  const [editCategory, setEditCategory] = useState(null);
+  const [reInitialValues, setReInitialValues] = useState(null);
+
+  //================  این لیست والدها رو میگیره 👇 ===============
+  const handleGetParentsCategories = async () => {
+    try {
+      const res = await getCategoriesService();
+      if (res.status == 200) {
+        const allParents = res.data.data;
+        setParents(
+          allParents.map((p) => {
+            return { id: p.id, value: p.title };
+          })
+        );
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    handleGetParentsCategories();
+  }, []);
+
+  //=============== این اطلاعات مربوط به هر محصول رو میگیره 👇 ===============
+  const handleGetSingleCategory = async () => {
+    try {
+      const res = await getSingleCategoryService(categoryId);
+      if (res.status == 200) {
+        const oldInfo = res.data.data;
+        setEditCategory(oldInfo);
+       // console.log(editCategory);
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    categoryId ? handleGetSingleCategory() : setEditCategory(null);
+  }, [categoryId]);
+
+  //=================== این داده هارو میشونه تو اینپوت ها 👇 ==================
 
   useEffect(() => {
-    handleGetParentsCategories(setParents);
-  }, []);
+    // console.log(editCategory);
+    // console.log(editCategory?.title);
+    // console.log(editCategory?.descriptions);
+    if (editCategory) {
+      setReInitialValues({
+        parent_id: editCategory.parent_id || "",
+        title: editCategory.title,
+        descriptions: editCategory.descriptions,
+        image: null,
+        is_active: editCategory.is_active ? true : false,
+        show_in_menu: editCategory.show_in_menu ? true : false,
+      });
+    } else if (categoryId) {
+      setReInitialValues({
+        ...initialValues,
+        parent_id: categoryId,
+      });
+    } else {
+      setReInitialValues(null);
+    }
+  }, [categoryId, editCategory]);
+
+  //====================== return ====================
 
   return (
     <Formik
-      initialValues={initialValues}
-      onSubmit={(values, actions) => onSubmit(values, actions, setForceRender)}
+      initialValues={reInitialValues || initialValues}
+      onSubmit={(values, actions) => onSubmit(values, actions, categoryId)}
       validationSchema={validationSchema}
+      enableReinitialize
     >
       {(formik) => {
         //console.log(formik);
@@ -31,6 +94,7 @@ export const FormikAddItems = ({ setForceRender }) => {
           <Form className="">
             {parents.length > 0 ? (
               <FormikControl
+                formik={formik}
                 control="select"
                 type="select"
                 name="parent_id"
@@ -48,18 +112,19 @@ export const FormikAddItems = ({ setForceRender }) => {
               inputStyle="registerInputStyle"
             />
             <FormikControl
+              formik={formik}
               control="textArea"
               type="text"
-              name="description"
+              name="descriptions"
               placeholder="توضیحات"
             />
             <FormikControl
+              formik={formik}
               control="addFile"
               type="text"
               name="addFile"
               label="تصویر"
               placeholder="برای انتخاب تصویر خود کلیک کنید."
-              formik={formik}
             />
             <div className="d-flex justify-content-evenly">
               <FormikControl
@@ -75,7 +140,7 @@ export const FormikAddItems = ({ setForceRender }) => {
               />
             </div>
             <div className=" text-center pt-4">
-              <SubmitBtn />
+              <SubmitBtn categoryId={categoryId} />
             </div>
           </Form>
         );
