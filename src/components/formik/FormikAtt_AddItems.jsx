@@ -2,8 +2,10 @@ import * as Yup from "yup";
 import {
   createNewCategoryService,
   getCategoriesService,
-} from "../../services/category";
+  updateCategoryService,
+} from "../../services/CRUD_categoryService";
 import swal from "sweetalert";
+import axios from "axios";
 
 export const handleGetParentsCategories = async (setParents) => {
   try {
@@ -18,29 +20,39 @@ export const handleGetParentsCategories = async (setParents) => {
 //====================== 📍initialValues =====================
 export const initialValues = {
   title: "",
-  description: "",
+  descriptions: "",
   parent_id: "",
-  is_active: true,
+  is_active: false,
   show_in_menu: true,
   image: "",
 };
 
 //====================== 📍onSubmit ===========================
 
-export const onSubmit = async (values, actions, formik) => {
-  console.log("enter submit");
-  console.log(actions);
-  values = {
-    ...values,
-    is_active: values.is_active ? 1 : 0,
-    show_in_menu: values.show_in_menu ? 1 : 0,
-  };
-  const res = await createNewCategoryService(values);
-  if (res.status == 201) {
-    swal("رکورد ثبت شد", res.data.message, "success");
-    actions.resetForm();
+export const onSubmit = async (values, actions, categoryId, formik) => {
+  if (categoryId) {
+    values = {
+      ...values,
+      is_active: values.is_active ? 1 : 0,
+      show_in_menu: values.show_in_menu ? 1 : 0,
+    };
+    const res = await updateCategoryService(values, categoryId);
+    if (res.status == 200) {
+      swal("رکورد ثبت شد", res.data.message, "success");
+      actions.resetForm();
+    }
   } else {
-    console.log("error");
+    values = {
+      ...values,
+      is_active: values.is_active ? 1 : 0,
+      show_in_menu: values.show_in_menu ? 1 : 0,
+    };
+    const res = await createNewCategoryService(values);
+    if (res.status == 201) {
+      swal("رکورد ثبت شد", res.data.message, "success");
+      actions.resetForm();
+    } else {
+    }
   }
 };
 
@@ -55,12 +67,10 @@ export const validationSchema = Yup.object({
       "فقط از حروف و اعداد استفاده شود"
     ),
 
-  description: Yup.string()
-
-    .matches(
-      /^[\u0600-\u06FF\sa-zA-Z0-9@!%$?&]+$/,
-      "فقط از حروف و اعداد استفاده شود"
-    ),
+  descriptions: Yup.string().matches(
+    /^[\u0600-\u06FF\sa-zA-Z0-9@!%$?&]+$/,
+    "فقط از حروف و اعداد استفاده شود"
+  ),
 
   // image: Yup.mixed()
   //   .test("filesize", "حجم فایل نمیتواند بیشتر 500 کیلوبایت باشد", (value) =>

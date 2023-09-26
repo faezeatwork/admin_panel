@@ -20,7 +20,6 @@ export const Dashboard = () => {
       ) : (
         <Navigate to={"/auth"} />
       )}
-     {/* <Admin /> */}
     </div>
   );
 };

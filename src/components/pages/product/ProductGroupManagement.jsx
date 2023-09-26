@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { UpperPartPages } from "../../general_compo/UpperPartPages";
-import { getCategoriesService } from "../../../services/category";
+import {
+  deleteCategoryService,
+  getCategoriesService,
+} from "../../../services/CRUD_categoryService";
 import { useState } from "react";
 import { Reusable_table } from "../../general_compo/Reusable_table";
 import { useParams } from "react-router-dom";
@@ -29,7 +32,6 @@ export const ProductGroupManagement = () => {
 
   useEffect(() => {
     handleGetCategories(setData);
-    console.log(params);
   }, [params]);
 
   const additionField = [
@@ -40,7 +42,9 @@ export const ProductGroupManagement = () => {
     },
     {
       title: "عملیات",
-      elements: (rowData) => <Operations_product rowData={rowData} />,
+      elements: (rowData) => (
+        <Operations_product rowData={rowData} data={data} setData={setData} />
+      ),
     },
     {
       title: "نمایش در منو",
@@ -53,20 +57,18 @@ export const ProductGroupManagement = () => {
   ];
 
   return (
-    <>
-      <div className="px-4 productGroupManagement">
-        <UpperPartPages title="مدیریت گروه محصولات" />
-        <Reusable_table
-          nameOfColumn={headers_productTable}
-          dataOfRows={data}
-          placeholder_searchBox="قسمتی از عنوان را وارد کنید"
-          show_addButton={true}
-          go_where="/adding-items"
-          having_searchBox={true}
-          additionField={additionField}
-          params={params}
-        />
-      </div>
-    </>
+    <div className="px-4 productGroupManagement">
+      <UpperPartPages title="مدیریت گروه محصولات" />
+      <Reusable_table
+        nameOfColumn={headers_productTable}
+        dataOfRows={data}
+        placeholder_searchBox="قسمتی از عنوان را وارد کنید"
+        show_addButton={true}
+        go_where="/adding-items"
+        having_searchBox={true}
+        additionField={additionField}
+        params={params}
+      />
+    </div>
   );
 };

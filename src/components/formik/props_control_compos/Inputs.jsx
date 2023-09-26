@@ -1,8 +1,8 @@
 import { ErrorMessage, FastField } from "formik";
-import React from "react";
+import React, { useState } from "react";
 
 export const Inputs = (props) => {
-  const { type, name, placeholder } = props;
+  const { formik, type, name, placeholder, categoryTitle } = props;
 
   return (
     <div className="p-2">
@@ -12,8 +12,8 @@ export const Inputs = (props) => {
         </span>
         <FastField
           type={type}
-          className="form-control"
           name={name}
+          className="form-control"
           placeholder={placeholder}
         />
       </div>

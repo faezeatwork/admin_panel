@@ -19,17 +19,16 @@ import { Questions } from "./question/Questions";
 import { ControlPages } from "../general_compo/ControlPages";
 import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
+import { AddAttribute } from "../general_compo/AddAttribute";
 
 export const Admin = () => {
   return (
     <div>
       <Routes>
-        {/* <Route path="/auth">
-          <Route index element={<Auth />} />
-          <Route path="register" element={<Register />} />
-        </Route> */}
         {/* ======================  داشبورد  ======================== */}
         <Route path="/" element={<ControlPages namePage={<MainPage />} />} />
+
+        {/* ======================  ثبت ویژگی ها ======================== */}
 
         {/* ================= مدیریت گروه محصول ===================== */}
         <Route
@@ -38,6 +37,10 @@ export const Admin = () => {
         >
           <Route path=":productId" />
         </Route>
+        <Route
+          path="/product-group-management/:productId/adding-attribute"
+          element={<AddAttribute />}
+        />
         <Route path="/adding-items" element={<ReusableAdding />} />
 
         {/* ===================  مدیریت محصول ======================== */}

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { PrevPageBtn } from "./PrevPageBtn";
 import { Pagination } from "./Pagination";
 import { SearchBox } from "./SearchBox";
 import { AddItem_btn } from "./AddItem_btn";
 
-const numOfRows_singlePage = 4; //در هر صفحه چند ردیف از حدول نمایش داده شود
+const numOfRows_singlePage = 5; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
 export const Reusable_table = (props) => {
   const location = useLocation();
@@ -20,7 +20,6 @@ export const Reusable_table = (props) => {
     show_compo,
     having_searchBox,
     additionField,
-    //setForceRender,
   } = props;
 
   const [dataAnyPage, setDataAnyPage] = useState([]); //slice shodeye dataOfRows
@@ -80,12 +79,25 @@ export const Reusable_table = (props) => {
 
         {/* ================== start show_addButton👇 ================== */}
         {/* in icon ➕  */}
-        {show_addButton ? ( //اضافه کردن آیتم
-          <NavLink to={go_where} >
-            <AddItem_btn show_compo={show_compo} />
-          </NavLink>
+        {show_addButton ? (
+          location.state ? (
+            <>
+              <NavLink
+                to={go_where}
+                state={{ myState: `${location.state?.parentData.title}` }}
+              >
+                <AddItem_btn show_compo={show_compo} />
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to={go_where}>
+                <AddItem_btn show_compo={show_compo} />
+              </NavLink>
+            </>
+          )
         ) : (
-          <div></div>
+          console.log("hardo false")
         )}
       </div>
       {/* ================== end show_addButton👆 ==================== */}
