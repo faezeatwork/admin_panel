@@ -46,7 +46,7 @@ export const FormikAddItems = ({ categoryId }) => {
       if (res.status == 200) {
         const oldInfo = res.data.data;
         setEditCategory(oldInfo);
-       // console.log(editCategory);
+        // console.log(editCategory);
       }
     } catch (error) {}
   };
@@ -57,9 +57,6 @@ export const FormikAddItems = ({ categoryId }) => {
   //=================== این داده هارو میشونه تو اینپوت ها 👇 ==================
 
   useEffect(() => {
-    // console.log(editCategory);
-    // console.log(editCategory?.title);
-    // console.log(editCategory?.descriptions);
     if (editCategory) {
       setReInitialValues({
         parent_id: editCategory.parent_id || "",

@@ -16,6 +16,8 @@ export const headers_productTable = [
   { field: "parent_id", title: "والد" },
 ];
 
+
+
 export const ProductGroupManagement = () => {
   const params = useParams();
   const [data, setData] = useState([]);
@@ -34,11 +36,11 @@ export const ProductGroupManagement = () => {
     handleGetCategories(setData);
   }, [params]);
 
+
   const additionField = [
     {
       title: "تاریخ",
-      elements: (data) =>
-        moment(data.created_at).locale("fa").format("YYYY/M/D"),
+      elements: (data) => moment(data.created_at).locale("fa").format("YYYY/M/D"),
     },
     {
       title: "عملیات",
@@ -56,6 +58,7 @@ export const ProductGroupManagement = () => {
     },
   ];
 
+  
   return (
     <div className="px-4 productGroupManagement">
       <UpperPartPages title="مدیریت گروه محصولات" />
@@ -63,6 +66,7 @@ export const ProductGroupManagement = () => {
         nameOfColumn={headers_productTable}
         dataOfRows={data}
         placeholder_searchBox="قسمتی از عنوان را وارد کنید"
+        show_subGroup={true}
         show_addButton={true}
         go_where="/adding-items"
         having_searchBox={true}

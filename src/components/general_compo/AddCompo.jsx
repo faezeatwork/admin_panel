@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FormikAddItems } from "../formik/FormikAddItems";
+import { PrevPageBtn } from "./PrevPageBtn";
 
 export const AddCompo = (props) => {
   const location = useLocation();
-  const { title, exit_icon, hidden_compo } = props;
+  const { title, hidden_compo } = props;
 
   const handleHideCompo = () => {
     document
@@ -29,7 +30,7 @@ export const AddCompo = (props) => {
         )}
 
         {/* ================  in icon ❌  ================ */}
-        <NavLink to={exit_icon}>
+        {/* <NavLink to={exit_icon}>
           <button
             type="button"
             className="btn-close"
@@ -37,7 +38,11 @@ export const AddCompo = (props) => {
             aria-label="Close"
             onClick={() => (hidden_compo ? handleHideCompo() : null)}
           ></button>
-        </NavLink>
+        </NavLink> */}
+        <PrevPageBtn
+          customStyle="fs-2 text-start text-secondary"
+          returnTitle={<i class="fa-solid fa-xmark"></i>}
+        />
       </div>
       {/* ================  formik inputs  ================ */}
       <div className=" d-flex p-3 justify-content-center row">
