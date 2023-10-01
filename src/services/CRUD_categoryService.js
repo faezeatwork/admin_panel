@@ -32,3 +32,21 @@ export const updateCategoryService = (data, id) => {
   console.log("id: " + id);
   return httpService(`admin/categories/${id}`, "put", data);
 };
+
+//============== گرفتن ویژگی های یک دسته =============
+export const getAttributesService = (categoryId) => {
+  return httpService(`admin/categories/${categoryId}/attributes`);
+};
+
+//===========ایجاد یک ویژگی جدید برای یک دسته===========
+export const createNewAttributeService = (categoryId, data) => {
+  return httpService(
+    `admin/categories/${categoryId}/attributes`,
+    "post",
+    (data = {
+      title: `${data.attributeTitle}`,
+      unit: `${data.attributeUnit}`,
+      in_filter: `${data.switchShowFilter ? 1 : 0}`,
+    })
+  );
+};

@@ -11,6 +11,8 @@ export const Reusable_table = (props) => {
   const location = useLocation();
   //🏮👉 اشonClick :از این هوک اینجا استفاده شده in Operations_product
 
+  const [forceRender, setForceRender] = useState(1);
+
   const {
     nameOfColumn, //تیترها
     dataOfRows,
@@ -18,6 +20,7 @@ export const Reusable_table = (props) => {
     go_where, //this icon ➕ link to where - hamishe ham link nist
     show_addButton,
     show_compo,
+    show_subGroup,
     having_searchBox,
     additionField,
   } = props;
@@ -31,8 +34,9 @@ export const Reusable_table = (props) => {
 
   //======== فیلتر کردن آیتم هایی که نمایش داده می شود برحسب سرچ ===========
   useEffect(() => {
-    setSearchData(dataOfRows.filter((d) => d.title.includes(searchChar)));
-  }, [searchChar, dataOfRows]);
+    setSearchData(dataOfRows.filter((d) => d.title?.includes(searchChar)));
+    // setForceRender((i) => i + 1);
+  }, [searchChar, dataOfRows, forceRender]);
 
   //==================   تقسیم کردن ردیف ها بین صفحات   ======================
   useEffect(() => {
@@ -59,11 +63,13 @@ export const Reusable_table = (props) => {
 
   return (
     <div className="p-1 reusable_table">
-      {location.state ? (
-        <h5 className="text-center d-flex justify-content-center">
-          زیر گروه:
-          <PrevPageBtn returnTitle={location.state.parentData.title} />
-        </h5>
+      {show_subGroup ? (
+        location.state ? (
+          <h5 className="text-center d-flex justify-content-center">
+            زیر گروه:
+            <PrevPageBtn returnTitle={location.state.parentData?.title} />
+          </h5>
+        ) : null
       ) : null}
 
       <div className="d-flex justify-content-between align-items-center p-2">
@@ -96,9 +102,7 @@ export const Reusable_table = (props) => {
               </NavLink>
             </>
           )
-        ) : (
-          console.log("hardo false")
-        )}
+        ) : null}
       </div>
       {/* ================== end show_addButton👆 ==================== */}
 

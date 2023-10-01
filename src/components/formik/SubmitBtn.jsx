@@ -4,14 +4,13 @@ import { Spinner } from "react-bootstrap";
 
 export const SubmitBtn = ({ categoryId }) => {
   return (
-    <FastField>
+    <FastField as>
       {({ form }) => {
         return (
-          <>
-            <span type="btn" className="btn pt-4" disabled={form.isSubmitting}>
+          <span className="btn pt-4" disabled={form.isSubmitting}>
+            <span>
               {categoryId ? (
-                <button className="btn btn-warning">
-                  {" "}
+                <button type="submit" className="btn btn-warning">
                   ذخیره تغییرات
                   {form.isSubmitting ? (
                     <Spinner
@@ -23,7 +22,7 @@ export const SubmitBtn = ({ categoryId }) => {
                   ) : null}
                 </button>
               ) : (
-                <button className="btn btn-success">
+                <button type="submit" className="btn btn-success">
                   ذخیره
                   {form.isSubmitting ? (
                     <Spinner
@@ -36,7 +35,7 @@ export const SubmitBtn = ({ categoryId }) => {
                 </button>
               )}
             </span>
-          </>
+          </span>
         );
       }}
     </FastField>
