@@ -29,13 +29,12 @@ export const deleteCategoryService = (id) => {
 };
 //=================== ویرایش دیتا ===================
 export const updateCategoryService = (data, id) => {
-  console.log("id: " + id);
   return httpService(`admin/categories/${id}`, "put", data);
 };
 
 //============== گرفتن ویژگی های یک دسته =============
 export const getAttributesService = (categoryId) => {
-  return httpService(`admin/categories/${categoryId}/attributes`);
+  return httpService(`admin/categories/${categoryId}/attributes`, "get");
 };
 
 //===========ایجاد یک ویژگی جدید برای یک دسته===========
@@ -49,4 +48,19 @@ export const createNewAttributeService = (categoryId, data) => {
       in_filter: `${data.switchShowFilter ? 1 : 0}`,
     })
   );
+};
+
+//=============== حذف یک ویژگی از محصول =================
+export const deleteAttributeService = (id) => {
+  return httpService(`admin/categories/attributes/${id}`, "delete");
+};
+
+//============== گرفتن یکی از ویژگی های یک دسته ============
+export const getOneAttributeService = (id) => {
+  return httpService(`admin/categories/attributes/${id}`, "get");
+};
+
+//=============== ویرایش یک ویژگی از محصول =================
+export const updateAttributeService = (id) => {
+  return httpService(`admin/categories/attributes/${id}`, "put");
 };

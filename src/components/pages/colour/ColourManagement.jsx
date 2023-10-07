@@ -4,7 +4,7 @@ import {
   rows_data_colourTable,
 } from "../../layouts/local_DB/local_DataBase";
 import { AddColour } from "./AddColour";
-import { UpperPartPages } from "../../general_compo/UpperPartPages";
+import { UpperPartPages } from "../../general_compo/reusable_operations/UpperPartPages";
 
 export const ColourManagement = () => {
   return (

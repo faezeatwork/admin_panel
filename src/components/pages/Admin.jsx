@@ -14,12 +14,12 @@ import { SendManagement } from "./how_yo_send/SendManagement";
 import { Licenses } from "./license/Licenses";
 import { WatchUsers } from "./watch_users/WatchUsers";
 import { DutyUsers } from "./duty_user/DutyUsers";
-import { ReusableAdding } from "../general_compo/ReusableAdding";
+import { ReusableAdding } from "../general_compo/reusable_operations/ReusableAdding";
 import { Questions } from "./question/Questions";
-import { ControlPages } from "../general_compo/ControlPages";
+import { ControlPages } from "../general_compo/reusable_operations/ControlPages";
 import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
-import { AddAttribute } from "../general_compo/AddAttribute";
+import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 
 export const Admin = () => {
   return (
@@ -40,7 +40,9 @@ export const Admin = () => {
         <Route
           path="/product-group-management/:productId/adding-attribute"
           element={<AddAttribute />}
-        />
+        >
+          <Route path=":attId"/>
+        </Route>
         <Route path="/adding-items" element={<ReusableAdding />} />
 
         {/* ===================  مدیریت محصول ======================== */}
@@ -55,14 +57,14 @@ export const Admin = () => {
           path="/brand-management"
           element={<ControlPages namePage={<BrandsManagement />} />}
         />
-        <Route path="/adding-items" element={<ReusableAdding />} />
+        {/* <Route path="/adding-items" element={<ReusableAdding />} /> */}
 
         {/* ==================  مدیریت گارانتی ها  ================== */}
         <Route
           path="/guarantee-management"
           element={<ControlPages namePage={<GuaranteeManagement />} />}
         />
-        <Route path="/adding-items" element={<ReusableAdding />} />
+        {/* <Route path="/adding-items" element={<ReusableAdding />} /> */}
 
         {/* ==================  مدیریت رنگ ها  ====================== */}
         <Route

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { UpperPartPages } from "../../general_compo/UpperPartPages";
+import { UpperPartPages } from "../../general_compo/reusable_operations/UpperPartPages";
 import {
   deleteCategoryService,
   getCategoriesService,
@@ -15,8 +15,6 @@ export const headers_productTable = [
   { field: "title", title: "عنوان محصول" },
   { field: "parent_id", title: "والد" },
 ];
-
-
 
 export const ProductGroupManagement = () => {
   const params = useParams();
@@ -36,11 +34,11 @@ export const ProductGroupManagement = () => {
     handleGetCategories(setData);
   }, [params]);
 
-
   const additionField = [
     {
       title: "تاریخ",
-      elements: (data) => moment(data.created_at).locale("fa").format("YYYY/M/D"),
+      elements: (data) =>
+        moment(data.created_at).locale("fa").format("YYYY/M/D"),
     },
     {
       title: "عملیات",
@@ -58,7 +56,6 @@ export const ProductGroupManagement = () => {
     },
   ];
 
-  
   return (
     <div className="px-4 productGroupManagement">
       <UpperPartPages title="مدیریت گروه محصولات" />
@@ -71,6 +68,7 @@ export const ProductGroupManagement = () => {
         go_where="/adding-items"
         having_searchBox={true}
         additionField={additionField}
+        show_subset_icon={true}
         params={params}
       />
     </div>
