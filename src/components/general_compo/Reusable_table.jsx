@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { PrevPageBtn } from "./PrevPageBtn";
+import { PrevPageBtn } from "./reusable_operations/PrevPageBtn";
 import { Pagination } from "./Pagination";
-import { SearchBox } from "./SearchBox";
-import { AddItem_btn } from "./AddItem_btn";
+import { SearchBox } from "./reusable_operations/SearchBox";
+import { AddItem_btn } from "./add_or_edit_product/AddItem_btn";
 
 const numOfRows_singlePage = 5; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
 export const Reusable_table = (props) => {
+ 
   const location = useLocation();
   //🏮👉 اشonClick :از این هوک اینجا استفاده شده in Operations_product
 
-  const [forceRender, setForceRender] = useState(1);
+
 
   const {
     nameOfColumn, //تیترها
@@ -35,8 +36,8 @@ export const Reusable_table = (props) => {
   //======== فیلتر کردن آیتم هایی که نمایش داده می شود برحسب سرچ ===========
   useEffect(() => {
     setSearchData(dataOfRows.filter((d) => d.title?.includes(searchChar)));
-    // setForceRender((i) => i + 1);
-  }, [searchChar, dataOfRows, forceRender]);
+
+  }, [searchChar, dataOfRows]);
 
   //==================   تقسیم کردن ردیف ها بین صفحات   ======================
   useEffect(() => {
@@ -62,7 +63,7 @@ export const Reusable_table = (props) => {
   //===============================  return ==================================
 
   return (
-    <div className="p-1 reusable_table">
+    <div className="p-1 reusable_table" >
       {show_subGroup ? (
         location.state ? (
           <h5 className="text-center d-flex justify-content-center">
@@ -73,7 +74,7 @@ export const Reusable_table = (props) => {
       ) : null}
 
       <div className="d-flex justify-content-between align-items-center p-2">
-        {/* ================== start searchBox👇 ================== */}
+        {/* ================== 🔍 start searchBox👇 ================== */}
         {having_searchBox ? (
           <SearchBox
             setSearchChar={setSearchChar}
@@ -81,16 +82,19 @@ export const Reusable_table = (props) => {
           />
         ) : null}
 
-        {/* ================== end searchBox👆 ==================== */}
+        {/* ================== 🔍 end searchBox👆 ==================== */}
 
-        {/* ================== start show_addButton👇 ================== */}
+        {/* ================== ➕ start show_addButton👇 ================== */}
         {/* in icon ➕  */}
         {show_addButton ? (
           location.state ? (
             <>
               <NavLink
                 to={go_where}
-                state={{ myState: `${location.state?.parentData.title}` }}
+                // state={{
+                //   parentTitle: `${location.state?.parentData.title}`,
+
+                // }}
               >
                 <AddItem_btn show_compo={show_compo} />
               </NavLink>
@@ -104,7 +108,7 @@ export const Reusable_table = (props) => {
           )
         ) : null}
       </div>
-      {/* ================== end show_addButton👆 ==================== */}
+      {/* ================== ➕ end show_addButton👆 ==================== */}
 
       {/* ================== start table👇 ====================== */}
       {dataOfRows.length ? (

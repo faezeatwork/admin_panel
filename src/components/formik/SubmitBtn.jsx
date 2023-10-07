@@ -4,7 +4,7 @@ import { Spinner } from "react-bootstrap";
 
 export const SubmitBtn = ({ categoryId }) => {
   return (
-    <FastField as>
+    <FastField>
       {({ form }) => {
         return (
           <span className="btn pt-4" disabled={form.isSubmitting}>

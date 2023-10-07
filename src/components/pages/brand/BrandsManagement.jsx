@@ -1,6 +1,6 @@
 import React from "react";
-import { UpperPartPages } from "../../general_compo/UpperPartPages";
-import { AddCompo } from "../../general_compo/AddCompo";
+import { UpperPartPages } from "../../general_compo/reusable_operations/UpperPartPages";
+import { AddCompo } from "../../general_compo/add_or_edit_product/AddCompo";
 
 
 export const BrandsManagement = () => {

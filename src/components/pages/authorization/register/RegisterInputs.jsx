@@ -5,7 +5,7 @@ import {
   initialValues,
   onSubmit,
   validationSchema,
-} from "./formikAttribute_register";
+} from "./formikHelper_register";
 
 export const RegisterInputs = () => {
   return (

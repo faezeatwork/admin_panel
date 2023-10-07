@@ -1,5 +1,5 @@
 import React from "react";
-import { AddCompo } from "../../general_compo/AddCompo";
+import { AddCompo } from "../../general_compo/add_or_edit_product/AddCompo";
 
 
 
