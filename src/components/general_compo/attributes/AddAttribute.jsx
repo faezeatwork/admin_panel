@@ -2,13 +2,9 @@ import { Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { FormControl } from "../../pages/authorization/FormControl_Auth";
 import { SubmitBtn } from "../../formik/SubmitBtn";
-import { useLocation } from "react-router-dom";
-import {
-  getAttributesService,
-  getOneAttributeService,
-} from "../../../services/CRUD_categoryService";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getAttributesService } from "../../../services/CRUD_categoryService";
 import { Reusable_table } from "../Reusable_table";
-import { PrevPageBtn } from "../reusable_operations/PrevPageBtn";
 import { Operations_attributes } from "./Operations_attributes";
 import {
   headers_attributesTable,
@@ -18,10 +14,10 @@ import {
 } from "./FormikHelper_Attributes";
 
 export const AddAttribute = () => {
-  const location = useLocation();
+  const location = useLocation(); //from Operations_product compo
   const [attData, setAttData] = useState([]);
-  const [oneAttData, setOneAttData] = useState([]);
-  const [reInitialValues, setReInitialValues] = useState(null);
+  const [getAttToEdit, setGetAttToEdit] = useState(null);
+  const navigate = useNavigate();
 
   //=====📍گرفتن ویژگی های یک محصول برای نشاندن در جدول ========
   const handleGetAttributes = async () => {
@@ -35,28 +31,7 @@ export const AddAttribute = () => {
     handleGetAttributes();
   }, []);
 
-  //=========== 📍 گرفتن آیتم های یک ویژگی ================
-  const handleGetOneAttribute = async (id) => {
-    const res = await getOneAttributeService(id);
-    try {
-      console.log(res);
-      setOneAttData(res.data.data);
-    } catch (error) {}
-  };
-
-  //=============================================
-
-  useEffect(() => {
-    console.log(oneAttData);
-    setReInitialValues({
-      attributeTitle: oneAttData.title || "",
-      attributeUnit: oneAttData.unit || "",
-      switchShowFilter: oneAttData.in_filter ? true : false,
-    });
-    console.log(reInitialValues);
-  }, [attData, oneAttData]);
-
-  // ========== 📍additionField for add attributes ==========
+  // ========== 📍additionField for add attributes ==============
   const additionField = [
     {
       title: "عملیات",
@@ -65,29 +40,62 @@ export const AddAttribute = () => {
           rowData={rowData}
           data={attData}
           setData={setAttData}
-          handleGetOneAttribute={handleGetOneAttribute}
+          getAttToEdit={getAttToEdit}
+          setGetAttToEdit={setGetAttToEdit}
         />
       ),
     },
   ];
 
+  //======================= return ===========================
+  useEffect(() => {}, []);
   return (
     <div className="container">
-      <div className="row justify-content-center ">
+      <div className="row justify-content-center">
         <Formik
-          initialValues={initialValues || reInitialValues || ""}
+          initialValues={getAttToEdit || initialValues} //ترتیبش مهمه 😐
+          enableReinitialize
           onSubmit={(values, form) =>
-            onSubmit(values, form, location, setAttData)
+            onSubmit(
+              values,
+              form,
+              location,
+              setAttData,
+              getAttToEdit,
+              setGetAttToEdit,
+              attData
+            )
           }
           validationSchema={validationSchema}
-          enableReinitialize
         >
           <Form>
-            <PrevPageBtn
-              customStyle="fs-2 text-start text-secondary"
-              returnTitle={<i className="fa-solid fa-xmark"></i>}
-            />
-            <div className="row ">
+            <div
+              className="text-start"
+              onClick={() =>
+                navigate(
+                  `/product-group-management/${location.state?.parentId}`
+                )
+              }
+            >
+              <i className="fa-solid fa-xmark fs-2 text-secondary"></i>
+            </div>
+            <div
+              className={`text-center fs-4 ${getAttToEdit ? "d-none" : null}`}
+            >
+              افزودن ویژگی جدید
+            </div>
+            <div
+              className={`row ${
+                getAttToEdit
+                  ? "edit_attribute_box"
+                  : "cancel_edit_attribute_box"
+              }`}
+            >
+              <div
+                className={`fs-5 text-center ${getAttToEdit ? null : "d-none"}`}
+              >
+                ویرایش ویژگی : {getAttToEdit?.attributeTitle}
+              </div>
               <div className=" col-md-6 col-lg-4 my-1">
                 <FormControl
                   control="input"
@@ -97,6 +105,7 @@ export const AddAttribute = () => {
                   errMs="لطفا این قسمت را پر کنید"
                 />
               </div>
+
               <div className="col-md-6 col-lg-4 my-1">
                 <FormControl
                   control="input"
@@ -112,20 +121,31 @@ export const AddAttribute = () => {
                   label="نمایش در فیلتر"
                   name="switchShowFilter"
                 />
-                <SubmitBtn />
+                <div className="mt-3 d-flex">
+                  <SubmitBtn getAttToEdit={getAttToEdit} />
+                  {getAttToEdit ? (
+                    <button
+                      className="btn btn-secondary m-2"
+                      onClick={() => setGetAttToEdit(null)}
+                    >
+                      انصراف
+                    </button>
+                  ) : null}
+                </div>
               </div>
             </div>
           </Form>
         </Formik>
         <hr />
-        <Reusable_table
+        {/* <Reusable_table
           nameOfColumn={headers_attributesTable}
           dataOfRows={attData}
           having_searchBox={true}
           placeholder_searchBox="قسمتی از عنوان را وارد کنید"
           additionField={additionField}
           show_subset_icon={false}
-        />
+      
+        /> */}
       </div>
     </div>
   );

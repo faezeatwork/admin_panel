@@ -45,6 +45,7 @@ export const Operations_product = ({ rowData, data, setData }) => {
               `/product-group-management/${rowData.id}/adding-attribute`,
               {
                 state: {
+                  parentId: rowData.parent_id,
                   categoryId: rowData.id,
                 },
               }

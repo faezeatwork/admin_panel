@@ -2,15 +2,15 @@ import { FastField } from "formik";
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
-export const SubmitBtn = ({ categoryId }) => {
+export const SubmitBtn = ({ categoryId, getAttToEdit }) => {
   return (
     <FastField>
       {({ form }) => {
         return (
-          <span className="btn pt-4" disabled={form.isSubmitting}>
+          <span className="btn " disabled={form.isSubmitting}>
             <span>
-              {categoryId ? (
-                <button type="submit" className="btn btn-warning">
+              {categoryId || getAttToEdit ? (
+                <button type="submit " className="btn btn-warning">
                   ذخیره تغییرات
                   {form.isSubmitting ? (
                     <Spinner

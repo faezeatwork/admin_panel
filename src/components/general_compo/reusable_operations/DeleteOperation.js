@@ -16,7 +16,7 @@ export const handleDeleteOperation = async (id, data, setData , deleteService) =
     if (result.isConfirmed) {
       Swal.fire("حذف شد!", `محصول مورد نظر حذف شد`, "success");
       deleteService(id).then(() => {
-        console.log(`حذف شد (id: ${id}) محصول`);
+        // console.log(`حذف شد (id: ${id}) محصول`);
         const updateData = data.filter((d) => d.id != id);
         setData(updateData);
       });

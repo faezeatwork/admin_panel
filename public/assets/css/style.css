@@ -88,7 +88,7 @@ body {
   background-color: antiquewhite;
 }
 
-/*======کارت های صفحه اصلی 👇======= */
+/*=================کارت های صفحه اصلی 👇================ */
 
 .today_cart_of_mainPage {
   background: rgb(34, 193, 195);
@@ -135,7 +135,7 @@ body {
 .table_mainPage {
   padding-right: 32px;
 }
-/* ================ end main page ======================= */
+/* ==================== end main page ======================= */
 
 /* ====================> start ReusableTable <=============== */
 .reusable_table {
@@ -166,7 +166,7 @@ body {
   box-shadow: inset 1px 1px 10px rgba(128, 128, 128, 0.418);
 } /* ====================> end ReusableTable <=============== */
 
-/* =============== start sidebar section ============= */
+/* ================== start sidebar section ================= */
 
 #sidebar_section {
   position: fixed;
@@ -382,4 +382,22 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   color: darkgreen;
   font-size: larger;
   font-weight: bolder !important;
+}
+
+/* ============================= افزودن ویژگی جدید */
+.edit_attribute_box {
+  padding-top: 60px;
+  padding-bottom: 80px;
+  background-color: rgba(141, 135, 222, 0.2);
+  border: 1px solid grey;
+  box-shadow: 5px 5px 20px grey;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease;
+}
+
+/* ====== با زدن دکمه انصراف باکس ویرایش بره  */
+.cancel_edit_attribute_box {
+  transition: all 500ms ease;
 }

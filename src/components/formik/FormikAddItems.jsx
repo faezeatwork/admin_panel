@@ -88,7 +88,7 @@ export const FormikAddItems = ({ categoryId }) => {
       {(formik) => {
         //console.log(formik);
         return (
-          <Form className="">
+          <Form>
             {parents.length > 0 ? (
               <FormikControl
                 formik={formik}

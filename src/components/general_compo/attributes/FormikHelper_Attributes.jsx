@@ -1,5 +1,8 @@
 import * as Yup from "yup";
-import { createNewAttributeService } from "../../../services/CRUD_categoryService";
+import {
+  createNewAttributeService,
+  updateAttributeService,
+} from "../../../services/CRUD_categoryService";
 import swal from "sweetalert";
 
 // ==============  📍header of table in add attributes ===================
@@ -14,22 +17,57 @@ export const headers_attributesTable = [
 export const initialValues = {
   attributeTitle: "",
   attributeUnit: "",
-  switchShowFilter: 0,
+  switchShowFilter: false,
 };
 
 //================  📍onSubmit add attributes ======================
-export const onSubmit = async (values, actions, location, setAttData) => {
-  const res = await createNewAttributeService(
-    location.state?.categoryId,
-    values
-  );
-  try {
-    if (res.status == 201) {
-      swal("", res.data.message, "success");
-      setAttData((oldData) => [...oldData, res.data.data]); //این خط چیکار میکنه؟ جدول ویژگی هارو رندر مجدد میکنه 😁
-      actions.resetForm();
-    }
-  } catch {}
+export const onSubmit = async (
+  values,
+  actions,
+  location,
+  setAttData,
+  getAttToEdit,
+  setGetAttToEdit,
+  attData
+) => {
+  if (getAttToEdit) {
+    //ویرایش یک ویژگی 📍
+    values = {
+      ...values,
+      switchShowFilter: values.switchShowFilter ? 1 : 0,
+    };
+    const res = await updateAttributeService(getAttToEdit.attributeId, values);
+    try {
+      if (res.status == 200) {
+        swal("", res.data.message, "success");
+        setAttData((oldData) => {
+          const newData = [...oldData];
+          const index = newData.findIndex(
+            (d) => d.id == getAttToEdit.attributeId
+          );
+          newData[index] = res.data.data;
+          return newData;
+        });
+      }
+    } catch {}
+  } else {
+    //افزودن یک ویژگی جدید📍
+    values = {
+      ...values,
+      switchShowFilter: values.switchShowFilter ? 1 : 0,
+    };
+    const res = await createNewAttributeService(
+      location.state?.categoryId,
+      values
+    );
+    try {
+      if (res.status == 201) {
+        swal("", res.data.message, "success");
+        setAttData((oldData) => [...oldData, res.data.data]); //این خط چیکار میکنه؟ جدول ویژگی هارو رندر مجدد میکنه 😁
+        actions.resetForm();
+      }
+    } catch {}
+  }
 };
 
 //===============  📍validationSchema add attributes ===============
