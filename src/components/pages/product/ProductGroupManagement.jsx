@@ -1,26 +1,24 @@
 import React, { useEffect } from "react";
 import { UpperPartPages } from "../../general_compo/reusable_operations/UpperPartPages";
-import {
-  deleteCategoryService,
-  getCategoriesService,
-} from "../../../services/CRUD_categoryService";
+import { getCategoriesService } from "../../../services/CRUD_categoryService";
 import { useState } from "react";
 import { Reusable_table } from "../../general_compo/Reusable_table";
 import { useParams } from "react-router-dom";
 import { Operations_product } from "./table_additon/Operations_product";
 import moment from "jalali-moment";
 
-export const headers_productTable = [
-  { field: "id", title: "id" },
-  { field: "title", title: "عنوان محصول" },
-  { field: "parent_id", title: "والد" },
-];
-
 export const ProductGroupManagement = () => {
   const params = useParams();
   const [data, setData] = useState([]);
   // const [forceRender, setForceRender] = useState(0); //برای اینکه هرجا خواستیم جدول رو رندر مجدد کنیم
 
+  //========= هدرهای جدول📍==============
+  const headers_productTable = [
+    { field: "id", title: "id" },
+    { field: "title", title: "عنوان محصول" },
+    { field: "parent_id", title: "والد" },
+  ];
+  //======================================
   const handleGetCategories = async () => {
     const res = await getCategoriesService(params.productId);
     try {
@@ -29,11 +27,12 @@ export const ProductGroupManagement = () => {
       }
     } catch {}
   };
-
+  //=======================================
   useEffect(() => {
     handleGetCategories(setData);
   }, [params]);
 
+  //=======================================
   const additionField = [
     {
       title: "تاریخ",
@@ -56,6 +55,7 @@ export const ProductGroupManagement = () => {
     },
   ];
 
+  //==================  return  =======================
   return (
     <div className="px-4 productGroupManagement">
       <UpperPartPages title="مدیریت گروه محصولات" />
@@ -70,6 +70,7 @@ export const ProductGroupManagement = () => {
         additionField={additionField}
         show_subset_icon={true}
         params={params}
+  
       />
     </div>
   );

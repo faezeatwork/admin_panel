@@ -39,7 +39,6 @@ export const onSubmit = async (values, actions, categoryId, formik) => {
     const res = await updateCategoryService(values, categoryId);
     if (res.status == 200) {
       swal("رکورد ثبت شد", res.data.message, "success");
-      actions.resetForm();
     }
   } else {
     values = {

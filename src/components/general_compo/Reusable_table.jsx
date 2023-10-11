@@ -8,11 +8,8 @@ import { AddItem_btn } from "./add_or_edit_product/AddItem_btn";
 const numOfRows_singlePage = 5; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
 export const Reusable_table = (props) => {
- 
   const location = useLocation();
   //🏮👉 اشonClick :از این هوک اینجا استفاده شده in Operations_product
-
-
 
   const {
     nameOfColumn, //تیترها
@@ -36,9 +33,7 @@ export const Reusable_table = (props) => {
   //======== فیلتر کردن آیتم هایی که نمایش داده می شود برحسب سرچ ===========
   useEffect(() => {
     setSearchData(dataOfRows.filter((d) => d.title?.includes(searchChar)));
-
   }, [searchChar, dataOfRows]);
-
   //==================   تقسیم کردن ردیف ها بین صفحات   ======================
   useEffect(() => {
     //in useEffect , row ha ro be tedad page ha slice mikone
@@ -63,10 +58,10 @@ export const Reusable_table = (props) => {
   //===============================  return ==================================
 
   return (
-    <div className="p-1 reusable_table" >
+    <div className="p-1 reusable_table">
       {show_subGroup ? (
         location.state ? (
-          <h5 className="text-center d-flex justify-content-center">
+          <h5 className="text-center d-flex justify-content-center bg-danger">
             زیر گروه:
             <PrevPageBtn returnTitle={location.state.parentData?.title} />
           </h5>
