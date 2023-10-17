@@ -1,14 +1,14 @@
 import { httpService } from "./httpService";
 
 export const loginService = (values) => {
-  return httpService("auth/login", "post", {
+  return httpService("api/auth/login", "post", {
     ...values,
     remember: values.remember ? 1 : 0,
   });
 };
 
 export const registerService = () => {
-  return httpService("auth/register", "post");
+  return httpService("api/auth/register", "post");
 };
 
 
@@ -20,7 +20,7 @@ export const isLoginService = async (
 ) => {
   const loginToken = JSON.parse(localStorage.getItem("loginToken"));
   if (loginToken) {
-    const res = await httpService("auth/user", "get", {
+    const res = await httpService("api/auth/user", "get", {
       headers: {
         Authorization: `Bearer ${loginToken.token}`,
       },

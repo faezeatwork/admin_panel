@@ -1,10 +1,11 @@
 import { httpService } from "./httpService";
 
-//==================== گرفتن دسته ها ====================
+//==================== گرفتن دسته ها ==============================
 export const getCategoriesService = (id = null) => {
-  return httpService(`admin/categories${id ? `?parent=${id}` : ""}`, "get");
+  return httpService(`api/admin/categories${id ? `?parent=${id}` : ""}`, "get");
 };
-//==================== ساختن دیتا ====================
+
+//==================== ساختن دیتا =================================
 export const createNewCategoryService = (data) => {
   if (data.image) {
     let formdata = new FormData();
@@ -16,31 +17,32 @@ export const createNewCategoryService = (data) => {
     formdata.append("show_in_menu", data.show_in_menu);
     data = formdata;
   }
-
-  return httpService("admin/categories", "post", data);
+  return httpService("api/admin/categories", "post", data);
 };
-//============== گرفتن تک دیتا با آی دی =============
+//============== گرفتن تک دیتا با آی دی =========================
 export const getSingleCategoryService = (id) => {
-  return httpService(`admin/categories/${id}`, "get");
+  return httpService(`api/admin/categories/${id}`, "get");
 };
-//===================== حذف دیتا =====================
+
+//===================== حذف دیتا ================================
 export const deleteCategoryService = (id) => {
-  return httpService(`admin/categories/${id}`, "delete");
+  return httpService(`api/admin/categories/${id}`, "delete");
 };
-//=================== ویرایش دیتا ===================
+
+//=================== ویرایش دیتا ===============================
 export const updateCategoryService = (data, id) => {
-  return httpService(`admin/categories/${id}`, "put", data);
+  return httpService(`api/admin/categories/${id}`, "put", data);
 };
 
-//============= گرفتن ویژگی های یک دسته =============
+//============= گرفتن ویژگی های یک دسته ========================
 export const getAttributesService = (categoryId) => {
-  return httpService(`admin/categories/${categoryId}/attributes`, "get");
+  return httpService(`api/admin/categories/${categoryId}/attributes`, "get");
 };
 
-//======= ایجاد یک ویژگی جدید برای یک دسته===========
+//======= ایجاد یک ویژگی جدید برای یک دسته=====================
 export const createNewAttributeService = (categoryId, data) => {
   return httpService(
-    `admin/categories/${categoryId}/attributes`,
+    `api/admin/categories/${categoryId}/attributes`,
     "post",
     (data = {
       title: `${data.attributeTitle}`,
@@ -50,15 +52,15 @@ export const createNewAttributeService = (categoryId, data) => {
   );
 };
 
-//============ حذف یک ویژگی از محصول =================
+//============ حذف یک ویژگی از محصول =========================
 export const deleteAttributeService = (id) => {
-  return httpService(`admin/categories/attributes/${id}`, "delete");
+  return httpService(`api/admin/categories/attributes/${id}`, "delete");
 };
 
-//=========== ویرایش یک ویژگی از محصول ===============
+//=========== ویرایش یک ویژگی از محصول =======================
 export const updateAttributeService = (id, data) => {
   return httpService(
-    `admin/categories/attributes/${id}`,
+    `api/admin/categories/attributes/${id}`,
     "put",
     (data = {
       title: `${data.attributeTitle}`,
@@ -68,7 +70,26 @@ export const updateAttributeService = (id, data) => {
   );
 };
 
-//==============  گرفتن همه ی برندها =================
-export const getBrandsService = () => {
-  return httpService("admin/brands", "get");
+//==============  گرفتن همه ی برندها =========================
+export const getAllBrandsService = () => {
+  return httpService("api/admin/brands", "get");
+};
+
+//================  حذف یک برند  =============================
+export const deleteBrandService = (id) => {
+  return httpService(`api/admin/brands/${id}`, "delete");
+};
+
+//=============== ایجاد یک برند جدید ========================
+export const createNewBrandService = (data) => {
+  if (data.logo) {
+    console.log(data.logo);
+    let formData = new FormData();
+    formData.append("original_name", data.original_name);
+    formData.append("persian_name", data.persian_name);
+    formData.append("descriptions", data.descriptions);
+    formData.append("logo", data.logo);
+    data = formData;
+  }
+  return httpService("api/admin/brands", "post", data);
 };

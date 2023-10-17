@@ -269,7 +269,7 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   width: 90px;
 }
 
-.addProduct .choose_file {
+.choose_file {
   background-color: red;
   height: 100%;
   width: 88%;
@@ -401,3 +401,4 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
 .cancel_edit_attribute_box {
   transition: all 500ms ease;
 }
+

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { deleteCategoryService } from "../../../../services/CRUD_categoryService";
-import { handleDeleteOperation } from "../../../general_compo/reusable_operations/DeleteOperation";
+import { handleDeleteOperation } from "../../../general_compo/reusable_operations/delete_operation/DeleteOperation";
 
 export const Operations_product = ({ rowData, data, setData }) => {
   const navigate = useNavigate();
