@@ -20,6 +20,7 @@ import { ControlPages } from "../general_compo/reusable_operations/ControlPages"
 import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
+import { AddNewBrands } from "./brand/add_or_edir_brands/AddNewBrands";
 
 export const Admin = () => {
   return (
@@ -41,7 +42,7 @@ export const Admin = () => {
           path="/product-group-management/:productId/adding-attribute"
           element={<AddAttribute />}
         >
-          <Route path=":attId"/>
+          <Route path=":attId" />
         </Route>
         <Route path="/adding-items" element={<ReusableAdding />} />
 
@@ -57,7 +58,7 @@ export const Admin = () => {
           path="/brand-management"
           element={<ControlPages namePage={<BrandsManagement />} />}
         />
-        {/* <Route path="/adding-items" element={<ReusableAdding />} /> */}
+        <Route path="/adding-brands" element={<AddNewBrands />} />
 
         {/* ==================  مدیریت گارانتی ها  ================== */}
         <Route

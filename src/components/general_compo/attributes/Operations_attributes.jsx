@@ -1,6 +1,6 @@
 import React from "react";
 import { deleteAttributeService } from "../../../services/CRUD_categoryService";
-import { handleDeleteOperation } from "../reusable_operations/DeleteOperation";
+import { handleDeleteOperation } from "../reusable_operations/delete_operation/DeleteOperation";
 
 export const Operations_attributes = ({
   rowData,

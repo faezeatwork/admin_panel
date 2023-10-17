@@ -1,12 +1,13 @@
-import { ErrorMessage, FastField} from "formik";
+import { ErrorMessage, FastField } from "formik";
 import React from "react";
 
 export const TextArea = (props) => {
   const { type, name, placeholder } = props;
   return (
     <div className="p-2">
-      <div className="input-group  ">
+      <div className="input-group">
         <span className="input-group-text titleSpan">{placeholder}</span>
+
         <FastField
           as="textarea"
           type={type}
@@ -16,7 +17,7 @@ export const TextArea = (props) => {
         />
         <ErrorMessage
           name={name}
-          render={(err) => <small className="text-danger">{err}</small>}
+          render={(err) => <small className="text-danger w-100">{err}</small>}
         />
       </div>
     </div>

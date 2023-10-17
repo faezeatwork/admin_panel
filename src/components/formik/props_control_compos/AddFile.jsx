@@ -1,8 +1,8 @@
 import { FastField } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 
 export const AddFile = (props) => {
-  const { formik,label, type, name, placeholder } = props;
+  const { formik, label, type, name, placeholder } = props;
 
   const handleSetFieldValue = (e) => {
     formik.setFieldValue(name, e.target.files[0]);

@@ -48,6 +48,7 @@ export const onSubmit = async (
           newData[index] = res.data.data;
           return newData;
         });
+        setGetAttToEdit(null);
       }
     } catch {}
   } else {

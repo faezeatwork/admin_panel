@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { UpperPartPages } from "../../general_compo/reusable_operations/UpperPartPages";
 import { getCategoriesService } from "../../../services/CRUD_categoryService";
 import { useState } from "react";
-import { Reusable_table } from "../../general_compo/Reusable_table";
 import { useParams } from "react-router-dom";
 import { Operations_product } from "./table_additon/Operations_product";
 import moment from "jalali-moment";
+import { Reusable_table } from "../../general_compo/reusable_table/Reusable_table";
 
 export const ProductGroupManagement = () => {
   const params = useParams();
@@ -25,7 +25,9 @@ export const ProductGroupManagement = () => {
       if (res.status == 200) {
         setData(res.data.data);
       }
-    } catch {}
+    } catch {
+      console.log("testtt");
+    }
   };
   //=======================================
   useEffect(() => {
@@ -70,7 +72,6 @@ export const ProductGroupManagement = () => {
         additionField={additionField}
         show_subset_icon={true}
         params={params}
-  
       />
     </div>
   );

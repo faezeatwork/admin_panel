@@ -4,7 +4,6 @@ import { FormControl } from "../../pages/authorization/FormControl_Auth";
 import { SubmitBtn } from "../../formik/SubmitBtn";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAttributesService } from "../../../services/CRUD_categoryService";
-import { Reusable_table } from "../Reusable_table";
 import { Operations_attributes } from "./Operations_attributes";
 import {
   headers_attributesTable,
@@ -12,6 +11,7 @@ import {
   onSubmit,
   validationSchema,
 } from "./FormikHelper_Attributes";
+import { Reusable_table } from "../reusable_table/Reusable_table";
 
 export const AddAttribute = () => {
   const location = useLocation(); //from Operations_product compo
@@ -137,7 +137,7 @@ export const AddAttribute = () => {
           </Form>
         </Formik>
         <hr />
-        {/* <Reusable_table
+        <Reusable_table
           nameOfColumn={headers_attributesTable}
           dataOfRows={attData}
           having_searchBox={true}
@@ -145,7 +145,7 @@ export const AddAttribute = () => {
           additionField={additionField}
           show_subset_icon={false}
       
-        /> */}
+        />
       </div>
     </div>
   );

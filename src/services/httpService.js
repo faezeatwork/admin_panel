@@ -4,22 +4,20 @@ import axios from "axios";
 import config from "./config.json";
 import swal from "sweetalert";
 
+export const apiPath = config.onlineApi;
 axios.interceptors.response.use(
   (res) => {
+    // console.log(res.data);
     if (res.status != 200 && res.status != 201) {
-      swal(
-        "متاسفم!...",
-        res.data.message
-          ? res.data.message //عنوان قبلا انتخاب شده است.
-          : res.data.title
-          ? res.data.title[0] //عنوان قبلا انتخاب شده است.
-          : res.data.unit
-          ? " res.data.unit"
-          : "مشکلی وجود دارد",
-        "warning"
-      );
+      if (typeof res.data == "object") {
+        let message = "";
+        for (const key in res.data) {
+          message = message + `${res.data[key]}`;
+        }
 
-      console.log(res.data);
+        res.data.message = message;
+      }
+      swal("متاسفم!...", res.data.message, "warning");
     }
 
     return res;
@@ -44,3 +42,17 @@ export const httpService = (url, method, data = null) => {
 };
 
 //میکنه reusable رو axios این فایل فقط
+
+// swal(
+//   "متاسفم!...",
+//   res.data.message
+//     ? res.data.message //عنوان قبلا انتخاب شده است.
+//     : res.data.title
+//     ? res.data.title[0] //عنوان قبلا انتخاب شده است.
+//     : res.data.unit
+//     ? res.data.unit //عنوان قبلا انتخاب شده است.
+//     : res.data.original_name
+//     ? res.data.original_name[0]
+//     : "مشکلی وجود دارد",
+//   "warning"
+// );
