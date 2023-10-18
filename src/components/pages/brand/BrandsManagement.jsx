@@ -54,15 +54,13 @@ export const BrandsManagement = () => {
     {
       title: "عملیات",
       elements: (rowData) => (
-        <>
-          <Operations_brands
-            rowData={rowData}
-            data={data}
-            setData={setData}
-            brandToEdit={brandToEdit}
-            setBrandToEdit={setBrandToEdit}
-          />
-        </>
+        <Operations_brands
+          rowData={rowData}
+          data={data}
+          setData={setData}
+          brandToEdit={brandToEdit}
+          setBrandToEdit={setBrandToEdit}
+        />
       ),
     },
   ];
@@ -92,6 +90,7 @@ export const BrandsManagement = () => {
             setBrandToEdit={setBrandToEdit}
           />
         </div>
+        <div className="text-danger fs-2">اضافه کردن عکس ها : BUG</div>
       </div>
     </>
   );

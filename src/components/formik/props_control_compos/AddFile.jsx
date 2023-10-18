@@ -1,4 +1,4 @@
-import { FastField } from "formik";
+import { ErrorMessage, FastField } from "formik";
 import React, { useEffect } from "react";
 
 export const AddFile = (props) => {
@@ -23,6 +23,10 @@ export const AddFile = (props) => {
           type="file"
           className="choose_file"
           onChange={(e) => handleSetFieldValue(e)}
+        />
+        <ErrorMessage
+          name={name}
+          render={(err) => <small className="text-danger w-100">{err}</small>}
         />
       </div>
     </div>
