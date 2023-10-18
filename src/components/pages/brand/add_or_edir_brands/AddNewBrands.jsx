@@ -16,7 +16,18 @@ export const AddNewBrands = ({
   setBrandToEdit,
 }) => {
   const brandId = brandToEdit?.id;
-  // useEffect(() => {}, []);
+  const [reInitialValues, setReInitialValues] = useState(null);
+
+  useEffect(() => {
+    if (brandToEdit) {
+      setReInitialValues({
+        original_name: brandToEdit.original_name,
+        persian_name: brandToEdit.persian_name || "",
+        descriptions: brandToEdit.descriptions || "",
+        logo: null,
+      });
+    } else setReInitialValues(null);
+  }, [brandToEdit]);
 
   return (
     <div>
@@ -44,9 +55,17 @@ export const AddNewBrands = ({
             {/* ==============  modal-body ============== */}
             <div className="modal-body ">
               <Formik
-                initialValues={brandToEdit || initialValues}
+                initialValues={reInitialValues || initialValues}
                 onSubmit={(values, actions) => {
-                  onSubmit(values, actions, data, setData);
+                  onSubmit(
+                    values,
+                    actions,
+                    data,
+                    setData,
+                    brandToEdit,
+                    setBrandToEdit,
+              
+                  );
                 }}
                 validationSchema={validationSchema}
                 enableReinitialize
@@ -67,7 +86,10 @@ export const AddNewBrands = ({
                           className="btn-close "
                           data-bs-dismiss="modal"
                           aria-label="Close"
-                          onClick={() => formik.resetForm()}
+                          onClick={() => {
+                            formik.resetForm();
+                            setBrandToEdit(null);
+                          }}
                         ></button>
                       </div>
                       {/* ==============  modal-body ============== */}

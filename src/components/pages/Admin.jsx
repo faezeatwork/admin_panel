@@ -21,6 +21,7 @@ import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 import { AddNewBrands } from "./brand/add_or_edir_brands/AddNewBrands";
+import { AddNewGuarantee } from "./guarantee/add_or_edit_guarantee/AddNewGuarantee";
 
 export const Admin = () => {
   return (
@@ -65,7 +66,7 @@ export const Admin = () => {
           path="/guarantee-management"
           element={<ControlPages namePage={<GuaranteeManagement />} />}
         />
-        {/* <Route path="/adding-items" element={<ReusableAdding />} /> */}
+        <Route path="/adding-guarantee" element={<AddNewGuarantee />} />
 
         {/* ==================  مدیریت رنگ ها  ====================== */}
         <Route

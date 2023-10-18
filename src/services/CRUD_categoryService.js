@@ -1,4 +1,4 @@
-import { httpService } from "./httpService";
+import { apiPath, httpService } from "./httpService";
 
 //==================== گرفتن دسته ها ==============================
 export const getCategoriesService = (id = null) => {
@@ -24,7 +24,7 @@ export const getSingleCategoryService = (id) => {
   return httpService(`api/admin/categories/${id}`, "get");
 };
 
-//===================== حذف دیتا ================================
+//===================== حذف دیتا =================================
 export const deleteCategoryService = (id) => {
   return httpService(`api/admin/categories/${id}`, "delete");
 };
@@ -52,12 +52,12 @@ export const createNewAttributeService = (categoryId, data) => {
   );
 };
 
-//============ حذف یک ویژگی از محصول =========================
+//============ حذف یک ویژگی از محصول ==========================
 export const deleteAttributeService = (id) => {
   return httpService(`api/admin/categories/attributes/${id}`, "delete");
 };
 
-//=========== ویرایش یک ویژگی از محصول =======================
+//=========== ویرایش یک ویژگی از محصول ========================
 export const updateAttributeService = (id, data) => {
   return httpService(
     `api/admin/categories/attributes/${id}`,
@@ -70,20 +70,20 @@ export const updateAttributeService = (id, data) => {
   );
 };
 
-//==============  گرفتن همه ی برندها =========================
+//==============  گرفتن همه ی برندها ==========================
 export const getAllBrandsService = () => {
   return httpService("api/admin/brands", "get");
 };
 
-//================  حذف یک برند  =============================
+//================  حذف یک برند  ==============================
 export const deleteBrandService = (id) => {
   return httpService(`api/admin/brands/${id}`, "delete");
 };
 
-//=============== ایجاد یک برند جدید ========================
+//=============== ایجاد یک برند جدید =========================
 export const createNewBrandService = (data) => {
+  // console.log(data);
   if (data.logo) {
-    console.log(data.logo);
     let formData = new FormData();
     formData.append("original_name", data.original_name);
     formData.append("persian_name", data.persian_name);
@@ -92,4 +92,24 @@ export const createNewBrandService = (data) => {
     data = formData;
   }
   return httpService("api/admin/brands", "post", data);
+};
+
+//===============  ویرایش یک برند موجود  ====================
+export const updateBrandService = (id, data) => {
+  console.log(data);
+  if (data.logo) {
+    console.log("logo ");
+    let formData = new FormData();
+    formData.append("original_name", data.original_name);
+    formData.append("persian_name", data.persian_name);
+    formData.append("descriptions", data.descriptions);
+    formData.append("logo", data.logo);
+    data = formData;
+  }
+  return httpService(`api/admin/brands/${id}`, "post", data);
+};
+
+//=============== گرفتن همه گارانتی ها  ======================
+export const getAllGuaranteeService = () => {
+  return httpService("api/admin/guarantees", "get");
 };
