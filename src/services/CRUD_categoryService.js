@@ -96,9 +96,7 @@ export const createNewBrandService = (data) => {
 
 //===============  ویرایش یک برند موجود  ====================
 export const updateBrandService = (id, data) => {
-  console.log(data);
   if (data.logo) {
-    console.log("logo ");
     let formData = new FormData();
     formData.append("original_name", data.original_name);
     formData.append("persian_name", data.persian_name);
@@ -112,4 +110,40 @@ export const updateBrandService = (id, data) => {
 //=============== گرفتن همه گارانتی ها  ======================
 export const getAllGuaranteeService = () => {
   return httpService("api/admin/guarantees", "get");
+};
+
+//=============== اضافه کردن یک گارانتی جدید  ================
+export const createNewGuaranteeService = (data) => {
+  //console.log(data);
+  return httpService("api/admin/guarantees", "post", data);
+};
+
+//============== ویرایش یک گارانتی  ===========================
+export const updateGuaranteeService = (data, id) => {
+  return httpService(`api/admin/guarantees/${id}`, "put", data);
+};
+
+//================ حذف یک گارانتی  ============================
+export const deleteGuaranteeService = (id) => {
+  return httpService(`api/admin/guarantees/${id}`, "delete");
+};
+
+//================= گرفتن همه رنگ ها  ========================
+export const getAllColorService = () => {
+  return httpService("api/admin/colors", "get");
+};
+
+//================ اضافه کردن یک رنگ جدید  ==================
+export const createNewColorService = (data) => {
+  return httpService("api/admin/colors", "post", data);
+};
+
+//================  ویرایش یک رنگ  ===========================
+export const updateColorService = (data, id) => {
+  return httpService(`api/admin/colors/${id}`, "put", data);
+};
+
+//=================== حذف یک رنگ  ============================
+export const deleteColorService = (id) => {
+  return httpService(`api/admin/colors/${id}`, "delete");
 };

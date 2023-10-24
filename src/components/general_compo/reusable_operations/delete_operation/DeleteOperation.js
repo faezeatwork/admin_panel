@@ -6,7 +6,6 @@ export const handleDeleteOperation = async (
   setData,
   deleteService //بره از کجای دیتابیس برداره پاک کنه
 ) => {
-  console.log(id);
   await Swal.fire({
     title: "مطمئن هستید؟",
     text: "محصول حذف شود؟",
@@ -18,13 +17,11 @@ export const handleDeleteOperation = async (
     confirmButtonText: "حذف",
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire("حذف شد!", `محصول مورد نظر حذف شد`, "success");  
+      Swal.fire("حذف شد!", `محصول مورد نظر حذف شد`, "success");
       deleteService(id).then(() => {
         const updateData = data.filter((d) => d.id != id);
         setData(updateData);
       });
-
-      console.log(id);
     }
   });
 };

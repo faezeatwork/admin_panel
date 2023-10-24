@@ -402,3 +402,10 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   transition: all 500ms ease;
 }
 
+/* =================== color management ================== */
+
+.boxOfAddColor {
+  background-color: #ffffff9c;
+  box-shadow: 10px 10px 30px rgb(85, 85, 85);
+  border-radius: 20px;
+}
