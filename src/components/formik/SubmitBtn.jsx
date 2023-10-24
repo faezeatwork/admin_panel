@@ -1,5 +1,5 @@
 import { FastField } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 
 export const SubmitBtn = (id) => {
@@ -8,13 +8,16 @@ export const SubmitBtn = (id) => {
 
     for (const key in id) {
       message = `${id[key]}`;
-      if (message == "undefined") {
+      if (message == "undefined" || message == "null") {
         message = "";
       }
     }
     id = message;
   }
-
+  // useEffect(() => {
+  //   console.log(id);
+  //   console.log("id");
+  // }, [id]);
   return (
     <FastField>
       {({ form }) => {

@@ -7,8 +7,25 @@ import {
   onSubmit,
   validationSchema,
 } from "../FormikHelper_guarantee";
+import { useState } from "react";
+import { useEffect } from "react";
 
-export const AddNewGuarantee = () => {
+export const AddNewGuarantee = ({
+  data,
+  setData,
+  guaranteeToEdit,
+  setGuaranteeToEdit,
+}) => {
+  const [lengthUnit, setLengthUnit] = useState(null);
+  const [reInitialValue, setReInitialValue] = useState(null);
+  useEffect(() => {
+    setReInitialValue({
+      title: guaranteeToEdit.title || "",
+      descriptions: guaranteeToEdit.descriptions || "",
+      length: guaranteeToEdit.length || "",
+      length_unit: guaranteeToEdit.length_unit || "",
+    });
+  }, [guaranteeToEdit]);
   return (
     <div>
       <button
@@ -35,20 +52,31 @@ export const AddNewGuarantee = () => {
             {/* ==============  modal-body ============== */}
             <div className="modal-body ">
               <Formik
-                initialValues={initialValues}
+                initialValues={reInitialValue || initialValues}
                 onSubmit={(values, actions) => {
-                  onSubmit(values, actions);
+                  onSubmit(
+                    values,
+                    actions,
+                    setData,
+                    guaranteeToEdit,
+                    setGuaranteeToEdit,
+                    lengthUnit
+                  );
                 }}
                 validationSchema={validationSchema}
                 enableReinitialize
               >
                 {(formik) => {
+                  console.log(guaranteeToEdit);
+                  console.log(guaranteeToEdit.id);
                   return (
                     <Form>
                       {/* ==============  modal-header ============= */}
                       <div className="modal-header">
                         <h1 className=" w-100 fs-5" id="staticBackdropLabel">
-                          اضافه کردن گارانتی جدید
+                          {guaranteeToEdit.id
+                            ? `${guaranteeToEdit.title} ویرایش گارانتی`
+                            : "افزودن گارانتی جدید"}
                         </h1>
                         {/* =========== ❌ (exit the modal) ========== */}
                         <button
@@ -56,6 +84,10 @@ export const AddNewGuarantee = () => {
                           className="btn-close "
                           data-bs-dismiss="modal"
                           aria-label="Close"
+                          onClick={() => {
+                            formik.resetForm();
+                            setGuaranteeToEdit([]);
+                          }}
                         ></button>
                       </div>
                       {/* ==============  modal-body ============== */}
@@ -86,14 +118,16 @@ export const AddNewGuarantee = () => {
                             <FormikControl
                               control="radio"
                               type="radio"
-                              name="length"
+                              name="length_unit"
                               placeholder="برحسب:"
+                              lengthUnit={lengthUnit}
+                              setLengthUnit={setLengthUnit}
                             />
                           </div>
                         </div>
                       </div>
                       <div className="text-center">
-                        <SubmitBtn />
+                        <SubmitBtn a={guaranteeToEdit.id} />
                       </div>
                     </Form>
                   );

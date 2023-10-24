@@ -5,6 +5,7 @@ import config from "./config.json";
 import swal from "sweetalert";
 
 export const apiPath = config.onlineApi;
+//======================================
 axios.interceptors.response.use(
   (res) => {
     // console.log(res.data);

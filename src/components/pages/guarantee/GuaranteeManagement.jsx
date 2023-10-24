@@ -2,7 +2,6 @@ import React from "react";
 import { UpperPartPages } from "../../general_compo/reusable_operations/UpperPartPages";
 import { getAllGuaranteeService } from "../../../services/CRUD_categoryService";
 import { useState } from "react";
-import swal from "sweetalert";
 import { Reusable_table } from "../../general_compo/reusable_table/Reusable_table";
 import { useEffect } from "react";
 import { Operations_guarantee } from "./Operations_guarantee";
@@ -10,7 +9,7 @@ import { AddNewGuarantee } from "./add_or_edit_guarantee/AddNewGuarantee";
 
 export const GuaranteeManagement = () => {
   const [data, setData] = useState([]);
-
+  const [guaranteeToEdit, setGuaranteeToEdit] = useState([]);
   //================== 📍هدرهای جدول  ======================
   const header_guaranteeTable = [
     { field: "id", title: "id" },
@@ -34,8 +33,15 @@ export const GuaranteeManagement = () => {
   const additionField = [
     {
       title: "عملیات",
-      elements: () => {
-        return <Operations_guarantee />;
+      elements: (rowData) => {
+        return (
+          <Operations_guarantee
+            rowData={rowData}
+            setGuaranteeToEdit={setGuaranteeToEdit}
+            data={data}
+            setData={setData}
+          />
+        );
       },
     },
   ];
@@ -56,7 +62,12 @@ export const GuaranteeManagement = () => {
           titleName="original_name"
         />
         <div className="text-center ">
-          <AddNewGuarantee />
+          <AddNewGuarantee
+            data={data}
+            setData={setData}
+            guaranteeToEdit={guaranteeToEdit}
+            setGuaranteeToEdit={setGuaranteeToEdit}
+          />
         </div>
       </div>
     </>
