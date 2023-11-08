@@ -9,6 +9,7 @@ export const Operations_attributes = ({
   getAttToEdit,
   setGetAttToEdit,
 }) => {
+  //console.log(rowData.in_filter);
   return (
     <div
       className={`rounded ${
@@ -23,7 +24,7 @@ export const Operations_attributes = ({
             attributeId: rowData.id,
             attributeTitle: rowData.title,
             attributeUnit: rowData.unit,
-            switchShowFilter: rowData.in_filter ? 1 : 0,
+            switchShowFilter: rowData.in_filter == "0" ? 0 : 1,
           });
         }}
       ></i>

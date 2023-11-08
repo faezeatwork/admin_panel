@@ -1,5 +1,5 @@
 import { ErrorMessage, FastField } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 
 export const AddFile = (props) => {
   const { formik, label, type, name, placeholder } = props;
@@ -10,9 +10,9 @@ export const AddFile = (props) => {
   return (
     <div className="p-2">
       <div className="input-group">
-        <span className="input-group-text titleSpan">{label}</span>
+        <span className="input-group-text titleSpan customStyle">{label}</span>
         <FastField
-          type={type}
+          type="text"
           className="form-control"
           name={name}
           placeholder={placeholder}

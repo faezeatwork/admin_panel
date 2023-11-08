@@ -5,7 +5,7 @@ import {
   updateCategoryService,
 } from "../../services/CRUD_categoryService";
 import swal from "sweetalert";
-import axios from "axios";
+
 
 export const handleGetParentsCategories = async (setParents) => {
   try {

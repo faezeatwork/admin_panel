@@ -1,15 +1,11 @@
-import { FastField } from "formik";
-import React from "react";
+import { FastField, Form } from "formik";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
-export const SwitchCheckBox = ({ label, name }) => {
+export const SwitchCheckBox = ({ label, name, getAttToEdit }) => {
   return (
     <div className="form-check form-switch pt-4">
-      <FastField
-        className="form-check-input pointer"
-        type="checkbox"
-        name={name}
-      />
-      <label className="form-check-label">{label}</label>
+      <FastField id={name} name={name} type="checkbox" className=" pointer" />
     </div>
   );
 };
