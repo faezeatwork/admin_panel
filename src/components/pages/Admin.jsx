@@ -1,27 +1,28 @@
 import React from "react";
-import { MainPage } from "./main_page/MainPage";
+import { MainPage } from "./0-main_page/MainPage";
 import { Route, Routes } from "react-router-dom";
-import { ColourManagement } from "./colour/ColourManagement";
-import { AddColour, AddNewColor } from "./colour/add_or_edit_color/AddNewColor";
-import { ProductGroupManagement } from "./product/ProductGroupManagement";
-import { ProductManagement } from "./product/ProductManagement";
-import { BrandsManagement } from "./brand/BrandsManagement";
-import { GuaranteeManagement } from "./guarantee/GuaranteeManagement";
-import { DiscountManagement } from "./discount/DiscountManagement";
-import { CardsManagement } from "./card/CardsManagement";
-import { OrdersManagement } from "./order/OrdersManagement";
-import { SendManagement } from "./how_yo_send/SendManagement";
-import { Licenses } from "./license/Licenses";
-import { WatchUsers } from "./watch_users/WatchUsers";
-import { DutyUsers } from "./duty_user/DutyUsers";
+import { AddNewColor } from "./5-colour/add_or_edit_color/AddNewColor";
+import { ProductGroupManagement } from "./1-productGroup/ProductGroupManagement";
+import { ProductManagement } from "./2-product/ProductManagement";
+import { BrandsManagement } from "./3-brand/BrandsManagement";
+import { AddNewBrands } from "./3-brand/add_or_edir_brands/AddNewBrands";
+import { AddNewGuarantee } from "./4-guarantee/add_or_edit_guarantee/AddNewGuarantee";
+import { GuaranteeManagement } from "./4-guarantee/GuaranteeManagement";
+import { ColourManagement } from "./5-colour/ColourManagement";
+import { DiscountManagement } from "./6-discount/DiscountManagement";
+import { CardsManagement } from "./7-card/CardsManagement";
+import { OrdersManagement } from "./8-order/OrdersManagement";
+import { SendManagement } from "./9-how_to_send/SendManagement";
+import { WatchUsers } from "./10-watch_users/WatchUsers";
+import { DutyUsers } from "./11-duty_user/DutyUsers";
+import { Licenses } from "./12-license/Licenses";
+import { Questions } from "./13-question/Questions";
 import { ReusableAdding } from "../general_compo/reusable_operations/ReusableAdding";
-import { Questions } from "./question/Questions";
 import { ControlPages } from "../general_compo/reusable_operations/ControlPages";
 import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
-import { AddNewBrands } from "./brand/add_or_edir_brands/AddNewBrands";
-import { AddNewGuarantee } from "./guarantee/add_or_edit_guarantee/AddNewGuarantee";
+import { AddProduct } from "./2-product/add_or_edit_product/AddProduct";
 
 export const Admin = () => {
   return (
@@ -52,7 +53,7 @@ export const Admin = () => {
           path="/product-management"
           element={<ControlPages namePage={<ProductManagement />} />}
         />
-        <Route path="/adding-items" element={<ReusableAdding />} />
+        <Route path="/adding-product" element={<AddProduct />} />
 
         {/* ===================  مدیریت برندها   ===================== */}
         <Route

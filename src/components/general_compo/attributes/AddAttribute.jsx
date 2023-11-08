@@ -11,7 +11,7 @@ import {
   onSubmit,
   validationSchema,
 } from "./FormikHelper_Attributes";
-import { Reusable_table } from "../reusable_table/Reusable_table";
+import { Reusable_table } from "../reusable_table/reusable_table1/Reusable_table";
 
 export const AddAttribute = () => {
   const location = useLocation(); //from Operations_product compo
@@ -28,8 +28,9 @@ export const AddAttribute = () => {
   };
 
   useEffect(() => {
+    //console.log(getAttToEdit);
     handleGetAttributes();
-  }, []);
+  }, [getAttToEdit]);
 
   // ========== 📍additionField for add attributes ==============
   const additionField = [
@@ -50,7 +51,7 @@ export const AddAttribute = () => {
   //======================= return ===========================
   useEffect(() => {}, []);
   return (
-    <div className="container">
+    <div className="container p-2">
       <div className="row justify-content-center">
         <Formik
           initialValues={getAttToEdit || initialValues} //ترتیبش مهمه 😐
@@ -117,9 +118,11 @@ export const AddAttribute = () => {
               </div>
               <div className="col-md-6 col-lg-3 my-1 d-flex justify-content-around">
                 <FormControl
+                  //form={form}
                   control="switch"
                   label="نمایش در فیلتر"
                   name="switchShowFilter"
+                  getAttToEdit={getAttToEdit}
                 />
                 <div className="mt-3 d-flex">
                   <SubmitBtn getAttToEdit={getAttToEdit} />
@@ -144,7 +147,6 @@ export const AddAttribute = () => {
           placeholder_searchBox="قسمتی از عنوان را وارد کنید"
           additionField={additionField}
           show_subset_icon={false}
-      
         />
       </div>
     </div>

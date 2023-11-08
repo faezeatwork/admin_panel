@@ -1,11 +1,11 @@
 import { apiPath, httpService } from "./httpService";
 
-//==================== گرفتن دسته ها ==============================
+//==================== 1- گرفتن دسته ها ==============================
 export const getCategoriesService = (id = null) => {
   return httpService(`api/admin/categories${id ? `?parent=${id}` : ""}`, "get");
 };
 
-//==================== ساختن دیتا =================================
+//==================== 1- ایجاد یکسته جدید محصول=================================
 export const createNewCategoryService = (data) => {
   if (data.image) {
     let formdata = new FormData();
@@ -19,27 +19,27 @@ export const createNewCategoryService = (data) => {
   }
   return httpService("api/admin/categories", "post", data);
 };
-//============== گرفتن تک دیتا با آی دی =========================
+//============== 1- گرفتن تک دسته با آی دی =========================
 export const getSingleCategoryService = (id) => {
   return httpService(`api/admin/categories/${id}`, "get");
 };
 
-//===================== حذف دیتا =================================
+//===================== 1- حذف یک دشته =================================
 export const deleteCategoryService = (id) => {
   return httpService(`api/admin/categories/${id}`, "delete");
 };
 
-//=================== ویرایش دیتا ===============================
+//=================== 1- ویرایش یک دسته ===============================
 export const updateCategoryService = (data, id) => {
   return httpService(`api/admin/categories/${id}`, "put", data);
 };
 
-//============= گرفتن ویژگی های یک دسته ========================
+//============= 1- گرفتن ویژگی های یک دسته ========================
 export const getAttributesService = (categoryId) => {
   return httpService(`api/admin/categories/${categoryId}/attributes`, "get");
 };
 
-//======= ایجاد یک ویژگی جدید برای یک دسته=====================
+//======= 1- ایجاد یک ویژگی جدید برای یک دسته=====================
 export const createNewAttributeService = (categoryId, data) => {
   return httpService(
     `api/admin/categories/${categoryId}/attributes`,
@@ -52,12 +52,12 @@ export const createNewAttributeService = (categoryId, data) => {
   );
 };
 
-//============ حذف یک ویژگی از محصول ==========================
+//============ 1- حذف یک ویژگی از محصول ==========================
 export const deleteAttributeService = (id) => {
   return httpService(`api/admin/categories/attributes/${id}`, "delete");
 };
 
-//=========== ویرایش یک ویژگی از محصول ========================
+//=========== 1- ویرایش یک ویژگی از محصول ========================
 export const updateAttributeService = (id, data) => {
   return httpService(
     `api/admin/categories/attributes/${id}`,
@@ -70,17 +70,41 @@ export const updateAttributeService = (id, data) => {
   );
 };
 
-//==============  گرفتن همه ی برندها ==========================
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//================= 2- گرفتن محصولات  =============================
+export const getProductsService = (page, countOnPage, searchChar) => {
+  return httpService(
+    `api/admin/products?page=${page}&count=${countOnPage}&searchChar=${searchChar}`,
+    "get"
+  );
+};
+
+//================== 2- حذف یکی از محصولات  =======================
+export const deleteProductService = (id) => {
+  return httpService(`api/admin/products/${id}`, "delete");
+};
+
+//================= 2- اضافه کردن یک محصول جدید =================
+export const createNewProductService = (value) => {
+  return httpService("api/admin/products", "post", value);
+};
+
+//================== 2- ویرایش یک محصول ==========================
+export const updateProductService = (value, id) => {
+  return httpService(`api/admin/products/${id}`, "put", value);
+};
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//==============  3- گرفتن همه ی برندها ==========================
 export const getAllBrandsService = () => {
   return httpService("api/admin/brands", "get");
 };
 
-//================  حذف یک برند  ==============================
+//================  3- حذف یک برند  ==============================
 export const deleteBrandService = (id) => {
   return httpService(`api/admin/brands/${id}`, "delete");
 };
 
-//=============== ایجاد یک برند جدید =========================
+//=============== 3- ایجاد یک برند جدید =========================
 export const createNewBrandService = (data) => {
   // console.log(data);
   if (data.logo) {
@@ -94,7 +118,7 @@ export const createNewBrandService = (data) => {
   return httpService("api/admin/brands", "post", data);
 };
 
-//===============  ویرایش یک برند موجود  ====================
+//===============  3- ویرایش یک برند موجود  ====================
 export const updateBrandService = (id, data) => {
   if (data.logo) {
     let formData = new FormData();
@@ -107,43 +131,45 @@ export const updateBrandService = (id, data) => {
   return httpService(`api/admin/brands/${id}`, "post", data);
 };
 
-//=============== گرفتن همه گارانتی ها  ======================
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//=============== 4- گرفتن همه گارانتی ها  ======================
 export const getAllGuaranteeService = () => {
   return httpService("api/admin/guarantees", "get");
 };
 
-//=============== اضافه کردن یک گارانتی جدید  ================
+//=============== 4- اضافه کردن یک گارانتی جدید  ================
 export const createNewGuaranteeService = (data) => {
   //console.log(data);
   return httpService("api/admin/guarantees", "post", data);
 };
 
-//============== ویرایش یک گارانتی  ===========================
+//============== 4- ویرایش یک گارانتی  ===========================
 export const updateGuaranteeService = (data, id) => {
   return httpService(`api/admin/guarantees/${id}`, "put", data);
 };
 
-//================ حذف یک گارانتی  ============================
+//================ 4- حذف یک گارانتی  ============================
 export const deleteGuaranteeService = (id) => {
   return httpService(`api/admin/guarantees/${id}`, "delete");
 };
 
-//================= گرفتن همه رنگ ها  ========================
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//================= 5- گرفتن همه رنگ ها  ========================
 export const getAllColorService = () => {
   return httpService("api/admin/colors", "get");
 };
 
-//================ اضافه کردن یک رنگ جدید  ==================
+//================ 5- اضافه کردن یک رنگ جدید  ==================
 export const createNewColorService = (data) => {
   return httpService("api/admin/colors", "post", data);
 };
 
-//================  ویرایش یک رنگ  ===========================
+//================  5- ویرایش یک رنگ  ===========================
 export const updateColorService = (data, id) => {
   return httpService(`api/admin/colors/${id}`, "put", data);
 };
 
-//=================== حذف یک رنگ  ============================
+//=================== 5- حذف یک رنگ  ============================
 export const deleteColorService = (id) => {
   return httpService(`api/admin/colors/${id}`, "delete");
 };

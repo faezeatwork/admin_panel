@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 
 export const SubmitBtn = (id) => {
+  //console.log(id);
   if (typeof id == "object") {
     let message = "";
 
@@ -14,10 +15,7 @@ export const SubmitBtn = (id) => {
     }
     id = message;
   }
-  // useEffect(() => {
-  //   console.log(id);
-  //   console.log("id");
-  // }, [id]);
+
   return (
     <FastField>
       {({ form }) => {

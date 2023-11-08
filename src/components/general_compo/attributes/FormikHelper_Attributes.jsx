@@ -37,6 +37,7 @@ export const onSubmit = async (
       switchShowFilter: values.switchShowFilter ? 1 : 0,
     };
     const res = await updateAttributeService(getAttToEdit.attributeId, values);
+    console.log(res);
     try {
       if (res.status == 200) {
         swal("", res.data.message, "success");
@@ -61,6 +62,7 @@ export const onSubmit = async (
       location.state?.categoryId,
       values
     );
+    console.log(res.data.data);
     try {
       if (res.status == 201) {
         swal("", res.data.message, "success");

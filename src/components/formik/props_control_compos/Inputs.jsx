@@ -2,13 +2,16 @@ import { ErrorMessage, FastField } from "formik";
 import React, { useState } from "react";
 
 export const Inputs = (props) => {
-  const { formik, type, name, placeholder, categoryTitle } = props;
+  const { title, formik, type, name, placeholder, categoryTitle } = props;
 
   return (
     <div className="p-2">
       <div className="input-group">
-        <span className="input-group-text titleSpan" id="basic-addon2">
-          {placeholder}
+        <span
+          className="input-group-text titleSpan customStyle"
+          id="basic-addon2"
+        >
+          {title ? title : placeholder}
         </span>
         <FastField
           type={type}

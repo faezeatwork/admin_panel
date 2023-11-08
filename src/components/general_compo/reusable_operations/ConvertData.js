@@ -12,9 +12,9 @@ export const ConvertData = ({ data }) => {
 
   return (
     <div>
-      {persionDate.map(()=>(
-        <td>e</td>
-      ))}
+      {/* {persionDate.map(()=>(
+        <td >e</td>
+      ))} */}
     </div>
   );
 };

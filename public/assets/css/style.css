@@ -147,7 +147,7 @@ body {
 }
 .disabled_pagination {
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .searchBox {
@@ -409,3 +409,17 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   box-shadow: 10px 10px 30px rgb(85, 85, 85);
   border-radius: 20px;
 }
+
+.bg_grey_50 {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+.tree_point_pg {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 30px;
+}
+
+.customStyle {
+  width: 112px;
+}
+
