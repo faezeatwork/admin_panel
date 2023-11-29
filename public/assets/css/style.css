@@ -445,9 +445,7 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   background-color: red;
   border: 1px solid black ;
 }
-.searchedOption li{
-  
-}
+
 .searchedOption li:hover{
   width: 100%;
   background-color: grey;
