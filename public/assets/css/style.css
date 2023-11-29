@@ -423,3 +423,36 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   width: 112px;
 }
 
+/* ================= chips in <AddProduct/> ================ */
+.chips {
+  background-color: rgba(111, 113, 119, 0.297);
+  padding: 8px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  font-size: 14px;
+}
+.chips:hover {
+  background-color: rgb(145, 158, 188);
+  color: aliceblue;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px grey;
+}
+/* ================= MultiSelect_Input ================ */
+
+.searchedOption {
+  /* margin-top: -6px; */
+  margin-right: 111px;
+  background-color: red;
+  border: 1px solid black ;
+}
+.searchedOption li{
+  
+}
+.searchedOption li:hover{
+  width: 100%;
+  background-color: grey;
+}
+.outline_none {
+  outline: none;
+  border-style: none;
+}

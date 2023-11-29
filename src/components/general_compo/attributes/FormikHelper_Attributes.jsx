@@ -8,7 +8,7 @@ import swal from "sweetalert";
 // ==============  📍header of table in add attributes ===================
 export const headers_attributesTable = [
   { field: "id", title: "id" },
-  { field: "title", title: "عنوان محصول" },
+  { field: "title", title: "عنوان ویژگی" },
   { field: "unit", title: "واحد" },
   { field: "in_filter", title: "نمایش در فیلتر" },
 ];

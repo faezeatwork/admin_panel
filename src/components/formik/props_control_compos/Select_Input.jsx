@@ -1,4 +1,4 @@
-import { ErrorMessage, FastField } from "formik";
+import { ErrorMessage, Field } from "formik";
 import React from "react";
 
 export const Select_Input = ({
@@ -7,23 +7,27 @@ export const Select_Input = ({
   firstItem,
   name,
   parent_title,
+  showSubInput,
+  stateOfData,
 }) => {
   return (
     <div className="p-2">
       <div className="input-group mb-1">
         <span className="input-group-text w_6rem customStyle">{label}</span>
-        <FastField
+        <Field
           as="select"
           className="form-control form-select"
           id={name}
           name={name}
+          onClick={(e) => {
+            showSubInput && stateOfData(e.target.value);
+          }}
         >
           {parent_title ? (
             <option>{parent_title}</option>
           ) : (
             <>
-              {/* <option> دسته والد را انتخاب کنید... </option>  */}
-              <option hidden value className="text-danger">
+              <option hidden value>
                 {firstItem ? firstItem : "--"}
               </option>
               {option.map((d) => (
@@ -33,7 +37,7 @@ export const Select_Input = ({
               ))}
             </>
           )}
-        </FastField>
+        </Field>
       </div>
       <ErrorMessage
         name={name}

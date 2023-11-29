@@ -1,16 +1,17 @@
 import {
   getAllBrandsService,
   getAllColorService,
+  getAllGuaranteeService,
   getCategoriesService,
 } from "../../../../services/CRUD_categoryService";
 
 //=========== 👇 گرفتن همه محصولات والد =============
-export const handleGetCategories = async (setMainCategories) => {
+export const handleGetParentCategories = async (setParentsCategories) => {
   const res = await getCategoriesService();
   if (res.status == 200) {
     if (typeof res.data.data == "object") {
       for (const key in res.data.data) {
-        setMainCategories((oldData) => [
+        setParentsCategories((oldData) => [
           ...oldData,
           { id: res.data.data[key].id, value: res.data.data[key].title },
         ]);
@@ -21,6 +22,18 @@ export const handleGetCategories = async (setMainCategories) => {
   }
 };
 
+//=============== 👇 گرفتن دسته های اصلی ===========
+export const handleGetMainCategories = async (id = "0", setMainCategories) => {
+  const res = await getCategoriesService(id);
+
+  if (res.status == 200) {
+    setMainCategories(
+      res.data.data.map((d) => {
+        return { id: d.id, value: d.title };
+      })
+    );
+  }
+};
 //=============== 👇 گرفتن رنگ ها ===================
 export const handleGetColors = async (setColors) => {
   const res = await getAllColorService();
@@ -33,7 +46,6 @@ export const handleGetColors = async (setColors) => {
         ]);
       }
     } else {
-      console.log("its not object");
     }
   }
 };
@@ -53,10 +65,44 @@ export const handleGetBrands = async (setBrands) => {
         ]);
       }
     } else {
-      console.log("its not object");
     }
   }
 };
 
+// ============== 👇 گرفتن گارانتی ها ===================
+export const handleGetGuarantees = async (setGuarantee) => {
+  const res = await getAllGuaranteeService();
+  if (res.status == 200) {
+    setGuarantee(
+      res.data.data.map((d) => {
+        return {
+          id: d.id,
+          value: d.title,
+        };
+      })
+    );
+  }
+};
+// ========= 👇 handle change daste asli va chips =============
+export const handleOnChange = (e, form, option, setChips, name) => {
+  const valueOfCat = option //value of chips
+    .filter((a) => a.id == e.target.value)
+    .map((a) => a.value);
+
+  setChips((chips) => {
+    const newData = [
+      ...chips?.filter((chip) => chip.id != e.target.value), //except chips that selected previously :)
+      {
+        id: e.target.value,
+        value: valueOfCat[0],
+      },
+    ];
+    const selectedIds = newData.map((nd) => nd.id);
+    console.log(selectedIds);
+    form.setFieldValue(name, selectedIds.join("-"));
+    return newData;
+  });
+};
+
 //in compo categories o barnds o colors ro migire
-//baraye dropdown haye AddProduct
+//baraye dropdown haye <AddProduct/>

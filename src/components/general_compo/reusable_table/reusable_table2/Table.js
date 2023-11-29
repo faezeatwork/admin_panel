@@ -1,9 +1,7 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
-import { GreenSpinner } from "../../spinners/GreenSpinner";
+import { GreenSpinner } from "../../spinners&chips/GreenSpinner";
 
 export const Table = ({ data, nameOfColumn, loading }) => {
-
   return (
     <div>
       {loading ? (

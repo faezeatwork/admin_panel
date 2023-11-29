@@ -1,6 +1,6 @@
 import React from "react";
 import { PrevPageBtn } from "../../../general_compo/reusable_operations/PrevPageBtn";
-import { Form, Formik } from "formik";
+import { FastField, Form, Formik } from "formik";
 import {
   initialValues,
   onSubmit,
@@ -13,36 +13,55 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   handleGetBrands,
-  handleGetCategories,
   handleGetColors,
+  handleGetGuarantees,
+  handleGetMainCategories,
+  handleGetParentCategories,
 } from "./Get_Items_dropdowns";
+import { Chips } from "../../../general_compo/spinners&chips/Chips";
 
 export const AddProduct = () => {
-  const [mainCategories, setMainCategories] = useState([]); // نگهداری همه محصولات والد
+  const [parentsCategories, setParentsCategories] = useState([]); // نگهداری همه محصولات والد - اولین محصولاتی که والدی ندارند
+  const [mainCategories, setMainCategories] = useState([]); // نگهداری همه دسته های اصلی
   const [colors, setColors] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [guarantee, setGuarantee] = useState([]);
   const [reInitialize, setReInitialize] = useState([]);
+  const [idOfParent, setIdOfParent] = useState("");
+  const [chips, setChips] = useState([]);
+  const [chips_brand, setChips_brand] = useState([]);
+  const [chips_color, setChips_color] = useState([]);
+  const [chips_guarantee, setChips_guarantee] = useState([]);
+  const [reChips, setReChips] = useState([]);
+
   const location = useLocation();
 
   useEffect(() => {
+    setReChips(location.state?.rowData?.categories);
+  }, []);
+
+  useEffect(() => {
     setReInitialize({
-      category_ids: location.state.rowData?.categories[0].id,
-      color_ids: location.state.rowData?.colors[0].id,
+      category_ids: location.state.rowData?.categories
+        .map((item) => item.id)
+        .join(" - "),
+      color_ids: location.state.rowData?.colors[0]?.id,
+      guarantee_ids: location.state.rowData?.guarantees[0]?.id,
       ...location.state.rowData,
     });
   }, [location]);
 
   useEffect(() => {
-    handleGetCategories(setMainCategories); //محصولات والد رو میگیره
-  }, []);
-
-  useEffect(() => {
+    handleGetParentCategories(setParentsCategories); //محصولات والد-که والدی ندارند- رو میگیره
     handleGetColors(setColors); //رنگ ها رو میگیره
-  }, []);
-
-  useEffect(() => {
     handleGetBrands(setBrands); // برندها رو میگیره
+    handleGetGuarantees(setGuarantee);
   }, []);
+  // ================ 📍گرفتن والدها ===================
+  useEffect(() => {
+    setMainCategories(null);
+    handleGetMainCategories(idOfParent, setMainCategories);
+  }, [idOfParent, parentsCategories]);
 
   return (
     <div>
@@ -70,19 +89,28 @@ export const AddProduct = () => {
           enableReinitialize
         >
           {(form) => {
-            //console.log(form.values);
+            setIdOfParent(form.values.parent_id);     
             return (
               <Form>
-                {mainCategories.length ? (
+                <div onChange={() => setChips([])}>
                   <FormikControl
                     control="select"
-                    label="دسته"
+                    label="دسته والد"
+                    option={parentsCategories}
+                    name="parent_id"
+                    stateOfData={setIdOfParent}
+                  />
+                </div>
+                {idOfParent && mainCategories?.length > 0 ? (
+                  <FormikControl
+                    control="multiSelect"
+                    label="دسته اصلی"
                     option={mainCategories}
                     name="category_ids"
+                    chips={chips}
+                    setChips={setChips}
                   />
-                ) : (
-                  "دسته والد"
-                )}
+                ) : null}
                 <FormikControl
                   control="input"
                   type="text"
@@ -103,30 +131,28 @@ export const AddProduct = () => {
                   title="وزن"
                   placeholder="وزن (کیلوگرم)"
                 />
-                {brands.length ? (
-                  <FormikControl
-                    control="select"
-                    label="برند"
-                    option={brands}
-                    name="brand_id"
-                  />
-                ) : null}
-                {colors.length ? (
-                  <FormikControl
-                    control="select"
-                    label="رنگ"
-                    option={colors}
-                    name="color_ids"
-                  />
-                ) : (
-                  "colors"
-                )}
-                {/* <FormikControl
+                <FormikControl
                   control="select"
+                  label="برند"
+                  option={brands}
+                  name="brand_id"
+                />
+                <FormikControl
+                  control="multiSelect"
+                  label="رنگ"
+                  option={colors}
+                  name="color_ids"
+                  chips={chips_color}
+                  setChips={setChips_color}
+                />
+                <FormikControl
+                  control="multiSelect"
                   label="گارانتی"
-                  option={}
+                  option={guarantee}
                   name="guarantee_ids"
-                />  */}
+                  chips={chips_guarantee}
+                  setChips={setChips_guarantee}
+                />
                 <FormikControl
                   control="textArea"
                   type="type"
