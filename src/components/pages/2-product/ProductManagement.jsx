@@ -10,9 +10,13 @@ export const ProductManagement = () => {
     { field: "id", title: "#" },
     {
       field: null,
-      title: "گروه محصول",
-      elements: (rowData) =>
-        rowData.categories[0] ? rowData.categories[0].title : "__",
+      title: "گروه (های) محصول",
+      elements: (rowData) => {
+        const titleOfProducts = rowData.categories
+          .map((item) => item.title)
+          .join(" - ");
+        return rowData.categories[0] ? titleOfProducts : "__";
+      },
     },
     { field: "title", title: "عنوان" },
     { field: "price", title: "قیمت" },

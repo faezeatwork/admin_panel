@@ -7,7 +7,9 @@ import swal from "sweetalert";
 
 //====================== 📍initialValues =====================
 export const initialValues = {
-  category_ids: "",
+  main_ids:'',
+  parent_id:'',
+  category_ids: [],
   title: "",
   price: "",
   weight: "",
@@ -29,9 +31,9 @@ export const onSubmit = async (
   rowData,
   action,
   reInitialize,
-  setReInitialize
+  setReInitialize,
+
 ) => {
-  console.log(action.resetForm);
   if (reInitialize.id) {
     //📍ویرایش
     const res = await updateProductService(rowData, reInitialize.id);
@@ -43,9 +45,11 @@ export const onSubmit = async (
     const res = await createNewProductService(rowData);
     if (res.status == 201) {
       swal("ثبت شد!...", res.data.message, "success");
+      console.log(res.data.data);
     }
     setReInitialize({
-      category_ids: "",
+      category_ids: [],
+      parent_id: "",
       title: "",
       price: "",
       weight: "",

@@ -4,6 +4,8 @@ import { TextArea } from "./props_control_compos/TextArea";
 import { Inputs } from "./props_control_compos/Inputs";
 import { SwitchCheckBox } from "../pages/authorization/SwitchCheckBox";
 import { Radiobtn } from "./props_control_compos/Radiobtn";
+import { SearchableSelect } from "./props_control_compos/SearchableSelect";
+import { MultiSelect_Input } from "./props_control_compos/MultiSelect_Input";
 
 export const FormikControl = (props) => {
   switch (props.control) {
@@ -11,6 +13,8 @@ export const FormikControl = (props) => {
       return <Inputs {...props} />;
     case "select":
       return <Select_Input {...props} />;
+    case "multiSelect":
+      return <MultiSelect_Input {...props} />;
     case "textArea":
       return <TextArea {...props} />;
     case "addFile":
