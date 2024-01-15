@@ -41,10 +41,12 @@ export const Operations_product = ({ rowData, data, setData }) => {
           className="icon_product_table fas fa-receipt text-info mx-1 pointer has_tooltip"
           title="ثبت ویژگی"
           onClick={() => {
+            //for <AddAttribute />
             navigate(
               `/product-group-management/${rowData.id}/adding-attribute`,
               {
                 state: {
+                  rowData: rowData,
                   parentId: rowData.parent_id,
                   categoryId: rowData.id,
                 },
@@ -60,7 +62,7 @@ export const Operations_product = ({ rowData, data, setData }) => {
         className="icon_product_table fas fa-times text-danger mx-1 pointer has_tooltip"
         title="حذف محصول"
         onClick={() => {
-          console.log(rowData);
+       
           handleDeleteOperation(
             rowData.id,
             data,

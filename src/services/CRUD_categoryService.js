@@ -1,4 +1,5 @@
-import { apiPath, httpService } from "./httpService";
+import { ConvertDataToFormData } from "../components/general_compo/utils/ConvertDataToFormData.jsx";
+import { httpService } from "./httpService";
 
 //==================== 1- گرفتن دسته ها ==============================
 export const getCategoriesService = (id = null) => {
@@ -86,13 +87,29 @@ export const deleteProductService = (id) => {
 
 //================= 2- اضافه کردن یک محصول جدید =================
 export const createNewProductService = (value) => {
-  return httpService("api/admin/products", "post", value);
+  value.image ? console.log(value.image.name) : console.log("not");
+  return httpService(
+    "api/admin/products",
+    "post",
+    value.image ? ConvertDataToFormData(value) : value
+  );
 };
 
 //================== 2- ویرایش یک محصول ==========================
 export const updateProductService = (value, id) => {
   return httpService(`api/admin/products/${id}`, "put", value);
 };
+
+//======== 2-اضافه کردن یک ویژگی جدید برای یک محصول ============
+export const createNewAttrForProductService = (id, value) => {
+  return httpService(`api/admin/products/${id}/add_attr`, "post", value);
+};
+
+//=============== 2- گرفتن تایتل همه ی محصولات ===================
+export const getAllTitlesOfProducts = () => {
+  return httpService("api/admin/products/all_titles", "get");
+};
+
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
 //==============  3- گرفتن همه ی برندها ==========================
 export const getAllBrandsService = () => {
@@ -173,3 +190,26 @@ export const updateColorService = (data, id) => {
 export const deleteColorService = (id) => {
   return httpService(`api/admin/colors/${id}`, "delete");
 };
+
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//================= 6- گرفتن همه تخفیف ها  ====================
+export const getAllDiscountsService = () => {
+  return httpService("api/admin/discounts", "get");
+};
+
+//================= 6- ایجاد یک تخفیف جدید ====================
+export const createNewDiscountService = (values) => {
+  return httpService("api/admin/discounts", "post", values);
+};
+
+//================= 6- ویرایش یک تخفیف  =======================
+export const updateDiscountService = (id, values) => {
+  return httpService(`api/admin/discounts/${id}`, "put", values);
+};
+
+//================= 6- حذف یک تخفیف  ==========================
+export const deleteDiscountService = (id) => {
+  return httpService(`api/admin/discounts/${id}`, "delete");
+};
+
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍

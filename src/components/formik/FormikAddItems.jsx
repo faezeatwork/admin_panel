@@ -86,7 +86,7 @@ export const FormikAddItems = ({ categoryId }) => {
       enableReinitialize
     >
       {(formik) => {
-        //console.log(formik);
+        // console.log(formik.values);
         return (
           <Form>
             {parents.length > 0 ? (
@@ -119,7 +119,7 @@ export const FormikAddItems = ({ categoryId }) => {
               formik={formik}
               control="addFile"
               type="text"
-              name="addFile"
+              name="image"
               label="تصویر"
               placeholder="برای انتخاب تصویر خود کلیک کنید."
             />

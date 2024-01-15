@@ -3,14 +3,16 @@ import React from "react";
 
 export const AddFile = (props) => {
   const { formik, label, type, name, placeholder } = props;
-
+  // console.log(formik.values.image);
   const handleSetFieldValue = (e) => {
     formik.setFieldValue(name, e.target.files[0]);
   };
   return (
     <div className="p-2">
       <div className="input-group">
-        <span className="input-group-text titleSpan customStyle">{label}</span>
+        <span className="input-group-text titleSpan customWidth-112">
+          {label}
+        </span>
         <FastField
           type="text"
           className="form-control"

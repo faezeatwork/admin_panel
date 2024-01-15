@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   getAllBrandsService,
   getAllColorService,
@@ -84,25 +85,31 @@ export const handleGetGuarantees = async (setGuarantee) => {
   }
 };
 // ========= 👇 handle change daste asli va chips =============
-export const handleOnChange = (e, form, option, setChips, name) => {
+export const handleOnChange = (thisId, form, option, chips, setChips, name) => {
+
+
   const valueOfCat = option //value of chips
-    .filter((a) => a.id == e.target.value)
+    .filter((a) => a.id == thisId)
     .map((a) => a.value);
 
-  setChips((chips) => {
+  setChips((chips = []) => {
     const newData = [
-      ...chips?.filter((chip) => chip.id != e.target.value), //except chips that selected previously :)
+      ...chips?.filter((chip) => chip.id != thisId), //except chips that selected previously :)
       {
-        id: e.target.value,
-        value: valueOfCat[0],
+        id: thisId,
+        value:valueOfCat,
       },
     ];
-    const selectedIds = newData.map((nd) => nd.id);
-    console.log(selectedIds);
-    form.setFieldValue(name, selectedIds.join("-"));
-    return newData;
-  });
+   const selectedIds = newData.map((nd) => nd.id);
+  form.setFieldValue(name, selectedIds.join("-"));
+  return newData;
+});
 };
 
+
+//
+//
+//
+//
 //in compo categories o barnds o colors ro migire
 //baraye dropdown haye <AddProduct/>

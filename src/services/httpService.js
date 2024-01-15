@@ -5,10 +5,9 @@ import config from "./config.json";
 import swal from "sweetalert";
 
 export const apiPath = config.onlineApi;
-//======================================
+//============== نمایش خطا 👇=================
 axios.interceptors.response.use(
   (res) => {
-    // console.log(res.data);
     if (res.status != 200 && res.status != 201) {
       if (typeof res.data == "object") {
         let message = "";
@@ -43,17 +42,3 @@ export const httpService = (url, method, data = null) => {
 };
 
 //میکنه reusable رو axios این فایل فقط
-
-// swal(
-//   "متاسفم!...",
-//   res.data.message
-//     ? res.data.message //عنوان قبلا انتخاب شده است.
-//     : res.data.title
-//     ? res.data.title[0] //عنوان قبلا انتخاب شده است.
-//     : res.data.unit
-//     ? res.data.unit //عنوان قبلا انتخاب شده است.
-//     : res.data.original_name
-//     ? res.data.original_name[0]
-//     : "مشکلی وجود دارد",
-//   "warning"
-// );

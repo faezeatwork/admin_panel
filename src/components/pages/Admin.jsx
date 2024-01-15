@@ -23,6 +23,8 @@ import { Register } from "./authorization/register/Register";
 import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 import { AddProduct } from "./2-product/add_or_edit_product/AddProduct";
+import { AddAttributes } from "./2-product/table_addition/AddAttributes";
+import { AddNewDiscounts_modal } from "./6-discount/AddNewDiscounts_modal";
 
 export const Admin = () => {
   return (
@@ -33,7 +35,7 @@ export const Admin = () => {
 
         {/* ======================  ثبت ویژگی ها ======================== */}
 
-        {/* ================= مدیریت گروه محصول ===================== */}
+        {/* ================= 1- مدیریت گروه محصول  ===================== */}
         <Route
           path="/product-group-management"
           element={<ControlPages namePage={<ProductGroupManagement />} />}
@@ -48,11 +50,15 @@ export const Admin = () => {
         </Route>
         <Route path="/adding-items" element={<ReusableAdding />} />
 
-        {/* ===================  مدیریت محصول ======================== */}
+        {/* =================== 2- مدیریت محصول ======================== */}
         <Route
           path="/product-management"
           element={<ControlPages namePage={<ProductManagement />} />}
         />
+        <Route
+          path="/product-management/:productId/adding-attribute"
+          element={<AddAttributes />}
+        ></Route>
         <Route path="/adding-product" element={<AddProduct />} />
 
         {/* ===================  مدیریت برندها   ===================== */}
@@ -80,8 +86,9 @@ export const Admin = () => {
         <Route
           path="/discount-management"
           element={<ControlPages namePage={<DiscountManagement />} />}
-        />
-        {/* <Route path="/add-colour" element={<AddColour />} /> */}
+        >
+          <Route path="/discount-management/add-edit-discount" />
+        </Route>
 
         {/* ==================  مدیریت سبد ها  ====================== */}
         <Route

@@ -28,7 +28,6 @@ export const AddAttribute = () => {
   };
 
   useEffect(() => {
-    //console.log(getAttToEdit);
     handleGetAttributes();
   }, [getAttToEdit]);
 
@@ -74,7 +73,8 @@ export const AddAttribute = () => {
               className="text-start"
               onClick={() =>
                 navigate(
-                  `/product-group-management/${location.state?.parentId}`
+                  `/product-group-management/${location.state?.parentId}`,
+                  { state: location.state }
                 )
               }
             >

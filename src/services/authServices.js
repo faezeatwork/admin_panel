@@ -8,7 +8,7 @@ export const loginService = (values) => {
 };
 
 export const registerService = () => {
-  return httpService("api/auth/register", "post");
+  return httpService("api/auth/", "post");
 };
 
 

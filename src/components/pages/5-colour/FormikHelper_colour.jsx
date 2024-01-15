@@ -20,7 +20,7 @@ export const onSubmit = async (
   setColorToEdit,
   setColorPickerValue
 ) => {
-  console.log(values);
+
   //===== ⭐ ویرایش یکی از رنگ ها =====================
   if (colorToEdit) {
     const res = await updateColorService(values, colorToEdit.id);

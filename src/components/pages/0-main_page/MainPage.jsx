@@ -3,9 +3,9 @@ import { Boxes } from "./Boxes";
 import { BarChart } from "../../../charts/BarChart";
 import { useLocation } from "react-router-dom";
 export const MainPage = () => {
-  const location = useLocation();
+  // const location = useLocation();
   //const { myState } = location.state;
-  //console.log({ myState });
+
   return (
     <div className="ps-2 " id="mainPage">
       {/* <div>{myState}</div> */}

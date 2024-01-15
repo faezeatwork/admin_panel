@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 export const Register = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      <div className="">
-        <div className="customRegister  ">
+      <div className="animate__animated animate__shakeY">
+        <div className="customRegister">
           <div className="w-100 text-center">
             {/* register icon 🙋‍♀️🙋‍♂️*/}
             <img

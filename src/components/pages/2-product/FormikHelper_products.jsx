@@ -7,8 +7,8 @@ import swal from "sweetalert";
 
 //====================== 📍initialValues =====================
 export const initialValues = {
-  main_ids:'',
-  parent_id:'',
+  main_ids: "",
+  parent_id: "",
   category_ids: [],
   title: "",
   price: "",
@@ -32,7 +32,8 @@ export const onSubmit = async (
   action,
   reInitialize,
   setReInitialize,
-
+  setChips_color,
+  setChips_guarantee
 ) => {
   if (reInitialize.id) {
     //📍ویرایش
@@ -44,9 +45,12 @@ export const onSubmit = async (
     //📍افزودن محصول جدید
     const res = await createNewProductService(rowData);
     if (res.status == 201) {
-      swal("ثبت شد!...", res.data.message, "success");
       console.log(res.data.data);
+      swal("ثبت شد!...", res.data.message, "success");
+
     }
+    setChips_color([]);
+    setChips_guarantee([]);
     setReInitialize({
       category_ids: [],
       parent_id: "",
@@ -54,8 +58,8 @@ export const onSubmit = async (
       price: "",
       weight: "",
       brand_id: "",
-      color_ids: "",
-      guarantee_ids: "",
+      color_ids: [],
+      guarantee_ids: [],
       descriptions: "",
       short_descriptions: "",
       cart_descriptions: "",

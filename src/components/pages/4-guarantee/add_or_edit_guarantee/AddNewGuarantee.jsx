@@ -26,6 +26,12 @@ export const AddNewGuarantee = ({
       length_unit: guaranteeToEdit.length_unit || "",
     });
   }, [guaranteeToEdit]);
+
+  //===================== 📍 handle reset form ==========================
+  // const handleResetForm = () => {
+  //   document.getElementById("formOfAddGuarantee").reset();
+  // };
+
   return (
     <div>
       <button
@@ -67,10 +73,8 @@ export const AddNewGuarantee = ({
                 enableReinitialize
               >
                 {(formik) => {
-                  console.log(guaranteeToEdit);
-                  console.log(guaranteeToEdit.id);
                   return (
-                    <Form>
+                    <Form id="formOfAddGuarantee">
                       {/* ==============  modal-header ============= */}
                       <div className="modal-header">
                         <h1 className=" w-100 fs-5" id="staticBackdropLabel">
@@ -86,7 +90,7 @@ export const AddNewGuarantee = ({
                           aria-label="Close"
                           onClick={() => {
                             formik.resetForm();
-                            setGuaranteeToEdit([]);
+                            // handleResetForm();
                           }}
                         ></button>
                       </div>
@@ -127,7 +131,7 @@ export const AddNewGuarantee = ({
                         </div>
                       </div>
                       <div className="text-center">
-                        <SubmitBtn a={guaranteeToEdit.id} />
+                        <SubmitBtn id={guaranteeToEdit.id} />
                       </div>
                     </Form>
                   );
