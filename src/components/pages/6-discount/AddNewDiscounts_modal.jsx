@@ -11,25 +11,28 @@ import {
 import { getAllTitlesOfProducts } from "../../../services/CRUD_categoryService";
 import { useEffect } from "react";
 import "animate.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import moment from "jalali-moment";
 
 export const AddNewDiscounts_modal = ({ discountToEdit }) => {
   const [titlesOfProducts, setTitlesOfProducts] = useState([]);
   const [chips_productTitles, setChips_productTitles] = useState([]);
-  const [reInitialize, setReInitialize] = useState([]);
+  const [reInitialize, setReInitialize] = useState({});
 
   useEffect(() => {
     if (discountToEdit) {
+      console.log(discountToEdit);
       setReInitialize({
         ...discountToEdit,
         expire_at: moment(discountToEdit.expire_at)
           .locale("fa")
           .format("YYYY/M/D"),
         for_all: discountToEdit.for_all ? true : false,
-        product_ids: "",
-        // product_ids: discountToEdit.product_ids?.map((p) => p.id).join("-"),
+        product_ids: discountToEdit.product_ids?.map((p) => p.id).join("-"),
       });
+    } else {
+      console.log("no data");
+      // setReInitialize()
     }
   }, [discountToEdit]);
 
@@ -71,6 +74,7 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
   };
   //===================== 📍 handle reset form ==========================
   const handleResetForm = () => {
+    console.log("reset form");
     document.getElementById("formOfAddDiscounts").reset();
   };
 
@@ -103,6 +107,7 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
                   : `${discountToEdit.title}`}
               </h5>
               <NavLink to={"/discount-management"} className="ps-4">
+                {/* <!------------ close btn ------------> */}
                 <button
                   id="btn-close-modal"
                   type="button"
@@ -124,6 +129,7 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
                 enableReinitialize
               >
                 {(formik) => {
+                  console.log(reInitialize);
                   return (
                     <Form id="formOfAddDiscounts">
                       <FormikControl
@@ -151,6 +157,7 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
                         name="expire_at"
                         label="تاریخ انقضاء"
                         yearsLimit={{ from: 2, to: 10 }}
+                        initialDate={discountToEdit?.expire_at || undefined}
                       />
 
                       <FormikControl

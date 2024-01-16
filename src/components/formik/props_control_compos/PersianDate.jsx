@@ -21,7 +21,7 @@ const months = [
   { id: 12, value: "اسفند" },
 ];
 
-export const PersianDate = ({ formik, name, label, yearsLimit }) => {
+export const PersianDate = ({ formik, name, label, yearsLimit, initialDate }) => {
   const [day, setDay] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState(); //امسال
@@ -29,7 +29,7 @@ export const PersianDate = ({ formik, name, label, yearsLimit }) => {
   const [showConfig, setShowConfig] = useState(false);
 
   useEffect(() => {
-    let now = jMoment();
+    let now = jMoment(initialDate);
     setDay(now.jDate());
     setMonth(now.jMonth() + 1); //چون از صفر شروع میکنه بعلاوه یک میکنیم
     setYear(now.jYear()); //امسال

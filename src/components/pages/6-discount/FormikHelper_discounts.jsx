@@ -84,6 +84,7 @@ export const onSubmit = async (values, action, discountToEdit) => {
     console.log(discountToEdit.id);
     console.log(convertValues);
     const res = await updateDiscountService(discountToEdit.id, convertValues);
+    console.log("res");
     console.log(res);
   }
 };
