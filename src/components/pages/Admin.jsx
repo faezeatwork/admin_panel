@@ -9,7 +9,7 @@ import { AddNewBrands } from "./3-brand/add_or_edir_brands/AddNewBrands";
 import { AddNewGuarantee } from "./4-guarantee/add_or_edit_guarantee/AddNewGuarantee";
 import { GuaranteeManagement } from "./4-guarantee/GuaranteeManagement";
 import { ColourManagement } from "./5-colour/ColourManagement";
-import { DiscountManagement } from "./6-discount/DiscountManagement";
+// import { DiscountManagement } from "./6-discount/DiscountManagement";
 import { CardsManagement } from "./7-card/CardsManagement";
 import { OrdersManagement } from "./8-order/OrdersManagement";
 import { SendManagement } from "./9-how_to_send/SendManagement";
@@ -24,7 +24,7 @@ import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 import { AddProduct } from "./2-product/add_or_edit_product/AddProduct";
 import { AddAttributes } from "./2-product/table_addition/AddAttributes";
-import { AddNewDiscounts_modal } from "./6-discount/AddNewDiscounts_modal";
+// import { AddNewDiscounts_modal } from "./6-discount/AddNewDiscounts_modal";
 
 export const Admin = () => {
   return (
@@ -61,77 +61,77 @@ export const Admin = () => {
         ></Route>
         <Route path="/adding-product" element={<AddProduct />} />
 
-        {/* ===================  مدیریت برندها   ===================== */}
+        {/* =================== 3- مدیریت برندها   ===================== */}
         <Route
           path="/brand-management"
           element={<ControlPages namePage={<BrandsManagement />} />}
         />
         <Route path="/adding-brands" element={<AddNewBrands />} />
 
-        {/* ==================  مدیریت گارانتی ها  ================== */}
+        {/* ================== 4- مدیریت گارانتی ها  ================== */}
         <Route
           path="/guarantee-management"
           element={<ControlPages namePage={<GuaranteeManagement />} />}
         />
         <Route path="/adding-guarantee" element={<AddNewGuarantee />} />
 
-        {/* ==================  مدیریت رنگ ها  ====================== */}
+        {/* ================== 5- مدیریت رنگ ها  ====================== */}
         <Route
           path="/colour-management"
           element={<ControlPages namePage={<ColourManagement />} />}
         />
         <Route path="/add-colour" element={<AddNewColor />} />
 
-        {/* ==================  مدیریت تخفیف ها  ==================== */}
-        <Route
+        {/* ================== 6- مدیریت تخفیف ها  ==================== */}
+        {/* <Route
           path="/discount-management"
           element={<ControlPages namePage={<DiscountManagement />} />}
         >
           <Route path="/discount-management/add-edit-discount" />
-        </Route>
+        </Route> */}
 
-        {/* ==================  مدیریت سبد ها  ====================== */}
+        {/* ================== 7- مدیریت سبد ها  ====================== */}
         <Route
           path="/card-management"
           element={<ControlPages namePage={<CardsManagement />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
-        {/* ==================  مدیریت سفارشات  ==================== */}
+        {/* ================== 8- مدیریت سفارشات  ==================== */}
         <Route
           path="/order-management"
           element={<ControlPages namePage={<OrdersManagement />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
-        {/* =================  مدیریت نحوه ارسال ================== */}
+        {/* ================= 9- مدیریت نحوه ارسال ================== */}
         <Route
           path="/send-management"
           element={<ControlPages namePage={<SendManagement />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
-        {/* =================   مشاهده کاربران  ================== */}
+        {/* ================= 10-  مشاهده کاربران  ================== */}
         <Route
           path="/watch-user"
           element={<ControlPages namePage={<WatchUsers />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
-        {/* ==================    نقش ها   ======================= */}
+        {/* ==================  11-  نقش ها   ======================= */}
         <Route
           path="/duty-user"
           element={<ControlPages namePage={<DutyUsers />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
-        {/* ==================    مجوز ها   ====================== */}
+        {/* ==================  12-  مجوز ها   ====================== */}
         <Route
           path="/license"
           element={<ControlPages namePage={<Licenses />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
-        {/* ==================    سوالات    ======================= */}
+        {/* ==================  13-  سوالات    ======================= */}
         <Route
           path="/question"
           element={<ControlPages namePage={<Questions />} />}
