@@ -9,7 +9,7 @@ import { AddNewBrands } from "./3-brand/add_or_edir_brands/AddNewBrands";
 import { AddNewGuarantee } from "./4-guarantee/add_or_edit_guarantee/AddNewGuarantee";
 import { GuaranteeManagement } from "./4-guarantee/GuaranteeManagement";
 import { ColourManagement } from "./5-colour/ColourManagement";
-// import { DiscountManagement } from "./6-discount/DiscountManagement";
+import { DiscountManagement } from "./6-discount/DiscountManagement";
 import { CardsManagement } from "./7-card/CardsManagement";
 import { OrdersManagement } from "./8-order/OrdersManagement";
 import { SendManagement } from "./9-how_to_send/SendManagement";
@@ -24,7 +24,7 @@ import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 import { AddProduct } from "./2-product/add_or_edit_product/AddProduct";
 import { AddAttributes } from "./2-product/table_addition/AddAttributes";
-// import { AddNewDiscounts_modal } from "./6-discount/AddNewDiscounts_modal";
+import { AddNewDiscounts_modal } from "./6-discount/AddNewDiscounts_modal";
 
 export const Admin = () => {
   return (
@@ -83,12 +83,12 @@ export const Admin = () => {
         <Route path="/add-colour" element={<AddNewColor />} />
 
         {/* ================== 6- مدیریت تخفیف ها  ==================== */}
-        {/* <Route
+        <Route
           path="/discount-management"
           element={<ControlPages namePage={<DiscountManagement />} />}
         >
           <Route path="/discount-management/add-edit-discount" />
-        </Route> */}
+        </Route>
 
         {/* ================== 7- مدیریت سبد ها  ====================== */}
         <Route
