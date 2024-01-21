@@ -4,10 +4,15 @@ import { TextArea } from "./props_control_compos/TextArea";
 import { Inputs } from "./props_control_compos/Inputs";
 import { SwitchCheckBox } from "../pages/authorization/SwitchCheckBox";
 import { Radiobtn } from "./props_control_compos/Radiobtn";
+<<<<<<< HEAD
 import { MultiSelect_Input } from "./props_control_compos/MultiSelect_Input";
 import { CkEditor } from "./props_control_compos/CkEditor";
 import { TypesOfAttr } from "./props_control_compos/TypesOfAttr";
 import { PersianDate } from "./props_control_compos/PersianDate";
+=======
+import { SearchableSelect } from "./props_control_compos/SearchableSelect";
+import { MultiSelect_Input } from "./props_control_compos/MultiSelect_Input";
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 
 export const FormikControl = (props) => {
   switch (props.control) {
@@ -16,7 +21,11 @@ export const FormikControl = (props) => {
     case "select":
       return <Select_Input {...props} />;
     case "multiSelect":
+<<<<<<< HEAD
       return <MultiSelect_Input {...props} />; //chips ha injan
+=======
+      return <MultiSelect_Input {...props} />;
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
     case "textArea":
       return <TextArea {...props} />;
     case "addFile":
@@ -25,11 +34,14 @@ export const FormikControl = (props) => {
       return <SwitchCheckBox {...props} />;
     case "radio":
       return <Radiobtn {...props} />;
+<<<<<<< HEAD
     case "ckEditor":
       return <CkEditor {...props} />; //textarea ba ghabeliate virayesh motoon
     case "typeOfAtt":
       return <TypesOfAttr {...props} />;
     case "persianDate":
       return <PersianDate {...props} />;
+=======
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
   }
 };

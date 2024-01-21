@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Field } from "formik";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -45,6 +46,30 @@ export const MultiSelect_Input = (props) => {
           </span>
           <Field>
             {() => {
+=======
+import { Field, Form, Formik } from "formik";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { Chips } from "../../general_compo/spinners&chips/Chips";
+
+export const MultiSelect_Input = (props) => {
+  const { chips, setChips, label, option, name } = props;
+  const [searchedOption, setSearchedOption] = useState();
+  const [showOption, setShowOption] = useState(false);
+  useEffect(() => {
+    setSearchedOption(option);
+  }, [option]);
+  useEffect(() => {
+    console.log(console.log(searchedOption));
+  }, [searchedOption]);
+  return (
+    <div>
+      <div className="p-2">
+        <div className="input-group mb-1 ">
+          <span className="input-group-text w_6rem customStyle">{label}</span>
+          <Field>
+            {({ form }) => {
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
               return (
                 <Field
                   as="text"
@@ -52,6 +77,7 @@ export const MultiSelect_Input = (props) => {
                   name={name}
                 >
                   {
+<<<<<<< HEAD
                     <div className="d-flex justify-content-between">
                       <div>
                         <div>
@@ -87,6 +113,27 @@ export const MultiSelect_Input = (props) => {
                           </button>
                         </NavLink>
                       )}
+=======
+                    <div>
+                      <div>
+                        <input
+                          className="w-100 border-none outline_none"
+                          // type="text"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowOption(!showOption);
+                          }}
+                          onChange={(e) => {
+                            setSearchedOption(
+                              option.filter((o) =>
+                                o.value.includes(e.target.value)
+                              )
+                            );
+                            console.log(searchedOption);
+                          }}
+                        />
+                      </div>
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                     </div>
                   }
                 </Field>
@@ -94,6 +141,7 @@ export const MultiSelect_Input = (props) => {
             }}
           </Field>
         </div>
+<<<<<<< HEAD
         <Field>
           {({ form }) => {
             return (
@@ -125,6 +173,30 @@ export const MultiSelect_Input = (props) => {
           }}
         </Field>
       </div>
+=======
+        <ul
+          className={`${
+            showOption ? "" : "d-none bg-danger"
+          }list-unstyled searchedOption`}
+        >
+          {searchedOption?.map((so) => (
+            <li
+              className="pointer"
+              onClick={() => {
+      
+                setChips((chip) => [
+                  ...chip.filter((c) => c.id != so.id),
+                  { id: so.id, value: so.value },
+                ]);
+              }}
+            >
+              {so.value}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
       <Chips chips={chips} setChips={setChips} />
     </div>
   );

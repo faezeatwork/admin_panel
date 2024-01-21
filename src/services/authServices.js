@@ -8,7 +8,11 @@ export const loginService = (values) => {
 };
 
 export const registerService = () => {
+<<<<<<< HEAD
   return httpService("api/auth/", "post");
+=======
+  return httpService("api/auth/register", "post");
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 };
 
 

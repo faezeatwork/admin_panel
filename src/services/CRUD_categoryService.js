@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { ConvertDataToFormData } from "../components/general_compo/utils/ConvertDataToFormData.jsx";
 import { httpService } from "./httpService";
+=======
+import { apiPath, httpService } from "./httpService";
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 
 //==================== 1- گرفتن دسته ها ==============================
 export const getCategoriesService = (id = null) => {
@@ -87,18 +91,23 @@ export const deleteProductService = (id) => {
 
 //================= 2- اضافه کردن یک محصول جدید =================
 export const createNewProductService = (value) => {
+<<<<<<< HEAD
   value.image ? console.log(value.image.name) : console.log("not");
   return httpService(
     "api/admin/products",
     "post",
     value.image ? ConvertDataToFormData(value) : value
   );
+=======
+  return httpService("api/admin/products", "post", value);
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 };
 
 //================== 2- ویرایش یک محصول ==========================
 export const updateProductService = (value, id) => {
   return httpService(`api/admin/products/${id}`, "put", value);
 };
+<<<<<<< HEAD
 
 //======== 2-اضافه کردن یک ویژگی جدید برای یک محصول ============
 export const createNewAttrForProductService = (id, value) => {
@@ -110,6 +119,8 @@ export const getAllTitlesOfProducts = () => {
   return httpService("api/admin/products/all_titles", "get");
 };
 
+=======
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
 //==============  3- گرفتن همه ی برندها ==========================
 export const getAllBrandsService = () => {
@@ -190,6 +201,7 @@ export const updateColorService = (data, id) => {
 export const deleteColorService = (id) => {
   return httpService(`api/admin/colors/${id}`, "delete");
 };
+<<<<<<< HEAD
 
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
 //================= 6- گرفتن همه تخفیف ها  ====================
@@ -213,3 +225,5 @@ export const deleteDiscountService = (id) => {
 };
 
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+=======
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f

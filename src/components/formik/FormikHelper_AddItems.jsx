@@ -5,7 +5,11 @@ import {
   updateCategoryService,
 } from "../../services/CRUD_categoryService";
 import swal from "sweetalert";
+<<<<<<< HEAD
 import { ConvertDataToFormData } from "../general_compo/utils/ConvertDataToFormData";
+=======
+
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 
 export const handleGetParentsCategories = async (setParents) => {
   try {
@@ -46,9 +50,13 @@ export const onSubmit = async (values, actions, categoryId, formik) => {
       is_active: values.is_active ? 1 : 0,
       show_in_menu: values.show_in_menu ? 1 : 0,
     };
+<<<<<<< HEAD
     const convertValue = values.image ? ConvertDataToFormData(values) : values;
     console.log(values);
     const res = await createNewCategoryService(convertValue);
+=======
+    const res = await createNewCategoryService(values);
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
     if (res.status == 201) {
       swal("رکورد ثبت شد", res.data.message, "success");
       actions.resetForm();

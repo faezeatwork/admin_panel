@@ -1,9 +1,17 @@
 import { FastField } from "formik";
+<<<<<<< HEAD
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
 export const SubmitBtn = (id) => {
   // console.log(id);
+=======
+import React, { useEffect } from "react";
+import { Spinner } from "react-bootstrap";
+
+export const SubmitBtn = (id) => {
+  //console.log(id);
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
   if (typeof id == "object") {
     let message = "";
 
@@ -35,12 +43,16 @@ export const SubmitBtn = (id) => {
                   ) : null}
                 </button>
               ) : (
+<<<<<<< HEAD
                 <button
                   // id="submit-btn-addDiscount"
                   type="submit"
                   className="btn btn-success"
                   // onClick={() => setForceRender((i) => i + 1)}
                 >
+=======
+                <button type="submit" className="btn btn-success">
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                   ذخیره
                   {form.isSubmitting ? (
                     <Spinner

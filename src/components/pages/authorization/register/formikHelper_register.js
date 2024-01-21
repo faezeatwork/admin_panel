@@ -13,6 +13,10 @@ export const initialValues = {
 export const onSubmit = async () => {
   const res = await registerService();
   try {
+<<<<<<< HEAD
+=======
+    console.log(res);
+>>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
     if (res.status == 200) {
       swal(res.data.message);
     }
