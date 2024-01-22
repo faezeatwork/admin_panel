@@ -16,13 +16,7 @@ export const Table = ({
                 <th key={Math.random()}>{item.title}</th>
               ))}
               {additionField
-<<<<<<< HEAD
                 ? additionField.map((a, index) => <th>{a.title}</th>)
-=======
-                ? additionField.map((a, index) => (
-                    <th key={Math.random()}>{a.title}</th>
-                  ))
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                 : null}
             </tr>
           </thead>
@@ -31,13 +25,9 @@ export const Table = ({
             {dataAnyPage.map((data) => (
               <tr key={Math.random()}>
                 {nameOfColumn.map((item) => (
-<<<<<<< HEAD
                   <td key={Math.random()}>
                     {item.field ? data[item.field] : item.elements(data)}
                   </td>
-=======
-                  <td key={Math.random()}>{data[item.field]}</td>
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                 ))}
                 {additionField
                   ? additionField.map((a, index) => (

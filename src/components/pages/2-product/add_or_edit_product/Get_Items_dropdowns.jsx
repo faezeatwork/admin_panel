@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { useState } from "react";
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 import {
   getAllBrandsService,
   getAllColorService,
@@ -88,7 +85,6 @@ export const handleGetGuarantees = async (setGuarantee) => {
   }
 };
 // ========= 👇 handle change daste asli va chips =============
-<<<<<<< HEAD
 export const handleOnChange = (thisId, form, option, chips, setChips, name) => {
 
 
@@ -115,27 +111,5 @@ export const handleOnChange = (thisId, form, option, chips, setChips, name) => {
 //
 //
 //
-=======
-export const handleOnChange = (e, form, option, setChips, name) => {
-  const valueOfCat = option //value of chips
-    .filter((a) => a.id == e.target.value)
-    .map((a) => a.value);
-
-  setChips((chips) => {
-    const newData = [
-      ...chips?.filter((chip) => chip.id != e.target.value), //except chips that selected previously :)
-      {
-        id: e.target.value,
-        value: valueOfCat[0],
-      },
-    ];
-    const selectedIds = newData.map((nd) => nd.id);
-    console.log(selectedIds);
-    form.setFieldValue(name, selectedIds.join("-"));
-    return newData;
-  });
-};
-
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 //in compo categories o barnds o colors ro migire
 //baraye dropdown haye <AddProduct/>

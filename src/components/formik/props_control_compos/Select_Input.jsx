@@ -1,9 +1,6 @@
 import { ErrorMessage, Field } from "formik";
 import React from "react";
-<<<<<<< HEAD
 import { NavLink } from "react-router-dom";
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 
 export const Select_Input = ({
   label,
@@ -13,7 +10,6 @@ export const Select_Input = ({
   parent_title,
   showSubInput,
   stateOfData,
-<<<<<<< HEAD
   addBtnPath,
   addBtnOption,
 }) => {
@@ -69,38 +65,6 @@ export const Select_Input = ({
         </Field>
       </div>
 
-=======
-}) => {
-  return (
-    <div className="p-2">
-      <div className="input-group mb-1">
-        <span className="input-group-text w_6rem customStyle">{label}</span>
-        <Field
-          as="select"
-          className="form-control form-select"
-          id={name}
-          name={name}
-          onClick={(e) => {
-            showSubInput && stateOfData(e.target.value);
-          }}
-        >
-          {parent_title ? (
-            <option>{parent_title}</option>
-          ) : (
-            <>
-              <option hidden value>
-                {firstItem ? firstItem : "--"}
-              </option>
-              {option.map((d) => (
-                <option className="text-dark" key={Math.random()} value={d.id}>
-                  {d.value}
-                </option>
-              ))}
-            </>
-          )}
-        </Field>
-      </div>
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
       <ErrorMessage
         name={name}
         render={(msg) => <small className="text-danger">{msg}</small>}

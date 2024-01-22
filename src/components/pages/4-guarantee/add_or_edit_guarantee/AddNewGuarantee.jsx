@@ -26,15 +26,12 @@ export const AddNewGuarantee = ({
       length_unit: guaranteeToEdit.length_unit || "",
     });
   }, [guaranteeToEdit]);
-<<<<<<< HEAD
 
   //===================== 📍 handle reset form ==========================
   // const handleResetForm = () => {
   //   document.getElementById("formOfAddGuarantee").reset();
   // };
 
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
   return (
     <div>
       <button
@@ -76,15 +73,8 @@ export const AddNewGuarantee = ({
                 enableReinitialize
               >
                 {(formik) => {
-<<<<<<< HEAD
                   return (
                     <Form id="formOfAddGuarantee">
-=======
-                  console.log(guaranteeToEdit);
-                  console.log(guaranteeToEdit.id);
-                  return (
-                    <Form>
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                       {/* ==============  modal-header ============= */}
                       <div className="modal-header">
                         <h1 className=" w-100 fs-5" id="staticBackdropLabel">
@@ -100,11 +90,7 @@ export const AddNewGuarantee = ({
                           aria-label="Close"
                           onClick={() => {
                             formik.resetForm();
-<<<<<<< HEAD
                             // handleResetForm();
-=======
-                            setGuaranteeToEdit([]);
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                           }}
                         ></button>
                       </div>
@@ -145,11 +131,7 @@ export const AddNewGuarantee = ({
                         </div>
                       </div>
                       <div className="text-center">
-<<<<<<< HEAD
                         <SubmitBtn id={guaranteeToEdit.id} />
-=======
-                        <SubmitBtn a={guaranteeToEdit.id} />
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                       </div>
                     </Form>
                   );

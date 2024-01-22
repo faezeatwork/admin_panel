@@ -18,11 +18,8 @@ export const Reusable_table = (props) => {
     placeholder_searchBox,
     go_where, //this icon ➕ link to where - hamishe ham link nist
     show_addButton,
-<<<<<<< HEAD
     modal_addButton,
     modal_compo,
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
     show_compo,
     show_subGroup,
     having_searchBox,
@@ -73,7 +70,6 @@ export const Reusable_table = (props) => {
     <div className="p-1 reusable_table">
       {show_subGroup ? (
         location.state ? (
-<<<<<<< HEAD
           <h5 className="text-center d-flex justify-content-center">
             زیر گروه:
             <PrevPageBtn
@@ -83,11 +79,6 @@ export const Reusable_table = (props) => {
                   : location.state.rowData?.title
               }
             />
-=======
-          <h5 className="text-center d-flex justify-content-center bg-danger">
-            زیر گروه:
-            <PrevPageBtn returnTitle={location.state.parentData?.title} />
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
           </h5>
         ) : null
       ) : null}
@@ -110,12 +101,8 @@ export const Reusable_table = (props) => {
             <AddItem_btn show_compo={show_compo} />
           </NavLink>
         ) : null}
-<<<<<<< HEAD
         {modal_addButton && modal_compo}
         {/* ================== ➕ end show_addButton👆 ==================== */}
-=======
-      {/* ================== ➕ end show_addButton👆 ==================== */}
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
       </div>
 
       {/* ================== start table👇 ====================== */}

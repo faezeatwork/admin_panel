@@ -4,10 +4,7 @@ import { deleteProductService } from "../../../../services/CRUD_categoryService"
 import { NavLink } from "react-router-dom";
 
 export const Operation_products = ({ rowData, data, setData }) => {
-<<<<<<< HEAD
 
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
   return (
     <>
       <NavLink
@@ -22,7 +19,6 @@ export const Operation_products = ({ rowData, data, setData }) => {
           title="ویرایش محصول"
         ></i>
       </NavLink>
-<<<<<<< HEAD
       <NavLink
         to={`/product-management/${rowData.id}/adding-attribute`}
         state={{
@@ -35,12 +31,6 @@ export const Operation_products = ({ rowData, data, setData }) => {
         ></i>
       </NavLink>
 
-=======
-      <i
-        className="fas fa-receipt text-info mx-1 hoverable_text pointer has_tooltip"
-        title="ثبت ویژگی"
-      ></i>
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
       <i
         className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip"
         title="حذف محصول"

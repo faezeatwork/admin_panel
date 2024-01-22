@@ -8,11 +8,7 @@ export const Inputs = (props) => {
     <div className="p-2">
       <div className="input-group">
         <span
-<<<<<<< HEAD
           className="input-group-text titleSpan customWidth-112"
-=======
-          className="input-group-text titleSpan customStyle"
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
           id="basic-addon2"
         >
           {title ? title : placeholder}

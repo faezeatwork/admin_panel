@@ -41,18 +41,12 @@ export const Operations_product = ({ rowData, data, setData }) => {
           className="icon_product_table fas fa-receipt text-info mx-1 pointer has_tooltip"
           title="ثبت ویژگی"
           onClick={() => {
-<<<<<<< HEAD
             //for <AddAttribute />
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
             navigate(
               `/product-group-management/${rowData.id}/adding-attribute`,
               {
                 state: {
-<<<<<<< HEAD
                   rowData: rowData,
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
                   parentId: rowData.parent_id,
                   categoryId: rowData.id,
                 },
@@ -68,11 +62,7 @@ export const Operations_product = ({ rowData, data, setData }) => {
         className="icon_product_table fas fa-times text-danger mx-1 pointer has_tooltip"
         title="حذف محصول"
         onClick={() => {
-<<<<<<< HEAD
        
-=======
-          console.log(rowData);
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
           handleDeleteOperation(
             rowData.id,
             data,

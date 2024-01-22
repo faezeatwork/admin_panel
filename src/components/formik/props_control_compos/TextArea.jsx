@@ -6,11 +6,7 @@ export const TextArea = (props) => {
   return (
     <div className="p-2">
       <div className="input-group">
-<<<<<<< HEAD
         <span className="input-group-text titleSpan customWidth-112">{placeholder}</span>
-=======
-        <span className="input-group-text titleSpan customStyle">{placeholder}</span>
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
 
         <FastField
           as="textarea"
