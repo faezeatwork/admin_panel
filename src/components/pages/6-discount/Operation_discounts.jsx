@@ -15,7 +15,7 @@ export const Operation_discounts = ({
         <NavLink to={"/discount-management/add-edit-discount"}>
           <i
             className=" icon_product_table fas fa-edit text-warning mx-1 pointer has_tooltip"
-            onClick={() => setDiscountToEdit(rowData)}
+            // onClick={() => setDiscountToEdit(rowData)}
           ></i>
         </NavLink>
       </span>

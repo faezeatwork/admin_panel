@@ -2,11 +2,13 @@ import { ErrorMessage, FastField } from "formik";
 import React from "react";
 
 export const TextArea = (props) => {
-  const { type, name, placeholder } = props;
+  const { type, title, name, placeholder } = props;
   return (
     <div className="p-2">
       <div className="input-group">
-        <span className="input-group-text titleSpan customWidth-112">{placeholder}</span>
+        <span className="p-2 input-group-text titleSpan customWidth-112">
+          {title}
+        </span>
 
         <FastField
           as="textarea"

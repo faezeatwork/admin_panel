@@ -1,7 +1,7 @@
 import { FastField, ErrorMessage } from "formik";
 import jMoment from "jalali-moment";
 import React, { useEffect, useState } from "react";
-// import FormikError from "./FormikError";
+
 const days = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
   23, 24, 25, 26, 27, 28, 29, 30, 31,
@@ -21,7 +21,13 @@ const months = [
   { id: 12, value: "اسفند" },
 ];
 
-export const PersianDate = ({ formik, name, label, yearsLimit, initialDate }) => {
+export const PersianDate = ({
+  formik,
+  name,
+  label,
+  yearsLimit,
+  initialDate,
+}) => {
   const [day, setDay] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState(); //امسال
@@ -56,11 +62,11 @@ export const PersianDate = ({ formik, name, label, yearsLimit, initialDate }) =>
     });
     setShowConfig(false);
   };
-
+  //======================== 📍 return =============================
   return (
-    <div className={`wrap-input100 validate-input form_date_picker p-2`}>
+    <div className={`wrap-input100 validate-input form_date_picker p-2 mb-2`}>
       <div
-        className="input-group mb-3 dir_ltr pointer"
+        className="input-group dir_ltr pointer"
         onClick={handleShowDateConfig}
       >
         <span
@@ -76,9 +82,9 @@ export const PersianDate = ({ formik, name, label, yearsLimit, initialDate }) =>
           placeholder={"جهت انتخاب تاریخ کلیک کنید"}
         />
       </div>
-
+      {/* --------------- 👇 نمایش تقویم ------------------- */}
       {showConfig ? (
-        <div className="datePicker row w-100 m-0 p-0">
+        <div className="datePicker row w-100 m-0 p-0 mt-1">
           <div className="col-3 d-flex justify-content-center align-items-center  p-0">
             <select
               className="form-select"
@@ -126,7 +132,10 @@ export const PersianDate = ({ formik, name, label, yearsLimit, initialDate }) =>
           </div>
         </div>
       ) : null}
-      {/* <ErrorMessage name={name} component={FormikError} /> */}
+      <ErrorMessage
+        name={name}
+        render={(msg) => <small className="text-danger">{msg}</small>}
+      />
     </div>
   );
 };

@@ -7,8 +7,8 @@ import swal from "sweetalert";
 import { ConvertPersianDateToMiladi } from "../../general_compo/utils/ConvertPersianDateToMiladi";
 import moment from "jalali-moment";
 import { Operation_discounts } from "./Operation_discounts";
-
-// ================  📍header of table === ===================
+import jMoment from "jalali-moment";
+// ================  📍header of table ======================
 export const handle_header_discountsTable = (
   data,
   setData,
@@ -28,7 +28,7 @@ export const handle_header_discountsTable = (
       field: null,
       title: "تاریخ انقضا",
       elements: (data) =>
-        moment(data.created_at).locale("fa").format("YYYY/M/D"),
+        moment(data.created_at).locale("fa").format("YYYY/MM/DD"),
     },
     {
       field: null,
@@ -61,31 +61,34 @@ export const initialValues = {
   for_all: true,
   expire_at: "",
   product_ids: "",
+  chips_product: "",
 };
 //====================== 📍onSubmit ===========================
 export const onSubmit = async (values, action, discountToEdit) => {
-  const convertValues = {
-    ...values,
-    expire_at: ConvertPersianDateToMiladi(values.expire_at),
-  };
+  console.log('test');
   //📍 --------- افزودن یک کد تخفیف جدید ---------👇
   if (Object.keys(discountToEdit).length == 0) {
+    const convertValues = {
+      ...values,
+      expire_at: ConvertPersianDateToMiladi(values.expire_at),
+    };
     const res = await createNewDiscountService(convertValues);
-    console.log(res);
     if (res.status == 201) {
-      console.log(res.data.data);
       swal("ثبت شد!...", res.data.message, "success");
       action.resetForm();
     }
 
     //📍 ---------ویرایش کد تخفیف موجود ---------👇
   } else {
-    console.log(discountToEdit);
-    console.log(discountToEdit.id);
-    console.log(convertValues);
+    const convertValues = {
+      ...values,
+      expire_at: jMoment(values.expire_at, "jYYYY /jMM/jDD").format("YYYY-M-D"),
+    };
+
     const res = await updateDiscountService(discountToEdit.id, convertValues);
-    console.log("res");
-    console.log(res);
+    if (res.status == 200) {
+      swal("ثبت شد!...", res.data.message, "success");
+    }
   }
 };
 

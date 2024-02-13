@@ -3,7 +3,6 @@ import React from "react";
 import { Spinner } from "react-bootstrap";
 
 export const SubmitBtn = (id) => {
-  // console.log(id);
   if (typeof id == "object") {
     let message = "";
 

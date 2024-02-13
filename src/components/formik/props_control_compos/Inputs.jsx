@@ -1,7 +1,9 @@
 import { ErrorMessage, FastField } from "formik";
-import React, { useState } from "react";
+import React from "react";
+
 
 export const Inputs = (props) => {
+
   const { title, formik, type, name, placeholder, categoryTitle } = props;
 
   return (

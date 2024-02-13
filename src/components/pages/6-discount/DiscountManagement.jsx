@@ -15,7 +15,6 @@ export const DiscountManagement = () => {
     const res = await getAllDiscountsService();
     if (res.status == 200) {
       setData(res.data.data);
-      // console.log(res.data.data);
     }
   };
 
@@ -25,12 +24,14 @@ export const DiscountManagement = () => {
 
   //=================== 👇 force render table ================
   useEffect(() => {
-    document.getElementById("btn-close-modal").addEventListener("click", () => {
-      setForceRender((i) => i + 1);
-    });
+    document
+      .getElementById("btn-close-modal-discount")
+      .addEventListener("click", () => {
+        setForceRender((i) => i + 1);
+      });
   }, []);
 
-  //======================= 👇return ==========================
+  // ======================= 👇return ==========================
   return (
     <>
       <div className="px-4">
@@ -46,7 +47,7 @@ export const DiscountManagement = () => {
             placeholder_searchBox="قسمتی از عنوان را وارد کنید"
             having_searchBox={true}
             modal_addButton={true}
-            modal_compo={handleAddDiscounts(discountToEdit)}
+            modal_compo={handleAddDiscounts(discountToEdit, setDiscountToEdit)}
           />
         </div>
       </div>

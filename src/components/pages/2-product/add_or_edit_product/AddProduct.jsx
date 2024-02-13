@@ -20,6 +20,7 @@ import {
 } from "./Get_Items_dropdowns";
 
 export const AddProduct = () => {
+  // ====================== useStates 👇 ===========================
   const [parentsCategories, setParentsCategories] = useState([]); // نگهداری همه محصولات والد - اولین محصولاتی که والدی ندارند
   const [mainCategories, setMainCategories] = useState([]); // نگهداری همه دسته های اصلی
   const [colors, setColors] = useState([]);
@@ -33,36 +34,41 @@ export const AddProduct = () => {
   const [selectedCat, setSelectedCat] = useState([]);
   const [selectedColor, setSelectedColor] = useState([]);
   const [selectedGuarantee, setSelectedGuarantee] = useState([]);
+  // ====================== useStates 👆 ===========================
+
   const location = useLocation();
 
   useEffect(() => {
-    setReInitialize({
-      category_ids: location.state.rowData?.categories
-        .map((item) => item.id)
-        .join(" - "),
-      color_ids: location.state.rowData?.colors
-        ?.map((item) => item.id)
-        .join(" - "),
-      guarantee_ids: location.state.rowData?.guarantees
-        ?.map((item) => item.id)
-        .join(" - "),
-      ...location.state.rowData,
-    });
+    console.log(location);
+    if (location.state) {
+      setReInitialize({
+        category_ids: location.state.rowData?.categories
+          .map((item) => item.id)
+          .join(" - "),
+        color_ids: location.state.rowData?.colors
+          ?.map((item) => item.id)
+          .join(" - "),
+        guarantee_ids: location.state.rowData?.guarantees
+          ?.map((item) => item.id)
+          .join(" - "),
+        ...location.state.rowData,
+      });
+    }
   }, [location]);
   //========== 📍برای جایگذاری در فرم ویرایش محصول ===========
   const handleSelectedInitialValue = () => {
     setSelectedCat(
-      location.state.rowData?.categories.map((c) => {
+      location.state?.rowData?.categories.map((c) => {
         return { id: c.id, value: c.title };
       })
     );
     setSelectedColor(
-      location.state.rowData?.colors.map((c) => {
+      location.state?.rowData?.colors.map((c) => {
         return { id: c.id, value: c.title };
       })
     );
     setSelectedGuarantee(
-      location.state.rowData?.guarantees.map((c) => {
+      location.state?.rowData?.guarantees.map((c) => {
         return { id: c.id, value: c.title };
       })
     );
@@ -143,7 +149,7 @@ export const AddProduct = () => {
                     idOfParent={idOfParent}
                     addBtnOption={true}
                     addBtnPath="/product-group-management"
-                    selectedItems={selectedCat}
+                    selectedItems={selectedCat}  // chips ro too form edit namayesh bede
                   />
                 ) : null}
                 <FormikControl
@@ -183,7 +189,7 @@ export const AddProduct = () => {
                   setChips={setChips_color}
                   addBtnOption={true}
                   addBtnPath="/colour-management"
-                  selectedItems={selectedColor}
+                  selectedItems={selectedColor}  // chips ro too form edit namayesh bede
                 />
 
                 <FormikControl
@@ -195,7 +201,7 @@ export const AddProduct = () => {
                   setChips={setChips_guarantee}
                   addBtnOption={true}
                   addBtnPath="/guarantee-management"
-                  selectedItems={selectedGuarantee}
+                  selectedItems={selectedGuarantee}  // chips ro too form edit namayesh bede
                 />
                 <FormikControl
                   control="ckEditor"

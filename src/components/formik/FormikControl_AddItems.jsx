@@ -8,6 +8,7 @@ import { MultiSelect_Input } from "./props_control_compos/MultiSelect_Input";
 import { CkEditor } from "./props_control_compos/CkEditor";
 import { TypesOfAttr } from "./props_control_compos/TypesOfAttr";
 import { PersianDate } from "./props_control_compos/PersianDate";
+import { CheckBox } from "./props_control_compos/CheckBox";
 
 export const FormikControl = (props) => {
   switch (props.control) {
@@ -22,6 +23,8 @@ export const FormikControl = (props) => {
     case "addFile":
       return <AddFile {...props} />;
     case "checkbox":
+      return <CheckBox {...props} />;
+    case "switchCheckbox":
       return <SwitchCheckBox {...props} />;
     case "radio":
       return <Radiobtn {...props} />;

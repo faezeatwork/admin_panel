@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Chips } from "../../general_compo/spinners&chips/Chips";
 import { handleOnChange } from "../../pages/2-product/add_or_edit_product/Get_Items_dropdowns";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const MultiSelect_Input = (props) => {
   const {
@@ -16,16 +16,19 @@ export const MultiSelect_Input = (props) => {
     dynamicPath,
     idOfParent,
     addBtnOption,
-    selectedItems,
+    selectedItems, // chips ro too form edit namayesh bede
+    stateForTitleNav,
     customAnimatedClass,
   } = props;
 
   const [searchedOption, setSearchedOption] = useState();
   const [showOption, setShowOption] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setSearchedOption(option);
-    setChips(selectedItems);
+    setChips(selectedItems); // chips ro too form edit namayesh bede
   }, [option, idOfParent]);
 
   useEffect(() => {
@@ -37,9 +40,13 @@ export const MultiSelect_Input = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <div className="p-2 ">
-        <div className={`input-group mb-1 ${customAnimatedClass}`}>
+        <div
+          className={`input-group mb-1 ${
+            selectedItems.length ? "" : customAnimatedClass
+          }`}
+        >
           <span className="input-group-text w_6rem customWidth-112">
             {label}
           </span>
@@ -74,18 +81,24 @@ export const MultiSelect_Input = (props) => {
                         </div>
                       </div>
                       {addBtnOption && (
-                        <NavLink
-                          className="text-decoration-none"
-                          to={
-                            dynamicPath
-                              ? `${addBtnPath}/${idOfParent}`
-                              : addBtnPath
+                        <button
+                          // id="btn-close-modal"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                          className="btn btn-sm btn-light d-flex"
+                          onClick={() =>
+                            navigate(
+                              `${
+                                dynamicPath
+                                  ? `${addBtnPath}${idOfParent}`
+                                  : addBtnPath
+                              }`,
+                              { state: stateForTitleNav }
+                            )
                           }
                         >
-                          <button className="btn btn-sm btn-light d-flex">
-                            <i className="fas fa-plus text-success"></i>
-                          </button>
-                        </NavLink>
+                          <i className="fas fa-plus text-success"></i>
+                        </button>
                       )}
                     </div>
                   }

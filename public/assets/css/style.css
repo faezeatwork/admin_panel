@@ -419,11 +419,7 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
   width: 30px;
 }
 
-<<<<<<< HEAD
 .customWidth-112 {
-=======
-.customStyle {
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
   width: 112px;
 }
 
@@ -446,7 +442,6 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
 .searchedOption {
   /* margin-top: -6px; */
   margin-right: 111px;
-<<<<<<< HEAD
   background-color: white;
   border: 1px solid black;
 }
@@ -460,23 +455,13 @@ az ina ~ beyneshoon migzarim 👇👇👇👇 */
 
 .searchedOption li:hover {
   /* width: 115%; */
-=======
-  background-color: red;
-  border: 1px solid black ;
-}
-
-.searchedOption li:hover{
-  width: 100%;
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f
   background-color: grey;
 }
 .outline_none {
   outline: none;
   border-style: none;
 }
-<<<<<<< HEAD
 
-.testStyle {
+.width_modal_roles {
+  width: 600px !important;
 }
-=======
->>>>>>> 8edf4fa303a80e50965e9afeda69a368be9ebd3f

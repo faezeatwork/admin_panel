@@ -14,25 +14,48 @@ import "animate.css";
 import { NavLink } from "react-router-dom";
 import moment from "jalali-moment";
 
-export const AddNewDiscounts_modal = ({ discountToEdit }) => {
+
+export const AddNewDiscounts_modal = ({
+  discountToEdit,
+  setDiscountToEdit,
+}) => {
   const [titlesOfProducts, setTitlesOfProducts] = useState([]);
   const [chips_productTitles, setChips_productTitles] = useState([]);
   const [reInitialize, setReInitialize] = useState({});
+  const [selectedChips, setSelectedChips] = useState([]);
+  
+  //============== برای اولین باری که صفحه مودال باز میشه ===========
+  useEffect(() => {
+    setReInitialize({
+      ...discountToEdit,
+      title: "",
+      code: "",
+      percent: "",
+      expire_at: "",
+      for_all: true,
+    });
+  }, []);
+  //================= مقدار دهی فرم ویرایش تخفیف =====================
+
+  const handleSelectedChips = () => {
+    setSelectedChips(
+      discountToEdit.products?.map((p) => {
+        return { id: p.id, value: p.title };
+      })
+    );
+  };
 
   useEffect(() => {
-    if (discountToEdit) {
-      console.log(discountToEdit);
+    if (Object.keys(discountToEdit).length) {
+      handleSelectedChips();
       setReInitialize({
         ...discountToEdit,
         expire_at: moment(discountToEdit.expire_at)
           .locale("fa")
           .format("YYYY/M/D"),
+
         for_all: discountToEdit.for_all ? true : false,
-        product_ids: discountToEdit.product_ids?.map((p) => p.id).join("-"),
       });
-    } else {
-      console.log("no data");
-      // setReInitialize()
     }
   }, [discountToEdit]);
 
@@ -67,21 +90,30 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
         setChips={setChips_productTitles}
         addBtnOption={true}
         customAnimatedClass="animate__animated animate__headShake"
-        // addBtnPath="/colour-management"
-        // selectedItems={selectedTitlesOfProd}
+        addBtnPath="/adding-product"
+        stateForTitleNav={{
+          title_for_adding: "اضافه کردن محصول جدید",
+        }}
+        selectedItems={selectedChips} // chips ro too form edit namayesh bede
       />
     );
   };
   //===================== 📍 handle reset form ==========================
   const handleResetForm = () => {
-    console.log("reset form");
     document.getElementById("formOfAddDiscounts").reset();
+    setDiscountToEdit({});
+    setReInitialize({
+      ...initialValues,
+      expire_at: "",
+      for_all: true,
+    }); // اینجا initialValues مقدار اولیه فرم شماست
+    setChips_productTitles([]); // اینجا هم مقادیر دیگری را که نیاز دارید برگردانید
   };
 
   //====================== 📍 start main return =========================
   return (
     <div>
-      {/* <!----- Button trigger modal ➕icon -----> */}
+      {/* <!----- Button trigger modal ➕ icon -----> */}
       <span data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <NavLink to={"/discount-management/add-edit-discount"}>
           <AddItem_btn />
@@ -94,7 +126,7 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
@@ -107,9 +139,9 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
                   : `${discountToEdit.title}`}
               </h5>
               <NavLink to={"/discount-management"} className="ps-4">
-                {/* <!------------ close btn ------------> */}
+                {/* <!------------ ❌ close btn ------------> */}
                 <button
-                  id="btn-close-modal"
+                  id="btn-close-modal-discount"
                   type="button"
                   className="btn-close"
                   data-bs-dismiss="modal"
@@ -123,13 +155,12 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
               <Formik
                 initialValues={reInitialize || initialValues}
                 onSubmit={(values, action) =>
-                  onSubmit(values, action, discountToEdit)
+                  onSubmit(values, action, discountToEdit, setDiscountToEdit)
                 }
                 validationSchema={validationSchema}
                 enableReinitialize
               >
                 {(formik) => {
-                  console.log(reInitialize);
                   return (
                     <Form id="formOfAddDiscounts">
                       <FormikControl
@@ -161,7 +192,7 @@ export const AddNewDiscounts_modal = ({ discountToEdit }) => {
                       />
 
                       <FormikControl
-                        control="checkbox"
+                        control="switchCheckbox"
                         name="for_all"
                         label="برای همه"
                         customClass="text-center"

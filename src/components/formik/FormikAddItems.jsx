@@ -46,7 +46,6 @@ export const FormikAddItems = ({ categoryId }) => {
       if (res.status == 200) {
         const oldInfo = res.data.data;
         setEditCategory(oldInfo);
-        // console.log(editCategory);
       }
     } catch (error) {}
   };
@@ -113,6 +112,7 @@ export const FormikAddItems = ({ categoryId }) => {
               control="textArea"
               type="text"
               name="descriptions"
+              title="توضیحات"
               placeholder="توضیحات"
             />
             <FormikControl
@@ -125,13 +125,13 @@ export const FormikAddItems = ({ categoryId }) => {
             />
             <div className="d-flex justify-content-evenly">
               <FormikControl
-                control="checkbox"
+                control="switchCheckbox"
                 name="is_active"
                 label="وضعیت فعال"
               />
 
               <FormikControl
-                control="checkbox"
+                control="switchCheckbox"
                 name="show_in_menu"
                 label="نمایش در منو"
               />

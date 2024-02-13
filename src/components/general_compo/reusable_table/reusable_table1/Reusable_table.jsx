@@ -8,7 +8,7 @@ import { Table } from "../reusable_table1/Table";
 
 const numOfRows_singlePage = 5; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
-export const Reusable_table = (props) => {
+export const  Reusable_table = (props) => {
   const location = useLocation();
   //🏮👉 اشonClick :از این هوک اینجا استفاده شده in Operations_product
 

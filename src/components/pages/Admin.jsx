@@ -14,8 +14,8 @@ import { CardsManagement } from "./7-card/CardsManagement";
 import { OrdersManagement } from "./8-order/OrdersManagement";
 import { SendManagement } from "./9-how_to_send/SendManagement";
 import { WatchUsers } from "./10-watch_users/WatchUsers";
-import { DutyUsers } from "./11-duty_user/DutyUsers";
-import { Licenses } from "./12-license/Licenses";
+import { Roles } from "./11-roles/Roles";
+import { Permissions } from "./12-permission/Permissions";
 import { Questions } from "./13-question/Questions";
 import { ReusableAdding } from "../general_compo/reusable_operations/ReusableAdding";
 import { ControlPages } from "../general_compo/reusable_operations/ControlPages";
@@ -24,7 +24,7 @@ import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 import { AddProduct } from "./2-product/add_or_edit_product/AddProduct";
 import { AddAttributes } from "./2-product/table_addition/AddAttributes";
-import { AddNewDiscounts_modal } from "./6-discount/AddNewDiscounts_modal";
+
 
 export const Admin = () => {
   return (
@@ -119,15 +119,15 @@ export const Admin = () => {
 
         {/* ==================    نقش ها   ======================= */}
         <Route
-          path="/duty-user"
-          element={<ControlPages namePage={<DutyUsers />} />}
+          path="/roles"
+          element={<ControlPages namePage={<Roles />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
         {/* ==================    مجوز ها   ====================== */}
         <Route
           path="/license"
-          element={<ControlPages namePage={<Licenses />} />}
+          element={<ControlPages namePage={<Permissions />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 

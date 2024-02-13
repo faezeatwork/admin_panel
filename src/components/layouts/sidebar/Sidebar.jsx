@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ItemsOfList } from "./ItemsOfList";
 import { Title_itemsOfList } from "./Title_itemsOfList";
 
@@ -65,7 +65,7 @@ export const Sidebar = () => {
             icon="fa-users"
           />
           <ItemsOfList
-            targetPath="/duty-user"
+            targetPath="/roles"
             item="نفش ها"
             icon="fa-user-tag"
           />

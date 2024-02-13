@@ -1,12 +1,12 @@
 import React from "react";
 
 export const Chips = ({ chips, setChips }) => {
-  // console.log(chips);
+
   const handleDeleteChips = (thisChip) => {
     setChips(chips?.filter((c) => c.id != thisChip));
   };
   return (
-    <div className={`${chips?.length ? "mb-3 d-flex" : null}`}>
+    <div className={`${chips?.length ? "mb-3 d-flex" : null}`} >
       {chips?.map((c) => (
         <span key={Math.random()} className="chips mx-1">
           <i

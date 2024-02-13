@@ -213,3 +213,29 @@ export const deleteDiscountService = (id) => {
 };
 
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//================= 11- گرفتن همه نقش ها  ====================
+export const getAllRolesService = () => {
+  return httpService("api/admin/roles", "get");
+};
+
+//================= 11- ایجاد یک نقش جدید ====================
+export const createNewRoleService = (values) => {
+  return httpService("api/admin/roles", "post", values);
+};
+
+//================= 11- ویرایش یک نقش  =======================
+export const updateRoleService = (id, values) => {
+  return httpService(`api/admin/roles/${id}`, "put", values);
+};
+
+//================= 11- حذف یک نقش  ==========================
+export const deleteRoleService = (id) => {
+  return httpService(`api/admin/roles/${id}`, "delete");
+};
+
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//================= 12- گرفتن همه مجوزها  =====================
+export const getAllPermissionsService = () => {
+  return httpService("api/admin/permissions", "get");
+};
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍

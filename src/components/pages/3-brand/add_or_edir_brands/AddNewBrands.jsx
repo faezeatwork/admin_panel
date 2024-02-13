@@ -112,6 +112,7 @@ export const AddNewBrands = ({
                           control="textArea"
                           type="text"
                           name="descriptions"
+                          title="توضیحات"
                           placeholder="توضیحات"
                         />
 

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export const ItemsOfList = (props) => {
   const { icon, item, targetPath } = props;
   return (
-    <div>
+    <div className="pb-2">
       <NavLink
         to={targetPath}
         href="../pages/product_group_management/ProductGroupManagement"
