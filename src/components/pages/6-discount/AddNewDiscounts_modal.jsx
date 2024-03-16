@@ -14,7 +14,6 @@ import "animate.css";
 import { NavLink } from "react-router-dom";
 import moment from "jalali-moment";
 
-
 export const AddNewDiscounts_modal = ({
   discountToEdit,
   setDiscountToEdit,
@@ -23,8 +22,8 @@ export const AddNewDiscounts_modal = ({
   const [chips_productTitles, setChips_productTitles] = useState([]);
   const [reInitialize, setReInitialize] = useState({});
   const [selectedChips, setSelectedChips] = useState([]);
-  
-  //============== برای اولین باری که صفحه مودال باز میشه ===========
+
+  //================== برای اولین باری که صفحه مودال باز میشه ===============
   useEffect(() => {
     setReInitialize({
       ...discountToEdit,
@@ -35,7 +34,7 @@ export const AddNewDiscounts_modal = ({
       for_all: true,
     });
   }, []);
-  //================= مقدار دهی فرم ویرایش تخفیف =====================
+  //======================= مقدار دهی فرم ویرایش تخفیف =======================
 
   const handleSelectedChips = () => {
     setSelectedChips(
@@ -78,7 +77,7 @@ export const AddNewDiscounts_modal = ({
     handleGetProduct_ids();
   }, []);
 
-  //==================================================================
+  //=========================================================================
   const handleSetProductSelectBox = (formik) => {
     return (
       <FormikControl
@@ -98,7 +97,7 @@ export const AddNewDiscounts_modal = ({
       />
     );
   };
-  //===================== 📍 handle reset form ==========================
+  //======================= 📍 handle reset form ============================
   const handleResetForm = () => {
     document.getElementById("formOfAddDiscounts").reset();
     setDiscountToEdit({});
@@ -110,7 +109,7 @@ export const AddNewDiscounts_modal = ({
     setChips_productTitles([]); // اینجا هم مقادیر دیگری را که نیاز دارید برگردانید
   };
 
-  //====================== 📍 start main return =========================
+  //======================= 📍 start main return ===========================
   return (
     <div>
       {/* <!----- Button trigger modal ➕ icon -----> */}
@@ -120,7 +119,7 @@ export const AddNewDiscounts_modal = ({
         </NavLink>
       </span>
 
-      {/* <!----------------- Modal ---------------> */}
+      {/* <!-------------------- Modal ------------------> */}
       <div
         className="modal fade"
         id="staticBackdrop"
@@ -139,7 +138,7 @@ export const AddNewDiscounts_modal = ({
                   : `${discountToEdit.title}`}
               </h5>
               <NavLink to={"/discount-management"} className="ps-4">
-                {/* <!------------ ❌ close btn ------------> */}
+                {/* <!--------------- ❌ close btn ---------------> */}
                 <button
                   id="btn-close-modal-discount"
                   type="button"
@@ -161,6 +160,7 @@ export const AddNewDiscounts_modal = ({
                 enableReinitialize
               >
                 {(formik) => {
+                
                   return (
                     <Form id="formOfAddDiscounts">
                       <FormikControl

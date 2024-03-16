@@ -232,7 +232,10 @@ export const updateRoleService = (id, values) => {
 export const deleteRoleService = (id) => {
   return httpService(`api/admin/roles/${id}`, "delete");
 };
-
+//========= 11- ویرایش دسته بندی های یک نقش  ================
+export const updatePermissionsOfRole = (id, values) => {
+  return httpService(`api/admin/roles/${id}/permissions`, "put", values);
+};
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
 //================= 12- گرفتن همه مجوزها  =====================
 export const getAllPermissionsService = () => {

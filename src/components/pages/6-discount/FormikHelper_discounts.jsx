@@ -65,7 +65,7 @@ export const initialValues = {
 };
 //====================== 📍onSubmit ===========================
 export const onSubmit = async (values, action, discountToEdit) => {
-  console.log('test');
+
   //📍 --------- افزودن یک کد تخفیف جدید ---------👇
   if (Object.keys(discountToEdit).length == 0) {
     const convertValues = {
@@ -74,6 +74,7 @@ export const onSubmit = async (values, action, discountToEdit) => {
     };
     const res = await createNewDiscountService(convertValues);
     if (res.status == 201) {
+  
       swal("ثبت شد!...", res.data.message, "success");
       action.resetForm();
     }

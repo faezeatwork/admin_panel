@@ -7,6 +7,9 @@ export const AddCompo = (props) => {
   const location = useLocation();
   const { title, hidden_compo } = props;
 
+
+
+  
   return (
     <div
       className={`addProduct position-relative ${hidden_compo ? "d-none" : ""}`}

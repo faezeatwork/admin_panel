@@ -12,10 +12,14 @@ export const Operation_discounts = ({
   return (
     <span className=" d-flex justify-content-center align-items-center">
       <span data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        {/* دکمه ویرایش کد تخفیف 👇 */}
         <NavLink to={"/discount-management/add-edit-discount"}>
           <i
             className=" icon_product_table fas fa-edit text-warning mx-1 pointer has_tooltip"
-            // onClick={() => setDiscountToEdit(rowData)}
+            onClick={() => {
+              setDiscountToEdit(rowData);
+          
+            }}
           ></i>
         </NavLink>
       </span>

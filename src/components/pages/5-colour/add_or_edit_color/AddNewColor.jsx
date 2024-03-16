@@ -38,7 +38,14 @@ export const AddNewColor = ({ colorToEdit, setColorToEdit, setData }) => {
       <Formik
         initialValues={reInitialize || initialValues}
         onSubmit={(values, actions) =>
-          onSubmit(values, actions, colorToEdit, setData,setColorToEdit, setColorPickerValue)
+          onSubmit(
+            values,
+            actions,
+            colorToEdit,
+            setData,
+            setColorToEdit,
+            setColorPickerValue
+          )
         }
         validationSchema={validationSchema}
         enableReinitialize
@@ -61,7 +68,8 @@ export const AddNewColor = ({ colorToEdit, setColorToEdit, setData }) => {
                 control="input"
                 type="text"
                 name="title"
-                placeholder="رنگ"
+                title="رنگ"
+                placeholder="for example : black"
               />
               <div>
                 <FastField>

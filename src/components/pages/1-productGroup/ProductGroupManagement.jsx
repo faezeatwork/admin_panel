@@ -12,13 +12,13 @@ export const ProductGroupManagement = () => {
   const [data, setData] = useState([]);
   // const [forceRender, setForceRender] = useState(0); //برای اینکه هرجا خواستیم جدول رو رندر مجدد کنیم
 
-  //========= هدرهای جدول📍==============
+  //========== هدرهای جدول📍===============
   const headers_productTable = [
     { field: "id", title: "id" },
     { field: "title", title: "عنوان محصول" },
     { field: "parent_id", title: "والد" },
   ];
-  //======================================
+  //=======================================
   const handleGetCategories = async () => {
     const res = await getCategoriesService(params.productId);
     try {
@@ -49,7 +49,7 @@ export const ProductGroupManagement = () => {
       title: "نمایش در منو",
       elements: (rowData) => (
         <span className={rowData ? "text-success" : "text-danger"}>
-          {rowData ? "هست" : "نیست"} 
+          {rowData ? "هست" : "نیست"}
         </span>
       ),
     },

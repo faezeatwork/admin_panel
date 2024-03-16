@@ -12,12 +12,7 @@ import { SubmitBtn } from "../../formik/SubmitBtn";
 import { useEffect } from "react";
 
 export const AddNewRole_modal = ({ rowDataToEdit, permissions }) => {
-  const [reInitialize, setReInitialize] = useState({});
-
-  useEffect(() => {
-    setReInitialize(rowDataToEdit);
-    console.log(rowDataToEdit);
-  }, []);
+  const [reInitialize, setReInitialize] = useState(null);
 
   //============ 📍مقداردهی به فرم درحالت ویرایش نفش ها ===============
   useEffect(() => {
@@ -36,7 +31,11 @@ export const AddNewRole_modal = ({ rowDataToEdit, permissions }) => {
   return (
     <div className="">
       {/* <!----- Button trigger modal ➕ icon -----> */}
-      <span data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <span
+        onClick={() => handleResetForm()}
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
         <AddItem_btn />
       </span>
 
@@ -82,6 +81,7 @@ export const AddNewRole_modal = ({ rowDataToEdit, permissions }) => {
               >
                 {(form) => {
                   console.log(form.values);
+
                   return (
                     <Form id="formOfRoles">
                       <FormikControl
@@ -96,12 +96,25 @@ export const AddNewRole_modal = ({ rowDataToEdit, permissions }) => {
                         title="توضیحات نقش"
                         placeholder="فقط حروف فارسی و لاتین"
                       />
-                      <FormikControl
-                        control="checkbox"
-                        name="permissions_id"
-                        label="دسترسی ها:"
-                        options={permissions}
-                      />
+                      {reInitialize ? (
+                        <div className="row">
+                          <span>دسترسی ها : </span>
+                          <span className="text-secondary">
+                            {rowDataToEdit?.permissions.map((p) => (
+                              <span className="m-2">
+                                {`${p.description}`} ،
+                              </span>
+                            ))}
+                          </span>
+                        </div>
+                      ) : (
+                        <FormikControl
+                          control="checkbox"
+                          name="permissions_id"
+                          label="دسترسی ها:"
+                          options={permissions}
+                        />
+                      )}
                       <div className="d-flex justify-content-center">
                         <SubmitBtn id={reInitialize?.id} />
                       </div>

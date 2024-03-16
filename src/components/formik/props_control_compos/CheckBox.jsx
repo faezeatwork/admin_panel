@@ -2,8 +2,8 @@ import { ErrorMessage, FastField } from "formik";
 import React, { Fragment } from "react";
 
 export const CheckBox = (props) => {
-  const { name, label, options } = props;
-  //   console.log(options);
+  const { name, label, options, options2 } = props;
+
   return (
     <div className="mb-2">
       <label htmlFor={name} className="form-label">
@@ -16,6 +16,9 @@ export const CheckBox = (props) => {
       <div className="row p-3">
         <FastField className="form-control" id={name} name={name}>
           {({ field }) => {
+            console.log(options2);
+            console.log(field);
+
             return options.map((o) => (
               <div className="d-flex justify-content-between align-items-start col-6">
                 <Fragment key={o.id}>
@@ -28,7 +31,6 @@ export const CheckBox = (props) => {
                     id={`${name}_${o.id}`}
                     {...field}
                     value={o.id}
-                    checked={field.value?.includes("" + o.id)}
                   />
                 </Fragment>
               </div>

@@ -11,23 +11,24 @@ export const initialValues = {
   title: "",
   description: "",
   permissions_id: [],
-  permissions: [],
+  // permissions: [],
 };
 
 //====================== 📍onSubmit ===========================
 export const onSubmit = async (values, actions, reInitialize) => {
   if (reInitialize) {
-    //------- ⭐ ویرایش یکی از رنگ ها ---------
+    //------- ⭐ ویرایش یکی از نقش ها ---------
     const res = await updateRoleService(reInitialize.id, values);
+    console.log(res);
     if (res.status == 200) {
       swal("ویرایش شد", res.data.message, "success");
       console.log(res.data);
     }
   } else {
-    // -------- ⭐ افزودن یک رنگ جدید ----------
+    // -------- ⭐ افزودن یک نقش جدید ----------
     const res = await createNewRoleService(values);
     if (res.status == 201) {
-      console.log(res);
+      console.log(res.data);
       swal("ثبت شد", res.data.message, "success");
       actions.resetForm();
     }

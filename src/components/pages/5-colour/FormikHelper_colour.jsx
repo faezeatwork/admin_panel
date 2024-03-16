@@ -7,7 +7,7 @@ import swal from "sweetalert";
 
 //====================== 📍initialValues =====================
 export const initialValues = {
-  title: "white",
+  title: "",
   code: "#ffffff",
 };
 

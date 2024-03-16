@@ -149,7 +149,7 @@ export const AddProduct = () => {
                     idOfParent={idOfParent}
                     addBtnOption={true}
                     addBtnPath="/product-group-management"
-                    selectedItems={selectedCat}  // chips ro too form edit namayesh bede
+                    selectedItems={selectedCat} // chips ro too form edit namayesh bede
                   />
                 ) : null}
                 <FormikControl
@@ -189,10 +189,9 @@ export const AddProduct = () => {
                   setChips={setChips_color}
                   addBtnOption={true}
                   addBtnPath="/colour-management"
-                  selectedItems={selectedColor}  // chips ro too form edit namayesh bede
+                  selectedItems={selectedColor} // chips ro too form edit namayesh bede
                 />
-
-                <FormikControl
+                {/* <FormikControl
                   control="multiSelect"
                   label="گارانتی"
                   option={guarantee}
@@ -202,7 +201,7 @@ export const AddProduct = () => {
                   addBtnOption={true}
                   addBtnPath="/guarantee-management"
                   selectedItems={selectedGuarantee}  // chips ro too form edit namayesh bede
-                />
+                /> */}
                 <FormikControl
                   control="ckEditor"
                   type="type"

@@ -32,6 +32,7 @@ export const MultiSelect_Input = (props) => {
   }, [option, idOfParent]);
 
   useEffect(() => {
+ 
     //برای اینکه وقتی رو صفحه کلیک میکنیم
     // لیست برند و گارانتی بسته بشه
     document.querySelector("body").addEventListener("click", () => {
@@ -44,7 +45,7 @@ export const MultiSelect_Input = (props) => {
       <div className="p-2 ">
         <div
           className={`input-group mb-1 ${
-            selectedItems.length ? "" : customAnimatedClass
+            selectedItems?.length ? "" : customAnimatedClass
           }`}
         >
           <span className="input-group-text w_6rem customWidth-112">
@@ -142,3 +143,5 @@ export const MultiSelect_Input = (props) => {
     </div>
   );
 };
+
+

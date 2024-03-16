@@ -29,6 +29,7 @@ export const Roles = () => {
             rowData={rowData}
             data={data}
             setData={setData}
+            permissions={permissions}
             setRowDataToEdit={setRowDataToEdit}
           />
         ),
@@ -49,8 +50,8 @@ export const Roles = () => {
   //============== 👇 گرفتن همه دسترسی ها ===================
   const handleGetAllPermissions = async () => {
     const res = await getAllPermissionsService();
-    const per = res.data.data.map((p) => ({ id: p.id, title: p.description }));
-    setPermissions(per);
+    const permis = res.data.data.map((p) => ({ id: p.id, title: p.description }));
+    setPermissions(permis);
   };
   useEffect(() => {
     handleGetAllPermissions();

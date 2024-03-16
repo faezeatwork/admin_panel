@@ -23,7 +23,7 @@ export const ColourManagement = () => {
 
     if (res.status == 200) {
       setData(res.data.data);
-      //console.log(res.data.data);
+     
     }
   };
   useEffect(() => {
