@@ -15,6 +15,7 @@ export const Roles = () => {
   const [rowDataToEdit, setRowDataToEdit] = useState();
   const [forceRender, setForceRender] = useState(1);
   const [permissions, setPermissions] = useState([]);
+
   //================= 👇 table header =========================
   const handle_header_roles = (setRowDataToEdit) => {
     const header_roles = [
@@ -50,7 +51,10 @@ export const Roles = () => {
   //============== 👇 گرفتن همه دسترسی ها ===================
   const handleGetAllPermissions = async () => {
     const res = await getAllPermissionsService();
-    const permis = res.data.data.map((p) => ({ id: p.id, title: p.description }));
+    const permis = res.data.data.map((p) => ({
+      id: p.id,
+      title: p.description,
+    }));
     setPermissions(permis);
   };
   useEffect(() => {

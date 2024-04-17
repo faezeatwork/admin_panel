@@ -60,15 +60,11 @@ export const Sidebar = () => {
           {/* ======================= کاربران و همکاران ======================== */}
           <Title_itemsOfList item="کاربران و همکاران " />
           <ItemsOfList
-            targetPath="/watch-user"
-            item="مشاهده کاربران"
+            targetPath="/users"
+            item="مدیریت کاربران"
             icon="fa-users"
           />
-          <ItemsOfList
-            targetPath="/roles"
-            item="نفش ها"
-            icon="fa-user-tag"
-          />
+          <ItemsOfList targetPath="/roles" item="نفش ها" icon="fa-user-tag" />
           <ItemsOfList
             targetPath="/license"
             item="مجوزها"

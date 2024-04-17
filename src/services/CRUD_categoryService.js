@@ -213,6 +213,27 @@ export const deleteDiscountService = (id) => {
 };
 
 //📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
+//================= 10- گرفتن همه کاربران   ====================
+export const getAllUsersService = () => {
+  return httpService("api/admin/users", "get");
+};
+
+//================= 10- ایجاد یک کاربر جدید ====================
+export const createNewUserService = (values) => {
+  return httpService("api/admin/discounts", "post", values);
+};
+
+//================= 10- ویرایش یک کاربر  =======================
+export const updateUserService = (id, values) => {
+  return httpService(`api/admin/discounts/${id}`, "put", values);
+};
+
+//================= 10- حذف یک کاربر  ==========================
+export const deleteUserService = (id) => {
+  return httpService(`api/admin/discounts/${id}`, "delete");
+};
+
+//📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍📍
 //================= 11- گرفتن همه نقش ها  ====================
 export const getAllRolesService = () => {
   return httpService("api/admin/roles", "get");

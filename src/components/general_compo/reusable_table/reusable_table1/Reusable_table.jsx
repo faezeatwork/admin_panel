@@ -5,6 +5,7 @@ import { Pagination } from "./Pagination";
 import { SearchBox } from "../../reusable_operations/SearchBox";
 import { AddItem_btn } from "../../add_or_edit_product/AddItem_btn";
 import { Table } from "../reusable_table1/Table";
+import { EditPermissions_modal } from "../../../pages/11-roles/EditPermissions_modal";
 
 const numOfRows_singlePage = 5; //در هر صفحه چند ردیف از حدول نمایش داده شود
 
@@ -25,7 +26,6 @@ export const Reusable_table = (props) => {
     having_searchBox,
     additionField,
   } = props;
-
 
   const [dataAnyPage, setDataAnyPage] = useState([]); //slice shodeye dataOfRows
   const [currentPage, setCurrentPage] = useState(1);
@@ -105,7 +105,7 @@ export const Reusable_table = (props) => {
         {modal_addButton && modal_compo}
         {/* ================== ➕ end show_addButton👆 ==================== */}
       </div>
-
+  
       {/* ================== start table👇 ====================== */}
       <Table
         dataOfRows={dataOfRows}

@@ -16,8 +16,8 @@ export const CheckBox = (props) => {
       <div className="row p-3">
         <FastField className="form-control" id={name} name={name}>
           {({ field }) => {
-            console.log(options2);
-            console.log(field);
+            // console.log(options2);
+            // console.log(field);
 
             return options.map((o) => (
               <div className="d-flex justify-content-between align-items-start col-6">

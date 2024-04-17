@@ -13,7 +13,7 @@ import { DiscountManagement } from "./6-discount/DiscountManagement";
 import { CardsManagement } from "./7-card/CardsManagement";
 import { OrdersManagement } from "./8-order/OrdersManagement";
 import { SendManagement } from "./9-how_to_send/SendManagement";
-import { WatchUsers } from "./10-watch_users/WatchUsers";
+import { Users } from "./10-users/Users";
 import { Roles } from "./11-roles/Roles";
 import { Permissions } from "./12-permission/Permissions";
 import { Questions } from "./13-question/Questions";
@@ -24,7 +24,6 @@ import { Exit } from "../layouts/header/dropdown/Exit";
 import { AddAttribute } from "../general_compo/attributes/AddAttribute";
 import { AddProduct } from "./2-product/add_or_edit_product/AddProduct";
 import { AddAttributes } from "./2-product/table_addition/AddAttributes";
-
 
 export const Admin = () => {
   return (
@@ -110,18 +109,12 @@ export const Admin = () => {
           element={<ControlPages namePage={<SendManagement />} />}
         />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
-        {/* =================   مشاهده کاربران  ================== */}
-        <Route
-          path="/watch-user"
-          element={<ControlPages namePage={<WatchUsers />} />}
-        />
+        {/* =================  کاربران  ================== */}
+        <Route path="/users" element={<ControlPages namePage={<Users />} />} />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
         {/* ==================    نقش ها   ======================= */}
-        <Route
-          path="/roles"
-          element={<ControlPages namePage={<Roles />} />}
-        />
+        <Route path="/roles" element={<ControlPages namePage={<Roles />} />} />
         {/* <Route path="/add-colour" element={<AddColour />} /> */}
 
         {/* ==================    مجوز ها   ====================== */}

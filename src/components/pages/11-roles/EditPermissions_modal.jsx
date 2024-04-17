@@ -5,36 +5,47 @@ import { SubmitBtn } from "../../formik/SubmitBtn";
 import { updatePermissionsOfRole } from "../../../services/CRUD_categoryService";
 import swal from "sweetalert";
 
-export const EditPermissions_modal = ({ permissions, rowData }) => {
+export const EditPermissions_modal = ({ permissions, data }) => {
   const [permissionsId, setPermissionsId] = useState([]);
-
+  const [permissionInfo, setPermissionInfo] = useState([]);
   const initialValues = {
     permissions_id: [],
   };
   const onSubmit = async () => {
-    console.log(rowData);
-    const res = await updatePermissionsOfRole(rowData.id, permissionsId);
+    console.log(data.id);
+    const res = await updatePermissionsOfRole(data.id, permissionsId);
     if (res.status == 200) {
       swal("ثبت شد", res.data.message, "success");
       console.log(res);
       console.log(res.data.data);
+      // console.log(res.data.data.permissions.map((p)=>p.id));
+      console.log(permissionsId);
+      // setPermissionsId(res.data.data.permissions.map((p)=>p.id))
     }
   };
 
   useEffect(() => {
-    console.log(rowData);
-    console.log(rowData.permissions);
+    // console.log(data);
+    console.log(permissionInfo);
   }, []);
+
+  const handleResetForm = () => {
+    console.log("reset");
+  };
 
   return (
     <div>
       {/* <!------------ Button trigger modal --------------> */}
-
       <i
+        id="edit_permission_modal"
         title="ویرایش دسته بندی ها"
         className="mx-2 pointer fa-solid fa-fingerprint text-primary"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop2"
+        onClick={() => {
+          console.log(data);
+          setPermissionInfo(data);
+        }}
       ></i>
       {/* <!------------------ Modal --------------------> */}
       <div
@@ -51,7 +62,7 @@ export const EditPermissions_modal = ({ permissions, rowData }) => {
             <div className="modal-header d-flex justify-content-between align-items-center">
               <div className="modal-title w-100 mx-5" id="staticBackdropLabel">
                 <h5>ویرایش دسته بندی های</h5>
-                <span className="text-secondary">{rowData.title}</span>
+                <span className="text-secondary">{permissionInfo.title}</span>
               </div>
 
               {/* <!--------------- ❌ close btn ---------------> */}
@@ -61,7 +72,7 @@ export const EditPermissions_modal = ({ permissions, rowData }) => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                // onClick={() => handleResetForm()}
+                onClick={() => handleResetForm()}
               ></button>
             </div>
             <div className="modal-body">
@@ -75,9 +86,8 @@ export const EditPermissions_modal = ({ permissions, rowData }) => {
                         name="permissions_id"
                         label="دسترسی ها:"
                         options={permissions}
-                        options2={rowData.permissions}
+                        options2={data.permissions}
                       />
-
                       <div className="d-flex justify-content-center">
                         <SubmitBtn />
                       </div>

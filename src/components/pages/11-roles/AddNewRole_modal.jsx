@@ -80,7 +80,7 @@ export const AddNewRole_modal = ({ rowDataToEdit, permissions }) => {
                 enableReinitialize
               >
                 {(form) => {
-                  console.log(form.values);
+                  // console.log(form.values);
 
                   return (
                     <Form id="formOfRoles">

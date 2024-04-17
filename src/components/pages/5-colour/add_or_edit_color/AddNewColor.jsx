@@ -51,8 +51,6 @@ export const AddNewColor = ({ colorToEdit, setColorToEdit, setData }) => {
         enableReinitialize
       >
         {(formik) => {
-          // console.log(formik.values);
-          // console.log(colorToEdit);
           return (
             <Form>
               {/* ==============  modal-header ============= */}

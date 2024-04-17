@@ -8,7 +8,7 @@ export const handleDeleteOperation = async (
 ) => {
   await Swal.fire({
     title: "مطمئن هستید؟",
-    text: "محصول حذف شود؟",
+    text: "آیتم مورد نظر ، پس از حذف بازگردانی نمیشود!",
     icon: "warning",
     showCancelButton: true,
     cancelButtonText: "انصراف",
@@ -16,14 +16,15 @@ export const handleDeleteOperation = async (
     cancelButtonColor: "#d33",
     confirmButtonText: "حذف",
   }).then((result) => {
+    console.log(result);
     if (result.isConfirmed) {
-      Swal.fire("حذف شد!", `محصول مورد نظر حذف شد`, "success");
-      deleteService(id).then(() => {
+      Swal.fire("حذف شد!", `آیتم مورد نظر حذف شد`, "success");
+      deleteService(id).then((res) => {
+        console.log(res);
         const updateData = data.filter((d) => d.id != id);
         setData(updateData);
       });
     }
   });
 };
-
 //=============== 👆👆👆 عملیات حذف محصول 👆👆👆 ===============
